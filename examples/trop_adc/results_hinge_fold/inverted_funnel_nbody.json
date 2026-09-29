@@ -1,0 +1,161 @@
+[
+  {
+    "dar": 7,
+    "n_subsets": 8,
+    "nbody_feasible": 2,
+    "nbody_rate": 0.25,
+    "details": [
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214"
+        ],
+        "omit": [
+          "D:CYS214"
+        ],
+        "hit": true,
+        "nodes": 1585
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "D:CYS214"
+        ],
+        "omit": [
+          "C:CYS214"
+        ],
+        "hit": false,
+        "nodes": 8935
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "B:CYS232"
+        ],
+        "hit": false,
+        "nodes": 250103
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "A:CYS232"
+        ],
+        "hit": false,
+        "nodes": 42127
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "B:CYS229"
+        ],
+        "hit": false,
+        "nodes": 250103
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "A:CYS229"
+        ],
+        "hit": false,
+        "nodes": 42127
+      },
+      {
+        "combo": [
+          "A:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "B:CYS223"
+        ],
+        "hit": false,
+        "nodes": 42127
+      },
+      {
+        "combo": [
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [
+          "A:CYS223"
+        ],
+        "hit": true,
+        "nodes": 761
+      }
+    ]
+  },
+  {
+    "dar": 8,
+    "n_subsets": 1,
+    "nbody_feasible": 0,
+    "nbody_rate": 0.0,
+    "details": [
+      {
+        "combo": [
+          "A:CYS223",
+          "B:CYS223",
+          "A:CYS229",
+          "B:CYS229",
+          "A:CYS232",
+          "B:CYS232",
+          "C:CYS214",
+          "D:CYS214"
+        ],
+        "omit": [],
+        "hit": false,
+        "nodes": 42127
+      }
+    ]
+  }
+]

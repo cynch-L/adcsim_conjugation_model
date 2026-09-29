@@ -1,0 +1,470 @@
+{
+  "method": "DAR v4 — reduction (pair-level, 1st order in TCEP x ease) -> covalent conjugation (2nd-order kinetics, irreversible)",
+  "reaction_conditions": {
+    "k2_M_inv_s": 300.0,
+    "mAb_uM": 10.0,
+    "payload_eq": 6.0,
+    "time_h": 2.0,
+    "payload_conc_M": 5.9999999999999995e-05,
+    "ideal_solution_conversion": 1.0,
+    "conj_yield_used": 0.96
+  },
+  "params": {
+    "PEN_same_pair": 1.0,
+    "GATE_LO": 5.0,
+    "GATE_SPAN": 15.0,
+    "CONJ_YIELD": 0.96,
+    "TCEP_calibration_eq": 2.75,
+    "N_MC": 400000,
+    "SEED": 20260916
+  },
+  "notes": [
+    "v3 used Langmuir (equilibrium adsorption) to describe a COVALENT, irreversible reaction. That spreads p_conj over 0.45-0.92 across sites and creates large one-arm leakage 2p(1-p) -- this is what destroyed the even-DAR preference, and no amount of parameter tuning could fix it.",
+    "Maleimide-thiol is irreversible 2nd order: conversion = 1-exp(-k2*[P]*t). At k2=300.0 M^-1s^-1, [P]=60 uM, t=2.0 h the exponent is ~130, i.e. conversion ~1 in free solution. Site identity therefore gates ACCESS only, not chemistry.",
+    "Free-solution conversion is capped at the empirically observed process yield CONJ_YIELD=0.96 (typical 0.92-0.98), because the protein surface microenvironment (desolvation, local steric, payload aggregation) lowers it below the ideal-solution value.",
+    "Sensitivity over p_c = 0.50 -> 0.99 is included below; it shows even/odd is a steep, monotone function of conjugation conversion -- i.e. the even-DAR preference is a CONSEQUENCE of near-quantitative conjugation, not a fitted knob."
+  ],
+  "covalent_conversion": 0.96,
+  "ideal_solution_conversion": 1.0,
+  "gate_map": {
+    "A-Cys223": 1.0,
+    "A-Cys229": 0.535,
+    "A-Cys232": 1.0,
+    "B-Cys223": 1.0,
+    "B-Cys229": 0.535,
+    "B-Cys232": 1.0,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "sasa_symmetrized": {
+    "A-Cys223": 41.36,
+    "A-Cys229": 13.02,
+    "A-Cys232": 24.18,
+    "B-Cys223": 41.36,
+    "B-Cys229": 13.02,
+    "B-Cys232": 24.18,
+    "C-Cys214": 1.77,
+    "D-Cys214": 1.77
+  },
+  "reduction_ease": {
+    "A-Cys229--B-Cys229": 0.317,
+    "A-Cys223--C-Cys214": 0.2905,
+    "B-Cys223--D-Cys214": 0.2905,
+    "A-Cys232--B-Cys232": 0.237
+  },
+  "scenarios": {
+    "A: 保留 MD 门控（C214/229 判定不可及）": {
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.249,
+      "even_odd_ratio": 1.094,
+      "p_dar_ge6": 0.107,
+      "p_dar_0": 0.0028,
+      "dist": [
+        0.0028,
+        0.0277,
+        0.0974,
+        0.1874,
+        0.3154,
+        0.2625,
+        0.107,
+        0.0,
+        0.0
+      ],
+      "LAMBDA": 2.3097,
+      "p_red": {
+        "A-Cys229--B-Cys229": 0.8665,
+        "A-Cys223--C-Cys214": 0.842,
+        "B-Cys223--D-Cys214": 0.842,
+        "A-Cys232--B-Cys232": 0.7781
+      },
+      "p_conj": {
+        "A-Cys223": 0.96,
+        "A-Cys229": 0.5133,
+        "A-Cys232": 0.96,
+        "B-Cys223": 0.96,
+        "B-Cys229": 0.5133,
+        "B-Cys232": 0.96,
+        "C-Cys214": 0.0,
+        "D-Cys214": 0.0
+      }
+    },
+    "B: 工艺条件全可及（铰链已打开）": {
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.954,
+      "even_odd_ratio": 6.051,
+      "p_dar_ge6": 0.2847,
+      "p_dar_0": 0.0525,
+      "dist": [
+        0.0525,
+        0.0177,
+        0.2144,
+        0.0534,
+        0.3241,
+        0.0532,
+        0.2147,
+        0.0175,
+        0.0525
+      ],
+      "LAMBDA": 0.9466,
+      "p_red": {
+        "A-Cys229--B-Cys229": 0.5618,
+        "A-Cys223--C-Cys214": 0.5305,
+        "B-Cys223--D-Cys214": 0.5305,
+        "A-Cys232--B-Cys232": 0.4604
+      },
+      "p_conj": {
+        "A-Cys223": 0.96,
+        "A-Cys229": 0.96,
+        "A-Cys232": 0.96,
+        "B-Cys223": 0.96,
+        "B-Cys229": 0.96,
+        "B-Cys232": 0.96,
+        "C-Cys214": 0.96,
+        "D-Cys214": 0.96
+      }
+    }
+  },
+  "sensitivity": {
+    "p_c=0.5000": {
+      "p_c": 0.5,
+      "LAMBDA": 54.9605,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.414,
+      "even_odd_ratio": 1.0,
+      "p_dar_ge6": 0.1445,
+      "p_dar_0": 0.0039,
+      "dist": [
+        0.0039,
+        0.0313,
+        0.1094,
+        0.2188,
+        0.2734,
+        0.2187,
+        0.1094,
+        0.0312,
+        0.0039
+      ]
+    },
+    "p_c=0.7000": {
+      "p_c": 0.7,
+      "LAMBDA": 1.6165,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.67,
+      "even_odd_ratio": 1.052,
+      "p_dar_ge6": 0.192,
+      "p_dar_0": 0.0147,
+      "dist": [
+        0.0147,
+        0.0512,
+        0.1261,
+        0.1927,
+        0.231,
+        0.1923,
+        0.1259,
+        0.0511,
+        0.0149
+      ]
+    },
+    "p_c=0.8500": {
+      "p_c": 0.85,
+      "LAMBDA": 1.1426,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.839,
+      "even_odd_ratio": 1.631,
+      "p_dar_ge6": 0.2329,
+      "p_dar_0": 0.0321,
+      "dist": [
+        0.0321,
+        0.046,
+        0.1547,
+        0.1444,
+        0.2458,
+        0.1441,
+        0.1549,
+        0.0456,
+        0.0323
+      ]
+    },
+    "p_c=0.9000": {
+      "p_c": 0.9,
+      "LAMBDA": 1.0438,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.892,
+      "even_odd_ratio": 2.386,
+      "p_dar_ge6": 0.253,
+      "p_dar_0": 0.0405,
+      "dist": [
+        0.0405,
+        0.0364,
+        0.176,
+        0.1116,
+        0.2714,
+        0.1113,
+        0.1763,
+        0.0361,
+        0.0406
+      ]
+    },
+    "p_c=0.9400": {
+      "p_c": 0.94,
+      "LAMBDA": 0.9768,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.934,
+      "even_odd_ratio": 3.995,
+      "p_dar_ge6": 0.273,
+      "p_dar_0": 0.0482,
+      "dist": [
+        0.0482,
+        0.0249,
+        0.1998,
+        0.0754,
+        0.3034,
+        0.0752,
+        0.2001,
+        0.0247,
+        0.0483
+      ]
+    },
+    "p_c=0.9600": {
+      "p_c": 0.96,
+      "LAMBDA": 0.9466,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.954,
+      "even_odd_ratio": 6.051,
+      "p_dar_ge6": 0.2847,
+      "p_dar_0": 0.0525,
+      "dist": [
+        0.0525,
+        0.0177,
+        0.2144,
+        0.0534,
+        0.3241,
+        0.0532,
+        0.2147,
+        0.0175,
+        0.0525
+      ]
+    },
+    "p_c=0.9900": {
+      "p_c": 0.99,
+      "LAMBDA": 0.9047,
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.985,
+      "even_odd_ratio": 24.761,
+      "p_dar_ge6": 0.3045,
+      "p_dar_0": 0.0594,
+      "dist": [
+        0.0594,
+        0.0049,
+        0.2402,
+        0.0146,
+        0.3618,
+        0.0146,
+        0.2404,
+        0.0048,
+        0.0594
+      ]
+    }
+  },
+  "tcep_scan": {
+    "1.0": {
+      "mean_dar": 1.807,
+      "mode_dar": 2,
+      "std_dar": 1.649,
+      "even_odd_ratio": 13.608,
+      "p_dar_ge6": 0.034,
+      "p_dar_0": 0.3422,
+      "dist": [
+        0.3422,
+        0.0324,
+        0.3903,
+        0.0275,
+        0.1658,
+        0.0078,
+        0.0311,
+        0.0007,
+        0.0022
+      ]
+    },
+    "1.5": {
+      "mean_dar": 2.542,
+      "mode_dar": 2,
+      "std_dar": 1.832,
+      "even_odd_ratio": 9.614,
+      "p_dar_ge6": 0.0875,
+      "p_dar_0": 0.2002,
+      "dist": [
+        0.2002,
+        0.0306,
+        0.3686,
+        0.0418,
+        0.2523,
+        0.019,
+        0.0761,
+        0.0028,
+        0.0085
+      ]
+    },
+    "2.0": {
+      "mean_dar": 3.185,
+      "mode_dar": 2,
+      "std_dar": 1.921,
+      "even_odd_ratio": 7.639,
+      "p_dar_ge6": 0.1596,
+      "p_dar_0": 0.1172,
+      "dist": [
+        0.1172,
+        0.0257,
+        0.31,
+        0.0504,
+        0.3045,
+        0.0327,
+        0.1315,
+        0.007,
+        0.0211
+      ]
+    },
+    "2.5": {
+      "mean_dar": 3.746,
+      "mode_dar": 4,
+      "std_dar": 1.953,
+      "even_odd_ratio": 6.47,
+      "p_dar_ge6": 0.242,
+      "p_dar_0": 0.0686,
+      "dist": [
+        0.0686,
+        0.0202,
+        0.245,
+        0.0535,
+        0.3241,
+        0.0467,
+        0.1881,
+        0.0135,
+        0.0404
+      ]
+    },
+    "2.75": {
+      "mean_dar": 4.0,
+      "mode_dar": 4,
+      "std_dar": 1.954,
+      "even_odd_ratio": 6.051,
+      "p_dar_ge6": 0.2847,
+      "p_dar_0": 0.0525,
+      "dist": [
+        0.0525,
+        0.0177,
+        0.2144,
+        0.0534,
+        0.3241,
+        0.0532,
+        0.2147,
+        0.0175,
+        0.0525
+      ]
+    },
+    "3.0": {
+      "mean_dar": 4.237,
+      "mode_dar": 4,
+      "std_dar": 1.948,
+      "even_odd_ratio": 5.704,
+      "p_dar_ge6": 0.3275,
+      "p_dar_0": 0.0402,
+      "dist": [
+        0.0402,
+        0.0153,
+        0.1862,
+        0.0525,
+        0.3191,
+        0.0593,
+        0.2392,
+        0.0221,
+        0.0662
+      ]
+    },
+    "4.0": {
+      "mean_dar": 5.041,
+      "mode_dar": 6,
+      "std_dar": 1.872,
+      "even_odd_ratio": 4.775,
+      "p_dar_ge6": 0.489,
+      "p_dar_0": 0.0138,
+      "dist": [
+        0.0138,
+        0.0082,
+        0.1003,
+        0.0438,
+        0.2681,
+        0.0769,
+        0.3118,
+        0.0443,
+        0.1329
+      ]
+    },
+    "6.0": {
+      "mean_dar": 6.125,
+      "mode_dar": 6,
+      "std_dar": 1.615,
+      "even_odd_ratio": 3.912,
+      "p_dar_ge6": 0.7253,
+      "p_dar_0": 0.0016,
+      "dist": [
+        0.0016,
+        0.002,
+        0.0252,
+        0.0226,
+        0.1412,
+        0.082,
+        0.3376,
+        0.0969,
+        0.2908
+      ]
+    }
+  },
+  "primary": {
+    "scenario": "B: 工艺条件全可及（铰链已打开）",
+    "TCEP_eq": 2.75,
+    "mean_dar": 4.0,
+    "mode_dar": 4,
+    "std_dar": 1.954,
+    "even_odd_ratio": 6.051,
+    "p_dar_ge6": 0.2847,
+    "p_dar_0": 0.0525,
+    "dist": [
+      0.0525,
+      0.0177,
+      0.2144,
+      0.0534,
+      0.3241,
+      0.0532,
+      0.2147,
+      0.0175,
+      0.0525
+    ],
+    "LAMBDA": 0.9466,
+    "p_red": {
+      "A-Cys229--B-Cys229": 0.5618,
+      "A-Cys223--C-Cys214": 0.5305,
+      "B-Cys223--D-Cys214": 0.5305,
+      "A-Cys232--B-Cys232": 0.4604
+    },
+    "p_conj": {
+      "A-Cys223": 0.96,
+      "A-Cys229": 0.96,
+      "A-Cys232": 0.96,
+      "B-Cys223": 0.96,
+      "B-Cys229": 0.96,
+      "B-Cys232": 0.96,
+      "C-Cys214": 0.96,
+      "D-Cys214": 0.96
+    }
+  }
+}

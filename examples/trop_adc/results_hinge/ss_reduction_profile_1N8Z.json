@@ -1,0 +1,9 @@
+{
+  "method": "structural reduction-ease proxy v2 (OXIDIZED-state static SASA + geometry strain + local positive charge)",
+  "pdb": "1N8Z.pdb",
+  "n_interchain_ss": 0,
+  "note": "v2 fix: accessibility uses oxidized-state static SG SASA (what TCEP actually attacks), NOT the reduced-state dynamic SASA from MD (which is circular).",
+  "formula": "ease = clip(0.55*accessibility + 0.30*(strain/1.5) + 0.15*electrostatic, 0, 1)",
+  "strain_def": "clip(0.40*|dSS-2.05|/0.15 + 0.40*circ_dev(dih,{90,180})/45 + 0.20*|ang-103|/15, 0, 2)",
+  "pairs": []
+}

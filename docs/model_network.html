@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADC 偶联预筛模型 · 网络拓扑图</title>
+<style>
+:root{
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f7f6f3;
+  --color-text-primary:#1c1c1a;
+  --color-text-secondary:#5f5e5a;
+  --color-text-tertiary:#888780;
+  --color-border-tertiary:rgba(0,0,0,.15);
+  --border-radius-md:8px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --color-background-primary:#1e1e1c;
+    --color-background-secondary:#2a2a27;
+    --color-text-primary:#f2f1ee;
+    --color-text-secondary:#b4b2a9;
+    --color-text-tertiary:#888780;
+    --color-border-tertiary:rgba(255,255,255,.18);
+  }
+}
+body{margin:0;padding:28px 24px 48px;background:var(--color-background-primary);
+     color:var(--color-text-primary);
+     font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+h1{font-size:18px;font-weight:500;margin:0 0 6px}
+p.sub{margin:0 0 18px;font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px;font-size:12px;color:var(--color-text-secondary)}
+.legend span.i{display:flex;align-items:center;gap:5px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+#panel{margin-top:14px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);
+       padding:1rem 1.25rem;font-size:13px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>ADC 偶联预筛模型 · 网络拓扑</h1>
+<p class="sub">四层：原始输入 → 并行支线 → 主链六环节 → 交付。箭头上的小标签是这条边传的内容。
+点任意节点看它的判定口径，点空白处重置。<strong>深色节点（二硫键还原）是整个网络唯一决定结果的环节。</strong></p>
+
+<div class="legend">
+<span class="i"><span class="sw" style="background:#F1EFE8;border:0.5px solid #B4B2A9"></span>原始输入</span>
+<span class="i"><span class="sw" style="background:#E1F5EE;border:0.5px solid #0F6E56"></span>并行支线</span>
+<span class="i"><span class="sw" style="background:#B5D4F4;border:0.5px solid #185FA5"></span>主链环节（深色 = 限速）</span>
+<span class="i"><span class="sw" style="background:#FAEEDA;border:0.5px solid #854F0B"></span>交付</span>
+<span class="i"><span class="sw" style="background:#CECBF6;border:0.5px solid #534AB7"></span>生物学层（C 档）</span>
+<span class="i"><span style="display:inline-block;width:18px;border-top:1.5px dashed #534AB7"></span>虚线 = 未并入主线</span>
+</div>
+
+<svg id="net" viewBox="0 0 850 700" width="100%" style="display:block" onclick="reset()">
+<defs>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aph" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<text x="25" y="20" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#444441">原始输入</text>
+<text x="230" y="20" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#085041">并行支线</text>
+<text x="435" y="20" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#0C447C">主链六环节（串行）</text>
+<text x="660" y="20" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#633806">交付</text>
+
+<path class="e" id="e1" d="M170 54 C 215 54, 390 59, 435 59" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e2" d="M170 54 C 190 54, 210 104, 230 104" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e3" d="M170 118 C 194 118, 206 174, 230 174" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e4" d="M170 182 C 194 182, 206 174, 230 174" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e5" d="M170 246 C 194 246, 206 244, 230 244" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e6" d="M170 310 C 215 310, 390 329, 435 329" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e7" d="M170 310 C 215 310, 390 419, 435 419" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e8" d="M170 374 C 215 374, 390 419, 435 419" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e9" d="M375 104 C 405 104, 405 239, 435 239" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e10" d="M375 174 C 405 174, 405 149, 435 149" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e11" d="M375 244 C 405 244, 405 419, 435 419" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e12" d="M517 84 L 517 120" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e13" d="M517 174 L 517 210" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e14" d="M517 264 L 517 300" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e15" d="M517 354 L 517 390" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e16" d="M517 444 L 517 480" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e17" d="M600 509 C 630 509, 630 404, 660 404" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e18" d="M600 509 C 630 509, 630 324, 660 324" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e19" d="M740 428 L 740 456" fill="none" stroke="#888780" stroke-width="1.2" marker-end="url(#ag)"/>
+<path class="e" id="e20" d="M517 534 C 400 545, 220 558, 160 594" fill="none" stroke="#534AB7" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ap)"/>
+<path class="e" id="e21" d="M240 624 L 316 624" fill="none" stroke="#534AB7" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ap)"/>
+
+<g class="tg" id="t1"><rect x="286" y="43" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="302" y="49" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">序列</text><text x="302" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">坐标</text></g>
+<g class="tg" id="t3"><rect x="178" y="133" width="43" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="200" y="139" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">4 个</text><text x="200" y="152" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">实测点</text></g>
+<g class="tg" id="t4"><rect x="184" y="165" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="200" y="171" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">2.5</text><text x="200" y="184" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">当量</text></g>
+<g class="tg" id="t5"><rect x="182" y="232" width="35" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="200" y="238" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">vc-</text><text x="200" y="251" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">MMAE</text></g>
+<g class="tg" id="t6"><rect x="290" y="313" width="23" height="18" rx="4" fill="var(--color-background-primary,#fff)"/><text x="301" y="326" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">pH</text></g>
+<g class="tg" id="t7"><rect x="286" y="359" width="32" height="18" rx="4" fill="var(--color-background-primary,#fff)"/><text x="302" y="372" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">时间</text></g>
+<g class="tg" id="t8"><rect x="286" y="391" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="302" y="397" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">k₂</text><text x="302" y="410" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">水解</text></g>
+<g class="tg" id="t9"><rect x="368" y="105" width="35" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="386" y="111" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">60 帧</text><text x="386" y="124" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">SASA</text></g>
+<g class="tg" id="t10"><rect x="362" y="148" width="48" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="386" y="154" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">K =</text><text x="386" y="167" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">1.1368</text></g>
+<g class="tg" id="t11"><rect x="384" y="318" width="41" height="18" rx="4" fill="var(--color-background-primary,#fff)"/><text x="404" y="331" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">f_act</text></g>
+<g class="tg" id="t12"><rect x="523" y="91" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="539" y="97" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">8 个</text><text x="539" y="110" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">位点</text></g>
+<g class="tg" id="t13"><rect x="523" y="181" width="41" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="543" y="187" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">2.30 /</text><text x="543" y="200" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">4 条</text></g>
+<g class="tg" id="t14"><rect x="523" y="271" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="539" y="277" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">暴露</text><text x="539" y="290" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">状态</text></g>
+<g class="tg" id="t15"><rect x="523" y="363" width="48" height="18" rx="4" fill="var(--color-background-primary,#fff)"/><text x="547" y="376" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">f_thio</text></g>
+<g class="tg" id="t16"><rect x="523" y="451" width="41" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="543" y="457" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">p =</text><text x="543" y="470" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">0.995</text></g>
+<g class="tg" id="t17"><rect x="614" y="437" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="630" y="443" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">泊松</text><text x="630" y="456" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">二项</text></g>
+<g class="tg" id="t18"><rect x="614" y="403" width="32" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="630" y="409" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">接完</text><text x="630" y="422" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">结构</text></g>
+<g class="tg" id="t19"><rect x="746" y="431" width="32" height="18" rx="4" fill="var(--color-background-primary,#fff)"/><text x="762" y="444" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">分档</text></g>
+<g class="tg" id="t20"><rect x="322" y="537" width="36" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="340" y="543" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">载药</text><text x="340" y="556" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">量</text></g>
+<g class="tg" id="t21"><rect x="258" y="611" width="44" height="26" rx="4" fill="var(--color-background-primary,#fff)"/><text x="280" y="617" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">游离</text><text x="280" y="630" font-family="system-ui,sans-serif" font-size="11" fill="#444441" text-anchor="middle">payload</text></g>
+
+<g class="n" data-id="a1" onclick="act('a1',event)" style="cursor:pointer"><rect x="25" y="30" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="48" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">抗体序列 + 结构</text><text x="97" y="65" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">Boltz 预测 PDB</text></g>
+<g class="n" data-id="a6" onclick="act('a6',event)" style="cursor:pointer"><rect x="25" y="94" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="112" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">实测锚点 × 4</text><text x="97" y="129" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">4 个真实 DAR 点</text></g>
+<g class="n" data-id="a2" onclick="act('a2',event)" style="cursor:pointer"><rect x="25" y="158" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="176" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">TCEP 当量</text><text x="97" y="193" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">2.5 当量（默认）</text></g>
+<g class="n" data-id="a4" onclick="act('a4',event)" style="cursor:pointer"><rect x="25" y="222" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="240" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">payload 结构</text><text x="97" y="257" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">vc-MMAE</text></g>
+<g class="n" data-id="a3" onclick="act('a3',event)" style="cursor:pointer"><rect x="25" y="286" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="304" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">工艺条件</text><text x="97" y="321" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">pH · 时间 · 浓度</text></g>
+<g class="n" data-id="a5" onclick="act('a5',event)" style="cursor:pointer"><rect x="25" y="350" width="145" height="48" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/><text x="97" y="368" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#2C2C2A" text-anchor="middle">文献常数</text><text x="97" y="385" font-family="system-ui,sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle">k₂ · 水解速率</text></g>
+
+<g class="n" data-id="b1" onclick="act('b1',event)" style="cursor:pointer"><rect x="230" y="80" width="145" height="48" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/><text x="302" y="98" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#085041" text-anchor="middle">结构路</text><text x="302" y="115" font-family="system-ui,sans-serif" font-size="12" fill="#0F6E56" text-anchor="middle">MD 采样动态暴露</text></g>
+<g class="n" data-id="b2" onclick="act('b2',event)" style="cursor:pointer"><rect x="230" y="150" width="145" height="48" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/><text x="302" y="168" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#085041" text-anchor="middle">标定路</text><text x="302" y="185" font-family="system-ui,sans-serif" font-size="12" fill="#0F6E56" text-anchor="middle">锚点反推总开放 K</text></g>
+<g class="n" data-id="b3" onclick="act('b3',event)" style="cursor:pointer"><rect x="230" y="220" width="145" height="48" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/><text x="302" y="238" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#085041" text-anchor="middle">化学路</text><text x="302" y="255" font-family="system-ui,sans-serif" font-size="12" fill="#0F6E56" text-anchor="middle">小分子自身 QC</text></g>
+
+<g class="n" data-id="c1" onclick="act('c1',event)" style="cursor:pointer"><rect x="435" y="34" width="165" height="50" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="46" r="9" fill="#185FA5"/><text x="447" y="46" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">1</text><text x="526" y="53" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">序列 QC</text><text x="526" y="70" font-family="system-ui,sans-serif" font-size="12" fill="#185FA5" text-anchor="middle">有哪些位点能挂药</text></g>
+<g class="n" data-id="c2" onclick="act('c2',event)" style="cursor:pointer"><rect x="435" y="124" width="165" height="50" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="136" r="9" fill="#185FA5"/><text x="447" y="136" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text><text x="526" y="143" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">二硫键还原</text><text x="526" y="160" font-family="system-ui,sans-serif" font-size="12" fill="#0C447C" text-anchor="middle">总共打开几条链间键</text></g>
+<g class="n" data-id="c3" onclick="act('c3',event)" style="cursor:pointer"><rect x="435" y="214" width="165" height="50" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="226" r="9" fill="#185FA5"/><text x="447" y="226" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text><text x="526" y="233" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">位点暴露度</text><text x="526" y="250" font-family="system-ui,sans-serif" font-size="12" fill="#185FA5" text-anchor="middle">巯基露得出来吗</text></g>
+<g class="n" data-id="c4" onclick="act('c4',event)" style="cursor:pointer"><rect x="435" y="304" width="165" height="50" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="316" r="9" fill="#185FA5"/><text x="447" y="316" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">4</text><text x="526" y="323" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">巯基活化</text><text x="526" y="340" font-family="system-ui,sans-serif" font-size="12" fill="#185FA5" text-anchor="middle">变成能反应的形式了吗</text></g>
+<g class="n" data-id="c5" onclick="act('c5',event)" style="cursor:pointer"><rect x="435" y="394" width="165" height="50" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="406" r="9" fill="#185FA5"/><text x="447" y="406" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">5</text><text x="526" y="413" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">共价连接</text><text x="526" y="430" font-family="system-ui,sans-serif" font-size="12" fill="#185FA5" text-anchor="middle">2 小时挂得上吗</text></g>
+<g class="n" data-id="c6" onclick="act('c6',event)" style="cursor:pointer"><rect x="435" y="484" width="165" height="50" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/><circle cx="447" cy="496" r="9" fill="#185FA5"/><text x="447" y="496" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="central">6</text><text x="526" y="503" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#0C447C" text-anchor="middle">组合统计</text><text x="526" y="520" font-family="system-ui,sans-serif" font-size="12" fill="#185FA5" text-anchor="middle">拼成完整分布</text></g>
+
+<g class="n" data-id="d1" onclick="act('d1',event)" style="cursor:pointer"><rect x="660" y="300" width="160" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/><text x="740" y="318" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#633806" text-anchor="middle">疏水表面积</text><text x="740" y="335" font-family="system-ui,sans-serif" font-size="12" fill="#854F0B" text-anchor="middle">HIC 与聚集共同驱动</text></g>
+<g class="n" data-id="d2" onclick="act('d2',event)" style="cursor:pointer"><rect x="660" y="380" width="160" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/><text x="740" y="398" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#633806" text-anchor="middle">DAR 分布</text><text x="740" y="415" font-family="system-ui,sans-serif" font-size="12" fill="#854F0B" text-anchor="middle">均 4.59 · 众数 4</text></g>
+<g class="n" data-id="d3" onclick="act('d3',event)" style="cursor:pointer"><rect x="660" y="460" width="160" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/><text x="740" y="478" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#633806" text-anchor="middle">置信度 + 报警</text><text x="740" y="495" font-family="system-ui,sans-serif" font-size="12" fill="#854F0B" text-anchor="middle">A / B / C 三档</text></g>
+
+<rect x="25" y="575" width="795" height="100" rx="14" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5" stroke-dasharray="6 4"/>
+<text x="45" y="597" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#3C3489">生物学层 · C 档（有文献出处但未经自有数据标定，展示时重点解释）</text>
+
+<g class="n" data-id="r1" onclick="act('r1',event)" style="cursor:pointer"><rect x="60" y="600" width="180" height="48" rx="8" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/><text x="150" y="618" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#3C3489" text-anchor="middle">释放动力学</text><text x="150" y="635" font-family="system-ui,sans-serif" font-size="12" fill="#534AB7" text-anchor="middle">连接子被切开多快</text></g>
+<g class="n" data-id="r2" onclick="act('r2',event)" style="cursor:pointer"><rect x="320" y="600" width="180" height="48" rx="8" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/><text x="410" y="618" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#3C3489" text-anchor="middle">旁观者效应</text><text x="410" y="635" font-family="system-ui,sans-serif" font-size="12" fill="#534AB7" text-anchor="middle">游离药能扩散多远</text></g>
+
+<text x="540" y="612" font-family="system-ui,sans-serif" font-size="12" fill="#534AB7">为什么用虚线：它确实是这条链路的下游</text>
+<text x="540" y="630" font-family="system-ui,sans-serif" font-size="12" fill="#534AB7">（有多少药 → 切出多少游离药 → 杀多少细胞），</text>
+<text x="540" y="648" font-family="system-ui,sans-serif" font-size="12" fill="#534AB7">但精度只到 C 档，不参与 DAR 计算，单独放仓库。</text>
+</svg>
+
+<div id="panel">
+<div style="font-size:14px;font-weight:500;margin-bottom:6px">点任意节点，看它的判定口径</div>
+<div style="color:var(--color-text-secondary)">箭头上的小标签就是这条边传的内容。建议先点「二硫键还原」—— 它是整个网络里唯一决定结果的节点。</div>
+</div>
+</div>
+
+<script>
+var EDGES=[["e1","a1","c1"],["e2","a1","b1"],["e3","a6","b2"],["e4","a2","b2"],["e5","a4","b3"],["e6","a3","c4"],["e7","a3","c5"],["e8","a5","c5"],["e9","b1","c3"],["e10","b2","c2"],["e11","b3","c5"],["e12","c1","c2"],["e13","c2","c3"],["e14","c3","c4"],["e15","c4","c5"],["e16","c5","c6"],["e17","c6","d2"],["e18","c6","d1"],["e19","d2","d3"],["e20","c6","r1"],["e21","r1","r2"]];
+var DEF={};
+document.querySelectorAll('#net .e').forEach(function(e){DEF[e.id]={s:e.getAttribute('stroke'),w:e.getAttribute('stroke-width'),m:e.getAttribute('marker-end')}});
+var INFO={
+a1:{t:"抗体序列 + 结构",w:"这个抗体上有哪些半胱氨酸、哪些两两成对形成链间二硫键",h:"从 PDB 提取序列与半胱氨酸 SG 坐标，按抗体自有编号规则比对",b:"trastuzumab_boltz_model_0.pdb；判出的 8 个位点与 MD 帧库 100% 一致",o:"8 个可偶联半胱氨酸 = 4 对链间二硫键",g:"seqqc.py · ab_numbering.py"},
+a6:{t:"实测锚点 × 4",w:"真实做过的一组「TCEP 当量 → 平均 DAR」",h:"用它反推总开放程度 K，是模型里唯一来自自己实验的部分",b:"2.00→3.77，2.15→3.97，2.50→4.55，3.00→5.38（HIC 实测）",o:"K = 1.1368，拟合 rmse 0.039，留一法误差 0.0513",g:"reduction_kinetics_v8.py"},
+a2:{t:"TCEP 当量",w:"加了这么多还原剂",h:"作为环节 2 的显式输入变量，直接传导到 DAR",b:"预测条件 2.5 当量；实测锚点覆盖 2.0 / 2.15 / 2.5 / 3.0",o:"驱动「总共打开几条链间键」",g:"adc_model_config.yaml → process.tcep_eq"},
+a4:{t:"payload 结构",w:"vc-MMAE 长什么样",h:"生成构象系综，判断它在反应液里会不会自己抱团、把反应端埋了",b:"79 个 ETKDG/MMFF 构象；实测 MMAE 在 PBS 溶解度 696 µM（Cayman 16267）",o:"反应端可及比例 f_active，只对有效浓度打折",g:"payload_qc.py（RDKit）"},
+a3:{t:"工艺条件",w:"pH、反应时间、抗体浓度",h:"pH 进环节 4 算活化分数；时间进环节 5 算转化率；浓度同时决定还原程度与 payload 浓度",b:"pH 7.0，还原 2 h + 偶联 2 h，抗体 67 µM（10 mg/mL ÷ 150 kDa）",o:"三个数分别进三个不同环节",g:"adc_model_config.yaml → process.*"},
+a5:{t:"文献常数",w:"反应速率和水解速率",h:"k₂ 进 1−exp(−k₂·[P]·t_eff)；水解作为竞争反应扣除",b:"k₂ = 300 M⁻¹s⁻¹（文献，pH 7 实测）；水解 t½ ≈ 26 h vs 偶联 38 s",o:"竞争比约 2400:1，扣减 <0.05%，可忽略",g:"chemistry.py"},
+b1:{t:"结构路 · MD 采样",w:"位点露不露得出来，得看它动起来，不能只看一张静态图",h:"每个位点跑分子动力学，逐帧算溶剂可及表面积（SASA）",b:"8 位点 × 60 帧；AMBER ff14SB + GB-OBC2；Fab+Fc 的 Cα 锁死、铰链区自由；1 ns 平衡 + 2 ns 生产",o:"每帧的暴露面积，交给环节 3 做时间积分",g:"OpenMM · MDTraj · md_8site_flexibility.ipynb",n:"铰链区 pLDDT 只有 45.6，八个位点均值 48.9 —— 不是结构预测算得差，是这段本来就是天然无序区，没有确定结构。换 AlphaFold 也一样。"},
+b2:{t:"标定路 · 反推总开放 K",w:"用一个数概括「加这个当量的 TCEP，最后开几条键」",h:"共享还原剂池模型（还原剂被 4 条键分摊，用完就没了）+ 化学计量上限，最小二乘拟合 4 个锚点",b:"K = 1.1368，留一法误差 0.0513；对照旧伪一级形式 0.2821，差 5.5 倍",o:"K 值注入环节 2",g:"reduction_kinetics_v8.py",n:"为什么不用伪一级：它的前提是还原剂永远过量。但 TCEP 只加 2~3 当量，链间键有 4 条，同量级 —— 前提根本不成立。"},
+b3:{t:"化学路 · 小分子自身 QC",w:"小分子太疏水，在水里自己抱团，把反应端埋住 → 连不上",h:"构象系综算反应端可及比例 + 共溶剂溶解度校核",b:"裸 MMAE 在 PBS 实测 696 µM；10% DMA 下 2336 µM；投 8 当量（536 µM）只占 23%",o:"f_active，只对有效 payload 浓度打折，不改主链",g:"payload_qc.py（RDKit）",n:"这里修过一次：原来用 GSE 方程估溶解度只有 26 µM，报「超标 15.3 倍严重」，但实测 DMA 10%、8-10 当量从不析出 —— 是基准值错了，不是参数错了。"},
+c1:{t:"环节 1 · 序列 QC",w:"有哪些位点可以挂药",h:"认半胱氨酸、认链间二硫键、比对自有编号",b:"PDB 结构 + 抗体编号规则",o:"8 个可偶联位点（A/B-Cys223/229/232 铰链 + C/D-Cys214 轻链末端）",g:"seqqc.py · ab_numbering.py"},
+c2:{t:"环节 2 · 二硫键还原 ★",w:"加了这么多还原剂，最后总共打开几条链间键",h:"共享还原剂池 + 化学计量上限（加 2.5 当量最多也只能开 2.5 条），取小者",b:"K = 1.1368（4 个实测锚点反推）；加 2.5 当量实际只开 2.30 / 4 条",o:"开放的巯基数量，喂给环节 3",g:"dar_v6_complete.py",n:"这是整个网络唯一决定结果的节点。证据：4000 次蒙特卡洛不确定性传播，95% 置信区间塌成一个点（sd = 0.000）—— 其余五环节在当前工艺窗口全部饱和，扰动被上限吸收。真实误差全在 K 的标定上。"},
+c3:{t:"环节 3 · 位点暴露度",w:"打开之后的巯基，露不露得出来",h:"逐帧 SASA 对时间积分，得有效暴露时间；不是看一张静态快照",b:"8 位点 × 60 帧 MD",o:"有效暴露时间 t_eff，喂给环节 5",g:"accessibility.py · sasa.py",n:"v4→v5 修正过：原来用「时间平均暴露面积」当瞬时判据，跟环节 5 的「反应随时间累积」自相矛盾。改成时间积分后，C214 的成键概率从 0 变成 0.957。"},
+c4:{t:"环节 4 · 巯基活化",w:"露出来的巯基，有没有变成能反应的形式",h:"pKa + pH 算活化分数，乘进反应速率",b:"PROPKA + 暴露状态修正；pKa_eff 8.5 ± 1.0",o:"活化分数 f_thio，喂给环节 5",g:"site_env.py · parse_propka.py",n:"这里不许借用环节 3 的结论：静态 PROPKA 给 C-Cys214 算 pKa = 20.76，那是被埋住的构象造成的假象，而「被埋住」环节 3 已经判过了，再罚一次就是重复计算。"},
+c5:{t:"环节 5 · 共价连接",w:"2 小时够不够挂上",h:"1 − exp(−k₂·[P]·t_eff)，再扣掉水解竞争和 f_active 打折",b:"k₂ = 300 M⁻¹s⁻¹（文献，pH 7）；水解竞争 2400:1",o:"p = 0.995，喂给环节 6",g:"chemistry.py",n:"v3 在这里翻过车：曾用 Langmuir 吸附等温式描述共价连接。Langmuir 是可逆平衡吸附，马来酰亚胺-巯基是不可逆共价键 —— 函数形式从根上就错了，模型因此造出「够得着但反应失败」，把偶数 DAR 抹成奇偶各半。"},
+c6:{t:"环节 6 · 组合统计",w:"8 个位点各挂各的，最后长什么样",h:"泊松二项卷积 + 成对相关（同一条键的两个位点不独立）",b:"数学恒等，无待定参数",o:"DAR 0–8 完整分布 + 完整 ADC 结构集合",g:"sampling.py"},
+d1:{t:"疏水表面积",w:"接完之后露出多少疏水面",h:"对完整 ADC 结构算暴露疏水表面积",b:"既驱动 HIC 保留，也驱动聚集倾向 —— 同一个量管两件事",o:"给工艺和制剂做风险提示",g:"solvation.py · scorecard.py · polish.py",n:"这里放弃过一件事：原来想直接预测 SEC 聚体百分比，但聚集体是分子间作用（几十 nm），模型算单分子（几十 Å），差 3 个数量级，不属于同一物理层次。转成聚体% 需要自有 SEC 数据标定，不做无依据外推。"},
+d2:{t:"DAR 分布",w:"不是均值，是完整分布",h:"环节 6 直接输出",b:"均 4.586 / 标准差 1.965 / 众数 4 / 偶数奇数比 43.4",o:"DAR 0–8：3.16 / 0.17 / 17.33 / 0.71 / 35.26 / 0.95 / 31.54 / 0.42 / 10.46（%）",g:"dar_v6_complete.json"},
+d3:{t:"置信度分档 + 报警",w:"哪些话能硬讲，哪些必须加限定",h:"A 档物理必然 / B 档模型稳健 / C 档待实验裁决；另跑 15 项工艺检查",b:"质量守恒、还原剂利用率、最难打开的键、位点暴露时间、活化分数、pH 窗口、动力学完成度、奇偶占比、高低 DAR 占比…",o:"带机制量归因的报警清单",g:"alarms.py · report.py",n:"报警里的「原因」必须是机制量，不许写操作层面的形容词：不写「pH 不对」，写「硫醇阴离子分数 X%」；不写「投料比不够」，写「有效反应性 payload 浓度 vs 巯基总数」。"},
+r1:{t:"释放动力学（C 档）",w:"连接子进了溶酶体之后，被组织蛋白酶 B 切开有多快",h:"米氏动力学：kcat/Km × 酶浓度，算每个 ADC 在溶酶体里多久把 payload 放出来",b:"kcat/Km = 51111 M⁻¹s⁻¹（Dubowchik 2002 Bioconjug Chem，DOI 10.1021/bc025536j）；Km 60–120 µM 取中值；CatB 浓度 1 mM（Xing 1998 Biochem J，PMID 9601080）",o:"游离 payload 的生成速率，喂给旁观者效应",g:"release.py",n:"划进 C 档的理由：三个输入全是文献值，没有自有数据标定。酶浓度本身跨 3 个数量级（模型里做了扫描），所以这个数只能给量级，不能给绝对值。它不参与 DAR 计算 —— 这也是它用虚线接入的原因。"},
+r2:{t:"旁观者效应（C 档）",w:"切出来的游离药，能扩散多远、杀到多少邻近的细胞",h:"Krogh 圆柱模型：毛细血管为轴的圆柱形组织单元，算游离 payload 的浓度衰减与清除竞争",b:"毛细血管半径 8 µm、Krogh 半径 72 µm（Vasalou 2015 PLoS ONE）；抗体有效扩散系数 13 µm²/s、游离药 320 µm²/s",o:"体外杀伤的空间分布，给候选排序做参考",g:"bystander.py",n:"划进 C 档的理由：k_clear（清除速率）是这个模块里最脆的数 —— 它是推出来的，不是引来的，而且它决定前三名的排序，必须标定。抗体能到达的深度 30 µm 也是经验值，需要自有 IHC 校准。所以不并入主线，单独放仓库。"}
+};
+var cur=null;
+function reset(){cur=null;
+document.querySelectorAll('#net .n').forEach(function(n){n.style.opacity=1});
+document.querySelectorAll('#net .e').forEach(function(e){var d=DEF[e.id];e.style.opacity=1;e.setAttribute('stroke',d.s);e.setAttribute('stroke-width',d.w);e.setAttribute('marker-end',d.m)});
+document.querySelectorAll('#net .tg').forEach(function(t){t.style.opacity=1});
+document.getElementById('panel').innerHTML='<div style="font-size:14px;font-weight:500;margin-bottom:6px">点任意节点，看它的判定口径</div><div style="color:var(--color-text-secondary)">箭头上的小标签就是这条边传的内容。建议先点「二硫键还原」—— 它是整个网络里唯一决定结果的节点。</div>';
+}
+function act(id,ev){ev.stopPropagation();if(cur===id){reset();return;}cur=id;
+var keep={};keep[id]=1;var ee=[];
+EDGES.forEach(function(e){if(e[1]===id||e[2]===id){ee.push(e[0]);keep[e[1]]=1;keep[e[2]]=1}});
+document.querySelectorAll('#net .n').forEach(function(n){n.style.opacity=keep[n.getAttribute('data-id')]?1:0.18});
+document.querySelectorAll('#net .e').forEach(function(e){var d=DEF[e.id];var on=ee.indexOf(e.id)>=0;e.style.opacity=on?1:0.12;
+if(on){e.setAttribute('stroke',d.s==='#534AB7'?'#534AB7':'#185FA5');e.setAttribute('stroke-width','2');e.setAttribute('marker-end',d.s==='#534AB7'?'url(#aph)':'url(#ah)')}
+else{e.setAttribute('stroke',d.s);e.setAttribute('stroke-width',d.w);e.setAttribute('marker-end',d.m)}});
+document.querySelectorAll('#net .tg').forEach(function(t){t.style.opacity=ee.indexOf('e'+t.id.slice(1))>=0?1:0.12});
+var d=INFO[id];var h='<div style="font-size:14px;font-weight:500;margin-bottom:8px">'+d.t+'</div>';
+h+='<div style="margin-bottom:5px"><span style="color:var(--color-text-tertiary)">判断什么　</span>'+d.w+'</div>';
+h+='<div style="margin-bottom:5px"><span style="color:var(--color-text-tertiary)">怎么判断　</span>'+d.h+'</div>';
+if(d.b)h+='<div style="margin-bottom:5px"><span style="color:var(--color-text-tertiary)">依据　　　</span>'+d.b+'</div>';
+if(d.o)h+='<div style="margin-bottom:5px"><span style="color:var(--color-text-tertiary)">输出　　　</span>'+d.o+'</div>';
+if(d.g)h+='<div style="margin-bottom:5px"><span style="color:var(--color-text-tertiary)">代码/工具　</span>'+d.g+'</div>';
+if(d.n)h+='<div style="margin-top:9px;padding-top:9px;border-top:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)">'+d.n+'</div>';
+document.getElementById('panel').innerHTML=h;
+}
+</script>
+</body>
+</html>

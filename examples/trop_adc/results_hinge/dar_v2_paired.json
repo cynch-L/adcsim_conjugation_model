@@ -1,0 +1,74 @@
+{
+  "method": "v2 weighted DAR with paired disulfide constraint",
+  "k_lang": 1.2,
+  "payload_ratio": 6,
+  "same_pair_penalty": 0.6,
+  "pairs": [
+    {
+      "a": "A-Cys223",
+      "b": "C-Cys214",
+      "p_reduce": 0.8591
+    },
+    {
+      "a": "B-Cys223",
+      "b": "D-Cys214",
+      "p_reduce": 0.7966
+    },
+    {
+      "a": "A-Cys229",
+      "b": "B-Cys229",
+      "p_reduce": 0.6071
+    },
+    {
+      "a": "A-Cys232",
+      "b": "B-Cys232",
+      "p_reduce": 0.8062
+    }
+  ],
+  "viable_sites": [
+    "A-Cys223",
+    "A-Cys232",
+    "B-Cys223",
+    "B-Cys229",
+    "B-Cys232"
+  ],
+  "dead_sites": [
+    "A-Cys229",
+    "C-Cys214",
+    "D-Cys214"
+  ],
+  "site_weights": {
+    "A-Cys223": 0.2837,
+    "A-Cys229": 0.0,
+    "A-Cys232": 0.1932,
+    "B-Cys223": 0.2435,
+    "B-Cys229": 0.1245,
+    "B-Cys232": 0.155,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "site_probabilities": {
+    "A-Cys223": 0.6714,
+    "A-Cys229": 0.0,
+    "A-Cys232": 0.5818,
+    "B-Cys223": 0.6368,
+    "B-Cys229": 0.4726,
+    "B-Cys232": 0.5275,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "dar_distribution": {
+    "0": 0.0523,
+    "1": 0.2215,
+    "2": 0.3533,
+    "3": 0.2662,
+    "4": 0.0944,
+    "5": 0.0122,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.0
+  },
+  "mean_dar": 2.17,
+  "mode_dar": 2,
+  "even_odd_ratio": 1.0
+}

@@ -1,0 +1,15 @@
+DAR1: markers found 10/10
+DAR1 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR1.png  occupied=[('A', 232)]  empty=[('A', 223), ('A', 229), ('B', 223), ('B', 229), ('B', 232), ('C', 214), ('D', 214)]
+DAR2: markers found 10/10
+DAR2 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR2.png  occupied=[('A', 229), ('A', 232)]  empty=[('A', 223), ('B', 223), ('B', 229), ('B', 232), ('C', 214), ('D', 214)]
+DAR3: markers found 10/10
+DAR3 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR3.png  occupied=[('A', 223), ('A', 229), ('A', 232)]  empty=[('B', 223), ('B', 229), ('B', 232), ('C', 214), ('D', 214)]
+DAR4: markers found 10/10
+DAR4 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR4.png  occupied=[('A', 223), ('A', 229), ('A', 232), ('D', 214)]  empty=[('B', 223), ('B', 229), ('B', 232), ('C', 214)]
+DAR5: markers found 10/10
+DAR5 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR5.png  occupied=[('A', 223), ('A', 229), ('A', 232), ('B', 223), ('B', 229)]  empty=[('B', 232), ('C', 214), ('D', 214)]
+DAR6: markers found 10/10
+DAR6 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR6.png  occupied=[('A', 223), ('A', 229), ('A', 232), ('B', 223), ('B', 229), ('C', 214)]  empty=[('B', 232), ('D', 214)]
+DAR7: markers found 10/10
+DAR7 -> <repo>/examples/trop_adc/results_hinge/pymol_images/adc_DAR7.png  occupied=[('A', 223), ('A', 229), ('A', 232), ('B', 223), ('B', 229), ('C', 214), ('D', 214)]  empty=[('B', 232)]
+DONE

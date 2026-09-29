@@ -1,0 +1,80 @@
+# Trastuzumab × mc-vc-PAB-MMAE cysteine conjugation
+# C90 vs C91: chemically equivalent maleimide olefin carbons.
+# Project convention: PDB name C91 = RDKit heavy-atom index 91
+# (matches the covalent template in ADC_docking.ipynb cells 4–6).
+
+antibody:
+  name: trastuzumab
+  chain_types:
+    A: Heavy
+    B: Heavy
+    C: Light
+    D: Light
+
+inputs:
+  antibody_pdb: data/B220_235_disulfide_repaired.pdb   # Disulfide-repaired (A223-C214 rebuilt, 2026-09-13)
+  antibody_pdb_original: data/trastuzumab_boltz_model_0.pdb
+  antibody_pdb_prerelax: data/B220_235_rosetta_best.pdb   # PyRosetta FastRelax B220–235 (2026-09-08, pre-disulfide-repair)
+  lp_sdf: data/payload_ensemble_100.sdf   # solution-realistic: collapsed-dominant + some extended (2026-09-10)
+
+outputs:
+  dir: results_hinge   # do not overwrite Boltz baseline in results/
+
+disulfide:
+  intra_cutoff: 2.5   # Å, intra-chain SG–SG
+  inter_cutoff: 3.0   # Å, inter-chain SG–SG (H–H or H–L only)
+
+# 8 Cys released by reducing the 4 inter-chain disulfides.
+# Leave pool empty to auto-detect; listed here for reproducibility.
+sites:
+  pool:
+    - A:CYS223
+    - B:CYS223
+    - A:CYS229
+    - B:CYS229
+    - A:CYS232
+    - B:CYS232
+    - C:CYS214
+    - D:CYS214
+
+chemistry:
+  resname: LPP
+  reactive_atom: 91          # RDKit index in heavy-atom (removeHs) molecule
+  reactive_atom_name: C91    # PDB atom name written as C91
+  exit_atom: 85              # linker exit vector: C85 → reactive carbon
+  bond_min: 1.75
+  bond_max: 1.90
+  bond_step: 0.05
+  # Generation uses this discrete set (QC still uses bond_min/max).
+  # 1.82 Å is the original notebook construction length.
+  bond_values: [1.82]
+
+sampling:
+  direction_step_deg: 15
+  roll_step_deg: 30
+  ray_start: 2.0
+  ray_end: 10.0
+  ray_step: 0.5
+
+qc:
+  probe_cutoff: 2.0
+  protein_lp_min: 2.0   # Å, heavy-atom min; bonded Cys-SG excluded
+  lp_lp_min: 2.0
+
+# Cheap chemical-accessibility gate (before DAR1 library).
+# FAIL sites are not sampled. SG-SASA = 0 is not a fail by itself.
+accessibility:
+  min_cys_sasa: 5.0
+  min_open_rays: 4
+  attack_angle_min_deg: 70
+  attack_angle_max_deg: 140
+  drop_failed: true
+
+search:
+  max_dar: 8                 # funnel stops at the first empty level (= DAR ceiling)
+  max_states: 80
+  max_dar1_seeds: 160
+  max_poses_per_site: 300
+  max_poses_per_site_side: 120   # cap inside the per-(site,side) sampler
+  conformer_stride: 1
+  reuse_library: false   # hinge backbone changed; old DAR poses are invalid

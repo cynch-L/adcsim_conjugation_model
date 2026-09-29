@@ -1,0 +1,84 @@
+{
+  "method": "site conjugation index v2 (dynamic MD SASA + open-fraction + SG displacement + reduced pKa)",
+  "weights": {
+    "sasa": 0.35,
+    "open": 0.25,
+    "disp": 0.15,
+    "pka": 0.25
+  },
+  "ph": 7.4,
+  "sites": {
+    "A-Cys223": {
+      "sasa_mean_A2": 44.83,
+      "sasa_open_frac": 0.9167,
+      "disp_mean_A": 2.462,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.7355,
+      "rank": 1
+    },
+    "A-Cys229": {
+      "sasa_mean_A2": 9.99,
+      "sasa_open_frac": 0.1667,
+      "disp_mean_A": 1.016,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.1377,
+      "rank": 8
+    },
+    "A-Cys232": {
+      "sasa_mean_A2": 25.01,
+      "sasa_open_frac": 0.6,
+      "disp_mean_A": 2.529,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.5008,
+      "rank": 3
+    },
+    "B-Cys223": {
+      "sasa_mean_A2": 37.88,
+      "sasa_open_frac": 0.95,
+      "disp_mean_A": 1.789,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.6313,
+      "rank": 2
+    },
+    "B-Cys229": {
+      "sasa_mean_A2": 16.05,
+      "sasa_open_frac": 0.6333,
+      "disp_mean_A": 1.178,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.3226,
+      "rank": 5
+    },
+    "B-Cys232": {
+      "sasa_mean_A2": 23.34,
+      "sasa_open_frac": 0.6667,
+      "disp_mean_A": 1.327,
+      "pka_reduced": 8.5,
+      "f_thiolate": 0.0736,
+      "index": 0.4019,
+      "rank": 4
+    },
+    "C-Cys214": {
+      "sasa_mean_A2": 2.88,
+      "sasa_open_frac": 0.0333,
+      "disp_mean_A": 0.928,
+      "pka_reduced": 5.58,
+      "f_thiolate": 0.9851,
+      "index": 0.2847,
+      "rank": 6
+    },
+    "D-Cys214": {
+      "sasa_mean_A2": 0.67,
+      "sasa_open_frac": 0.0,
+      "disp_mean_A": 0.783,
+      "pka_reduced": 1.2,
+      "f_thiolate": 1.0,
+      "index": 0.25,
+      "rank": 7
+    }
+  }
+}

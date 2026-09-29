@@ -1,0 +1,53 @@
+# Tiny run to verify the pipeline wires up. Not a scientific result.
+antibody:
+  name: trastuzumab
+  chain_types: {A: Heavy, B: Heavy, C: Light, D: Light}
+
+inputs:
+  antibody_pdb: data/trastuzumab_boltz_model_0.pdb
+  lp_sdf: data/payload_ensemble_79.sdf
+
+outputs:
+  dir: results_smoke
+
+disulfide:
+  intra_cutoff: 2.5
+  inter_cutoff: 3.0
+
+sites:
+  pool:
+    - A:CYS229
+    - A:CYS232
+    - C:CYS214
+    - D:CYS214
+
+chemistry:
+  resname: LPP
+  reactive_atom: 91
+  reactive_atom_name: C91
+  exit_atom: 85
+  bond_min: 1.75
+  bond_max: 1.90
+  bond_step: 0.05
+  bond_values: [1.82]
+
+sampling:
+  direction_step_deg: 15
+  roll_step_deg: 30
+  ray_start: 2.0
+  ray_end: 10.0
+  ray_step: 0.5
+
+qc:
+  probe_cutoff: 2.0
+  protein_lp_min: 2.0
+  lp_lp_min: 2.0
+
+search:
+  max_dar: 2
+  max_states: 20
+  max_dar1_seeds: 40
+  max_poses_per_site: 80
+  max_poses_per_site_side: 80
+  conformer_stride: 8
+  reuse_library: false

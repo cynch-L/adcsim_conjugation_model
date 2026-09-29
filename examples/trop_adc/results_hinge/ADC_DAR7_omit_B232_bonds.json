@@ -1,0 +1,59 @@
+{
+  "recovery": "full-library backtrack; not beam funnel",
+  "omit": "B:CYS232",
+  "sites": [
+    "C:CYS214",
+    "B:CYS229",
+    "D:CYS214",
+    "B:CYS223",
+    "A:CYS223",
+    "A:CYS229",
+    "A:CYS232"
+  ],
+  "protein_min": 2.007697327139121,
+  "lp_min": 2.06167516900204,
+  "s_c_distances": [
+    {
+      "site": "C:CYS214",
+      "s_c": 1.8199999999999996,
+      "pass": true,
+      "side": "front"
+    },
+    {
+      "site": "B:CYS229",
+      "s_c": 1.8199999999999998,
+      "pass": true,
+      "side": "front"
+    },
+    {
+      "site": "D:CYS214",
+      "s_c": 1.820000000000001,
+      "pass": true,
+      "side": "front"
+    },
+    {
+      "site": "B:CYS223",
+      "s_c": 1.82,
+      "pass": true,
+      "side": "back"
+    },
+    {
+      "site": "A:CYS223",
+      "s_c": 1.82,
+      "pass": true,
+      "side": "back"
+    },
+    {
+      "site": "A:CYS229",
+      "s_c": 1.8200000000000003,
+      "pass": true,
+      "side": "back"
+    },
+    {
+      "site": "A:CYS232",
+      "s_c": 1.8200000000000003,
+      "pass": true,
+      "side": "back"
+    }
+  ]
+}

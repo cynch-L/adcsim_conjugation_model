@@ -1,0 +1,114 @@
+{
+  "method": "MD (md_v5) post-processing: Shrake-Rupley SASA on reduced-state trajectories (probe 1.4 A, 960 sphere points); multiple replicas concatenated per site",
+  "params": {
+    "probe": 1.4,
+    "n_sphere": 960,
+    "open_cut": 15.0,
+    "gate_lo": 5.0
+  },
+  "sites": {
+    "A-Cys223": {
+      "n_replicas": 2,
+      "n_frames_total": 200,
+      "n_frames_sampled": 200,
+      "sasa_mean_A2": 19.4,
+      "sasa_std_A2": 12.99,
+      "sasa_min_A2": 0.0,
+      "sasa_max_A2": 51.74,
+      "replica_means_A2": [
+        30.16,
+        8.64
+      ],
+      "replica_sd_A2": 10.76,
+      "open_frac": 0.555,
+      "first_half_mean": 30.16,
+      "second_half_mean": 8.64,
+      "convergence_dev": 0.7134,
+      "v1_sasa_A2": 44.8,
+      "delta_vs_v1": -25.4,
+      "ca_index": 1665,
+      "sg_index": 1669,
+      "sg_element": "S"
+    },
+    "A-Cys229": {
+      "n_replicas": 2,
+      "n_frames_total": 200,
+      "n_frames_sampled": 200,
+      "sasa_mean_A2": 11.84,
+      "sasa_std_A2": 6.35,
+      "sasa_min_A2": 0.0,
+      "sasa_max_A2": 32.71,
+      "replica_means_A2": [
+        12.96,
+        10.73
+      ],
+      "replica_sd_A2": 1.12,
+      "open_frac": 0.26,
+      "first_half_mean": 12.96,
+      "second_half_mean": 10.73,
+      "convergence_dev": 0.1723,
+      "v1_sasa_A2": 10.0,
+      "delta_vs_v1": 1.84,
+      "ca_index": 1712,
+      "sg_index": 1716,
+      "sg_element": "S"
+    },
+    "B-Cys223": {
+      "n_replicas": 2,
+      "n_frames_total": 200,
+      "n_frames_sampled": 200,
+      "sasa_mean_A2": 19.06,
+      "sasa_std_A2": 9.49,
+      "sasa_min_A2": 2.41,
+      "sasa_max_A2": 50.94,
+      "replica_means_A2": [
+        23.74,
+        14.39
+      ],
+      "replica_sd_A2": 4.68,
+      "open_frac": 0.59,
+      "first_half_mean": 23.74,
+      "second_half_mean": 14.39,
+      "convergence_dev": 0.3942,
+      "v1_sasa_A2": 37.9,
+      "delta_vs_v1": -18.84,
+      "ca_index": 5127,
+      "sg_index": 5131,
+      "sg_element": "S"
+    },
+    "C-Cys214": {
+      "n_replicas": 2,
+      "n_frames_total": 200,
+      "n_frames_sampled": 200,
+      "sasa_mean_A2": 6.93,
+      "sasa_std_A2": 8.59,
+      "sasa_min_A2": 0.0,
+      "sasa_max_A2": 37.93,
+      "replica_means_A2": [
+        1.81,
+        12.05
+      ],
+      "replica_sd_A2": 5.12,
+      "open_frac": 0.12,
+      "first_half_mean": 1.81,
+      "second_half_mean": 12.05,
+      "convergence_dev": 5.6528,
+      "v1_sasa_A2": 2.9,
+      "delta_vs_v1": 4.03,
+      "ca_index": 8568,
+      "sg_index": 8573,
+      "sg_element": "S"
+    }
+  },
+  "verdict_C214": "B (门控放行)",
+  "v1_comparison": {
+    "A-Cys223": 44.8,
+    "B-Cys223": 37.9,
+    "A-Cys232": 25.0,
+    "B-Cys232": 23.3,
+    "B-Cys229": 16.1,
+    "A-Cys229": 10.0,
+    "C-Cys214": 2.9,
+    "D-Cys214": 0.7
+  }
+}

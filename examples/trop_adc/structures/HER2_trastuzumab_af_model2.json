@@ -1,0 +1,367 @@
+{
+  "preset_id": "HER2_trastuzumab_IgG1kappa_af_model2",
+  "display_name": "曲妥珠单抗 IgG1/κ（AlphaFold Server model_2）",
+  "status": "validated_2026-09-27",
+  "schema_note": "位点编号沿用项目自有的 <半分子>.<结构域>.<域内序号>.<残基> 体系（见 ab_numbering.json），不是 EU/Kabat 编号。",
+  "antibody": {
+    "name": "trastuzumab",
+    "isotype": "IgG1",
+    "light_chain": "kappa",
+    "target": "HER2",
+    "conjugation_chemistry": "半胱氨酸烷基化（马来酰亚胺 vc-MMAE）"
+  },
+  "structure": {
+    "source": "AlphaFold Server, model_2（5 个模型中按排序取第 2 个）",
+    "local_path": "examples/trop_adc/structures/trastuzumab_alphafold_model2.pdb",
+    "n_heavy_atoms": 10224,
+    "chains": {
+      "A": {
+        "type": "H",
+        "half": 1,
+        "n_res": 449
+      },
+      "B": {
+        "type": "H",
+        "half": 2,
+        "n_res": 449
+      },
+      "C": {
+        "type": "L",
+        "half": 1,
+        "n_res": 214
+      },
+      "D": {
+        "type": "L",
+        "half": 2,
+        "n_res": 214
+      }
+    },
+    "n_cys": 32,
+    "n_disulfide": 16,
+    "n_interchain_disulfide": 4,
+    "plddt": {
+      "convention": "这个文件是逐原子 pLDDT（AlphaFold3 服务器版本输出），同一残基内不同原子数值不同，必须指明取的是哪个原子。以下一律以 Cα 原子为代表值。",
+      "hinge_215_245_CA_mean": 57.6,
+      "n_hinge_res": 62,
+      "eight_site_CA_mean": 41.8,
+      "eight_site_SG_mean": 36.6,
+      "whole_molecule_CA_mean": 87.8,
+      "whole_molecule_CA_min": 30.7,
+      "whole_molecule_CA_max": 96.6,
+      "warning": "8 个偶联位点 Cα pLDDT 只有 34-50（全分子均值 87.8），铰链区 57.6。这是预测器自己标注的低置信区。不是预测出错——铰链本来就是天然无序区，没有单一确定结构。所以位点开放度必须由 MD 采样或实测锚点来定，只读这一个静态构象是不够的。"
+    }
+  },
+  "conjugation_sites": [
+    {
+      "id": "A-Cys223",
+      "chain": "A",
+      "residue_sequential": 223,
+      "address": "H1.CH1.106.Cys",
+      "md_mean_sasa_A2": 26.562274794647028,
+      "md_sem_A2": 11.2,
+      "md_max_sasa_A2": 76.53757462185693,
+      "md_open_frac": 0.684,
+      "md_rep_means_A2": [
+        0.42,
+        38.69,
+        10.36,
+        56.78
+      ],
+      "md_cp50_uM": 0.552,
+      "plddt_CA": 46.6,
+      "plddt_SG": 41.0
+    },
+    {
+      "id": "A-Cys229",
+      "chain": "A",
+      "residue_sequential": 229,
+      "address": "H1.HINGE.1.Cys",
+      "md_mean_sasa_A2": 11.942508956419108,
+      "md_sem_A2": 2.02,
+      "md_max_sasa_A2": 73.7227076042405,
+      "md_open_frac": 0.686,
+      "md_rep_means_A2": [
+        17.33,
+        8.54,
+        7.57,
+        14.33
+      ],
+      "md_cp50_uM": 0.767,
+      "plddt_CA": 34.8,
+      "plddt_SG": 29.9
+    },
+    {
+      "id": "A-Cys232",
+      "chain": "A",
+      "residue_sequential": 232,
+      "address": "H1.HINGE.4.Cys",
+      "md_mean_sasa_A2": 11.934835092763937,
+      "md_sem_A2": 6.8,
+      "md_max_sasa_A2": 75.5992856159848,
+      "md_open_frac": 0.467,
+      "md_rep_means_A2": [
+        8.42,
+        3.48,
+        35.0,
+        0.84
+      ],
+      "md_cp50_uM": 0.979,
+      "plddt_CA": 38.0,
+      "plddt_SG": 34.2
+    },
+    {
+      "id": "B-Cys223",
+      "chain": "B",
+      "residue_sequential": 223,
+      "address": "H2.CH1.106.Cys",
+      "md_mean_sasa_A2": 29.925990615216236,
+      "md_sem_A2": 11.33,
+      "md_max_sasa_A2": 79.7545654991329,
+      "md_open_frac": 0.828,
+      "md_rep_means_A2": [
+        66.71,
+        8.66,
+        30.16,
+        14.18
+      ],
+      "md_cp50_uM": 0.501,
+      "plddt_CA": 44.6,
+      "plddt_SG": 39.0
+    },
+    {
+      "id": "B-Cys229",
+      "chain": "B",
+      "residue_sequential": 229,
+      "address": "H2.HINGE.1.Cys",
+      "md_mean_sasa_A2": 22.53408280631215,
+      "md_sem_A2": 6.96,
+      "md_max_sasa_A2": 76.80565719496327,
+      "md_open_frac": 0.84,
+      "md_rep_means_A2": [
+        21.9,
+        12.16,
+        45.45,
+        10.63
+      ],
+      "md_cp50_uM": 0.519,
+      "plddt_CA": 34.1,
+      "plddt_SG": 29.4
+    },
+    {
+      "id": "B-Cys232",
+      "chain": "B",
+      "residue_sequential": 232,
+      "address": "H2.HINGE.4.Cys",
+      "md_mean_sasa_A2": 9.657054755205193,
+      "md_sem_A2": 2.09,
+      "md_max_sasa_A2": 74.25887275045315,
+      "md_open_frac": 0.562,
+      "md_rep_means_A2": [
+        5.63,
+        7.67,
+        16.64,
+        8.69
+      ],
+      "md_cp50_uM": 1.136,
+      "plddt_CA": 38.2,
+      "plddt_SG": 34.4
+    },
+    {
+      "id": "C-Cys214",
+      "chain": "C",
+      "residue_sequential": 214,
+      "address": "L1.CL.104.Cys",
+      "md_mean_sasa_A2": 9.798887191539263,
+      "md_sem_A2": 2.22,
+      "md_max_sasa_A2": 74.52695532355946,
+      "md_open_frac": 0.58,
+      "md_rep_means_A2": [
+        3.77,
+        14.23,
+        7.32,
+        13.87
+      ],
+      "md_cp50_uM": 1.075,
+      "plddt_CA": 49.7,
+      "plddt_SG": 42.6
+    },
+    {
+      "id": "D-Cys214",
+      "chain": "D",
+      "residue_sequential": 214,
+      "address": "L2.CL.104.Cys",
+      "md_mean_sasa_A2": 13.032666739955996,
+      "md_sem_A2": 6.55,
+      "md_max_sasa_A2": 66.4844781303696,
+      "md_open_frac": 0.502,
+      "md_rep_means_A2": [
+        4.56,
+        9.2,
+        35.39,
+        2.98
+      ],
+      "md_cp50_uM": 0.879,
+      "plddt_CA": 48.8,
+      "plddt_SG": 42.2
+    }
+  ],
+  "interchain_disulfides": [
+    {
+      "site_a": "A-Cys223",
+      "site_b": "C-Cys214",
+      "kind": "HL-interface",
+      "sg_sg_A": 2.25,
+      "gap_mean_A": 10.0,
+      "gap_p90_A": 14.43,
+      "gap_max_A": 19.59
+    },
+    {
+      "site_a": "A-Cys229",
+      "site_b": "B-Cys229",
+      "kind": "HH-hinge",
+      "sg_sg_A": 2.602,
+      "gap_mean_A": 10.79,
+      "gap_p90_A": 13.84,
+      "gap_max_A": 18.41
+    },
+    {
+      "site_a": "A-Cys232",
+      "site_b": "B-Cys232",
+      "kind": "HH-hinge",
+      "sg_sg_A": 2.462,
+      "gap_mean_A": 9.65,
+      "gap_p90_A": 17.49,
+      "gap_max_A": 19.79
+    },
+    {
+      "site_a": "B-Cys223",
+      "site_b": "D-Cys214",
+      "kind": "HL-interface",
+      "sg_sg_A": 2.182,
+      "gap_mean_A": 10.7,
+      "gap_p90_A": 16.57,
+      "gap_max_A": 21.94
+    }
+  ],
+  "md_validation": {
+    "purpose": "检验 8 个位点在二硫键被还原切开之后，是否物理上都能张开到可偶联的程度。",
+    "config": {
+      "n_replicas": 4,
+      "prod_ns": 20.0,
+      "frames_per_replica": 2000,
+      "save_ps": 10.0,
+      "temp_K": 295.15,
+      "ca_restraints": "none (lock=off)",
+      "forcefield": "AMBER ff14SB",
+      "solvent": "GB-OBC2 implicit",
+      "timestep_fs": 4,
+      "hmr_amu": 4.0,
+      "platform": "CUDA"
+    },
+    "headline": "8 个位点的最大可及表面积全部落在 66-80 A^2，没有位点被结构挡死；但副本间涨落过大，平均开放度排不出可信名次（28 组配对比较只分出 3 组）。",
+    "significant_pairs": [
+      {
+        "site_a": "B-Cys229",
+        "site_b": "A-Cys232",
+        "diff_A2": 10.6,
+        "paired_se": 1.02,
+        "more_open": "B-Cys229"
+      },
+      {
+        "site_a": "B-Cys229",
+        "site_b": "B-Cys232",
+        "diff_A2": 12.88,
+        "paired_se": 6.16,
+        "more_open": "B-Cys229"
+      },
+      {
+        "site_a": "B-Cys229",
+        "site_b": "D-Cys214",
+        "diff_A2": 9.5,
+        "paired_se": 3.0,
+        "more_open": "B-Cys229"
+      }
+    ],
+    "n_significant": 3,
+    "n_total": 28,
+    "mirror_symmetry": {
+      "method": "同一位点对 C2 轴两侧，逐副本做差再取平均±标准误；不做对称化平均（按用户要求如实报告）",
+      "pairs": [
+        {
+          "site_a": "A-Cys223",
+          "site_b": "B-Cys223",
+          "mean_a": 26.56,
+          "mean_b": 29.93,
+          "diff": -3.36,
+          "paired_se": 24.93,
+          "significant": false,
+          "per_replica_diff": [
+            -66.29,
+            30.03,
+            -19.8,
+            42.6
+          ]
+        },
+        {
+          "site_a": "A-Cys229",
+          "site_b": "B-Cys229",
+          "mean_a": 11.94,
+          "mean_b": 22.54,
+          "diff": -10.59,
+          "paired_se": 9.28,
+          "significant": false,
+          "per_replica_diff": [
+            -4.57,
+            -3.62,
+            -37.88,
+            3.7
+          ]
+        },
+        {
+          "site_a": "A-Cys232",
+          "site_b": "B-Cys232",
+          "mean_a": 11.94,
+          "mean_b": 9.66,
+          "diff": 2.28,
+          "paired_se": 5.8,
+          "significant": false,
+          "per_replica_diff": [
+            2.79,
+            -4.19,
+            18.36,
+            -7.85
+          ]
+        },
+        {
+          "site_a": "C-Cys214",
+          "site_b": "D-Cys214",
+          "mean_a": 9.8,
+          "mean_b": 13.03,
+          "diff": -3.23,
+          "paired_se": 8.61,
+          "significant": false,
+          "per_replica_diff": [
+            -0.79,
+            5.03,
+            -28.07,
+            10.89
+          ]
+        }
+      ],
+      "verdict": "4 组里 A 侧更大的只有 1 组，正负号混合，未检出系统性偏向；但噪声幅度远大于效应，当前采样量既检不出也否定不了不对称。"
+    },
+    "cp50_note": "参考条件 60 uM / 2 h 下 8 个位点连接概率全部顶到上限 0.995，暴露度差异传不到 DAR；要降到约 1 uM 才会分化。"
+  },
+  "usage_notes": {
+    "use_for": "作为默认 HER2 抗体结构：给定抗体后的位点清单、链归属、二硫键配对、开放度物理上限。",
+    "NOT_for_reduction_profile": "主模型 --profile 读的是『还原难易』，用的是**氧化态**静态 SASA（TCEP 真正进攻的是还没被还原的二硫键）。本预设里的 md_* 字段是**还原态**动态开放度，两者不可互换；把还原态 MD 值塞进还原步骤是循环论证，已在 ss_reduction_profile.json 里明确记为 v2 修正。",
+    "next_step_to_wire_up": "在主模型加 --structure <preset.json> 一键选择；当前仍需手动指定结果目录。"
+  },
+  "provenance": {
+    "md_results": "results_hinge/md_af_allcut_4rep.json",
+    "md_series": "results_hinge/md_af_allcut_4rep_series.npz",
+    "trajectories": "data/md_af_nolock/allcut_r0..r3.npz (4 x 226 MB)",
+    "report": "docs/MD_AF_MODEL2_8SITE.md",
+    "analysis_script": "kaggle_md_8site/md_v5_summary.py --mode allcut"
+  }
+}

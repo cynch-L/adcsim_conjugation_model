@@ -1,0 +1,88 @@
+{
+  "method": "Dirichlet(alpha=4) random weights x 20000, components min-max normalised",
+  "components": [
+    "sasa",
+    "open",
+    "reduce",
+    "thiolate",
+    "disp"
+  ],
+  "default_weights": [
+    0.3,
+    0.2,
+    0.18,
+    0.22,
+    0.1
+  ],
+  "seed": 20260916,
+  "normalised_matrix": {
+    "A-Cys223": {
+      "sasa": 1.0,
+      "open": 0.9649,
+      "reduce": 0.0782,
+      "thiolate": 0.5292,
+      "disp": 0.0
+    },
+    "A-Cys229": {
+      "sasa": 0.2111,
+      "open": 0.1755,
+      "reduce": 1.0,
+      "thiolate": 0.0266,
+      "disp": 0.0
+    },
+    "A-Cys232": {
+      "sasa": 0.5512,
+      "open": 0.6316,
+      "reduce": 0.8773,
+      "thiolate": 0.0947,
+      "disp": 0.0
+    },
+    "B-Cys223": {
+      "sasa": 0.8426,
+      "open": 1.0,
+      "reduce": 0.0,
+      "thiolate": 1.0,
+      "disp": 0.0
+    },
+    "B-Cys229": {
+      "sasa": 0.3483,
+      "open": 0.6666,
+      "reduce": 1.0,
+      "thiolate": 0.0007,
+      "disp": 0.0
+    },
+    "B-Cys232": {
+      "sasa": 0.5134,
+      "open": 0.7018,
+      "reduce": 0.8773,
+      "thiolate": 0.0016,
+      "disp": 0.0
+    },
+    "C-Cys214": {
+      "sasa": 0.05,
+      "open": 0.0351,
+      "reduce": 0.0782,
+      "thiolate": 0.0,
+      "disp": 0.0
+    },
+    "D-Cys214": {
+      "sasa": 0.0,
+      "open": 0.0,
+      "reduce": 0.0,
+      "thiolate": 0.0,
+      "disp": 0.0
+    }
+  },
+  "p_first": {
+    "B-Cys223": 0.7856,
+    "A-Cys223": 0.0763,
+    "B-Cys229": 0.0766,
+    "A-Cys232": 0.0549,
+    "B-Cys232": 0.0065
+  },
+  "p_last": {
+    "D-Cys214": 1.0
+  },
+  "finding": "D-Cys214 is last under 100% of weightings (robust); B-Cys223 is first in 78.6%, consistent with the default weighting. Not fully robust: B-Cys229 (7.7%) and A-Cys232 (5.5%) can take the top spot because the reduction_ease component normalises to 1.00 / 0.877 for the 229 and 232 pairs versus 0.00-0.08 for the 223 pair. This is an internal inconsistency: A-Cys229 has ease=1.00 yet a dynamic open fraction of only 0.175 and SASA 10 A^2 — a disulfide the reductant cannot reach should not score high on reducibility. Fix: gate ease by dynamic accessibility.",
+  "next_fix": "ease_effective = ease_prior * f(dynamic_accessibility)"
+}

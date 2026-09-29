@@ -1,0 +1,96 @@
+replicas: 4   frames/replica: 2000   sites: 8
+superposition core (> 20.0 A from any SG): [7660, 7719, 8139, 7470] atoms per replica
+
+============================================================================================================
+1) per-site openness  (SASA in A^2; sem = error bar over replicas)
+============================================================================================================
+site           mean    sem      sd    p10    p50    p90    max  open%   sat%     pc
+B-Cys223      29.93  11.33   25.67   2.95  20.11  71.44  79.75  82.8%  50.0%  0.995
+A-Cys223      26.56  11.20   24.47   0.00  20.11  62.61  76.54  68.4%  50.0%  0.995
+B-Cys229      22.53   6.96   18.68   2.55  16.42  51.07  76.81  84.0%  43.2%  0.995
+D-Cys214      13.03   6.55   15.36   0.13   5.09  38.62  66.48  50.2%  27.5%  0.995
+A-Cys229      11.94   2.02   10.70   0.40   9.92  25.47  73.72  68.6%  18.9%  0.995
+A-Cys232      11.93   6.80   15.81   0.00   4.16  37.13  75.60  46.7%  23.4%  0.995
+C-Cys214       9.80   2.22    9.65   1.21   6.43  24.80  74.53  58.0%  15.2%  0.995
+B-Cys232       9.66   2.09   11.02   0.67   6.03  22.53  74.26  56.2%  12.3%  0.995
+
+============================================================================================================
+1b) does the openness difference actually reach the conjugation step?
+============================================================================================================
+reference conditions: payload 60 uM, 2 h, k2 = 300 M^-1 s^-1
+sites whose p_c is pinned at the ceiling (0.995): 8 of 8
+-> under these conditions EVERY site conjugates once it has been reduced,
+   so the measured openness ranking does NOT propagate into the DAR.
+   It only starts to bite when payload gets scarce. cp50 = payload
+   concentration at which a site reaches p_c = 0.5:
+   site         t_eff(s)   cp50 (uM)
+   B-Cys223       4613.5       0.501
+   B-Cys229       4455.1       0.519
+   A-Cys223       4184.5       0.552
+   A-Cys229       3010.5       0.767
+   D-Cys214       2628.0       0.879
+   A-Cys232       2360.3       0.979
+   C-Cys214       2148.3       1.075
+   B-Cys232       2033.8       1.136
+   (reference payload is 60 uM, i.e. 53x the most demanding site's cp50)
+
+============================================================================================================
+2) ranking -- tiers, not a forced 1..8 order
+============================================================================================================
+  1. B-Cys223     29.93 +/- 11.33   cannot separate from: A-Cys223, B-Cys229, D-Cys214, A-Cys229, A-Cys232, C-Cys214, B-Cys232
+  2. A-Cys223     26.56 +/- 11.20   cannot separate from: B-Cys223, B-Cys229, D-Cys214, A-Cys229, A-Cys232, C-Cys214, B-Cys232
+  3. B-Cys229     22.53 +/- 6.96   cannot separate from: B-Cys223, A-Cys223, D-Cys214, A-Cys229, A-Cys232, C-Cys214, B-Cys232
+  4. D-Cys214     13.03 +/- 6.55   cannot separate from: B-Cys223, A-Cys223, B-Cys229, A-Cys229, A-Cys232, C-Cys214, B-Cys232
+  5. A-Cys229     11.94 +/- 2.02   cannot separate from: B-Cys223, A-Cys223, B-Cys229, D-Cys214, A-Cys232, C-Cys214, B-Cys232
+  6. A-Cys232     11.93 +/- 6.80   cannot separate from: B-Cys223, A-Cys223, B-Cys229, D-Cys214, A-Cys229, C-Cys214, B-Cys232
+  7. C-Cys214      9.80 +/- 2.22   cannot separate from: B-Cys223, A-Cys223, B-Cys229, D-Cys214, A-Cys229, A-Cys232, B-Cys232
+  8. B-Cys232      9.66 +/- 2.09   cannot separate from: B-Cys223, A-Cys223, B-Cys229, D-Cys214, A-Cys229, A-Cys232, C-Cys214
+
+============================================================================================================
+2b) paired ranking -- is X really more open than Y?
+============================================================================================================
+Same-frame comparison: the shared 'this replica happened to sit open' part
+cancels, so this error bar is much tighter than the absolute one above.
+adjacent comparison             diff  paired se  |diff|>2se
+B-Cys223 minus A-Cys223         3.36      24.93          no
+A-Cys223 minus B-Cys229         4.03      19.28          no
+B-Cys229 minus D-Cys214         9.50       3.00         YES
+D-Cys214 minus A-Cys229         1.09       9.41          no
+A-Cys229 minus A-Cys232         0.01       9.31          no
+A-Cys232 minus C-Cys214         2.14       9.38          no
+C-Cys214 minus B-Cys232         0.14       3.65          no
+
+significant pairwise decisions: 3 of 28
+  B-Cys229   vs A-Cys232   diff  +10.60 +/- 1.02   -> B-Cys229 more open
+  B-Cys229   vs B-Cys232   diff  +12.88 +/- 6.16   -> B-Cys229 more open
+  B-Cys229   vs D-Cys214   diff   +9.50 +/- 3.00   -> B-Cys229 more open
+
+how many other sites each site beats significantly: B-Cys229:3, A-Cys223:0, C-Cys214:0, A-Cys229:0, A-Cys232:0, B-Cys232:0, B-Cys223:0, D-Cys214:0
+order by that count: B-Cys229 > A-Cys223 > C-Cys214 > A-Cys229 > A-Cys232 > B-Cys232 > B-Cys223 > D-Cys214
+
+============================================================================================================
+3) pairing -- the two cysteines of each interchain disulfide
+============================================================================================================
+pair                        mean A  mean B  |diff|   corr  concord%  gap mean  gap p90  gap max
+A-Cys223 -- C-Cys214         26.56    9.80   16.76   0.45     72.7%      10.0     14.4     19.6
+A-Cys229 -- B-Cys229         11.94   22.53   10.59  -0.08     56.7%      10.8     13.8     18.4
+A-Cys232 -- B-Cys232         11.93    9.66    2.28   0.46     51.9%       9.6     17.5     19.8
+B-Cys223 -- D-Cys214         29.93   13.03   16.89  -0.04     54.4%      10.7     16.6     21.9
+
+============================================================================================================
+4) dynamic range -- how far each SG actually moves, and how open it gets
+============================================================================================================
+SG displacement is reported twice: 'aligned' = whole-molecule tumbling removed
+(the number that means local opening), 'raw' = as simulated (includes drift).
+site           SASA p10-p90  SASA max   SG RMSF  SG max exc   raw RMSF   raw max
+B-Cys223       2.95 - 71.44      79.75      8.90       18.14       9.61     19.61
+B-Cys229       2.55 - 51.07      76.81      6.37       18.26       6.41     21.50
+A-Cys223       0.00 - 62.61      76.54      6.70       15.42       6.34     13.34
+A-Cys232       0.00 - 37.13      75.60      7.73       15.74       7.82     17.26
+C-Cys214       1.21 - 24.80      74.53      5.29       12.34       5.06     12.31
+B-Cys232       0.67 - 22.53      74.26      7.91       14.92       7.43     14.32
+A-Cys229       0.40 - 25.47      73.72      5.65       12.11       5.86     11.41
+D-Cys214       0.13 - 38.62      66.48      6.35       11.41       7.06     14.23
+series -> /root/autodl-tmp/af_md/final4_series.npz
+
+saved -> /root/autodl-tmp/af_md/final4.json

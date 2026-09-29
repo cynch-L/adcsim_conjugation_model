@@ -1,0 +1,14 @@
+{
+  "method": "our Fibonacci-sphere ShrakeRupley vs Biopython ShrakeRupley",
+  "pdb": "B220_235_disulfide_repaired.pdb",
+  "n_heavy": 10224,
+  "n_sampled": 400,
+  "probe": 1.4,
+  "n_points": 960,
+  "radii": "unified (C1.70 N1.55 O1.52 S1.80)",
+  "pearson_r": 0.9998,
+  "MAD_A2": 0.104,
+  "mean_rel_err_pct": 4.55,
+  "bias_A2": 0.007,
+  "verdict": "PASS 实现可信 (r >= 0.99)"
+}

@@ -1,0 +1,71 @@
+# Same chemistry/QC as config.yaml, on the PyRosetta hinge-remodeled antibody.
+# Input is the full IgG FastRelax result (not a 22-residue fragment).
+# MUST re-run from DAR1 — old poses are on the unremodeled Boltz backbone.
+
+antibody:
+  name: trastuzumab
+  chain_types:
+    A: Heavy
+    B: Heavy
+    C: Light
+    D: Light
+
+inputs:
+  antibody_pdb: data/trastuzumab_B220_235_stitched.pdb
+  lp_sdf: data/payload_ensemble_79.sdf
+
+outputs:
+  dir: results_hinge
+
+disulfide:
+  intra_cutoff: 2.5
+  inter_cutoff: 3.0
+
+sites:
+  pool:
+    - A:CYS223
+    - B:CYS223
+    - A:CYS229
+    - B:CYS229
+    - A:CYS232
+    - B:CYS232
+    - C:CYS214
+    - D:CYS214
+
+chemistry:
+  resname: LPP
+  reactive_atom: 91
+  reactive_atom_name: C91
+  exit_atom: 85
+  bond_min: 1.75
+  bond_max: 1.90
+  bond_step: 0.05
+  bond_values: [1.82]
+
+sampling:
+  direction_step_deg: 15
+  roll_step_deg: 30
+  ray_start: 2.0
+  ray_end: 10.0
+  ray_step: 0.5
+
+qc:
+  probe_cutoff: 2.0
+  protein_lp_min: 2.0
+  lp_lp_min: 2.0
+
+accessibility:
+  min_cys_sasa: 5.0
+  min_open_rays: 4
+  attack_angle_min_deg: 70
+  attack_angle_max_deg: 140
+  drop_failed: true
+
+search:
+  max_dar: 8
+  max_states: 80
+  max_dar1_seeds: 160
+  max_poses_per_site: 300
+  max_poses_per_site_side: 120
+  conformer_stride: 1
+  reuse_library: false

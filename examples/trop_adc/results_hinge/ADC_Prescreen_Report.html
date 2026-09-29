@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADC 偶联预筛报告 — Trastuzumab × vc-MMAE</title>
+<style>
+:root{
+  --bg:#0f1419; --panel:#161c23; --panel2:#1b222b; --bd:#2a333f; --bd2:#384352;
+  --tx:#e6edf3; --tx2:#9aa7b5; --tx3:#6b7885;
+  --a:#3fb950; --b:#58a6ff; --c:#d29922; --d:#f85149; --pur:#bc8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:32px 24px}
+.wrap{max-width:1080px;margin:0 auto}
+header{border-bottom:2px solid var(--bd2);padding-bottom:18px;margin-bottom:26px}
+h1{font-size:21px;font-weight:600;letter-spacing:.3px}
+.sub{color:var(--tx2);font-size:13px;margin-top:6px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--panel2);border:1px solid var(--bd);border-radius:5px;padding:4px 10px;font-size:12px;color:var(--tx2)}
+.chip b{color:var(--tx);font-weight:500}
+h2{font-size:15px;font-weight:600;margin:30px 0 12px;padding-left:10px;border-left:3px solid var(--b)}
+h3{font-size:13px;font-weight:600;color:var(--tx2);margin:16px 0 8px}
+.panel{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:16px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:var(--tx3);font-weight:500;padding:7px 9px;border-bottom:1px solid var(--bd2);white-space:nowrap}
+td{padding:7px 9px;border-bottom:1px solid var(--bd)}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:600;line-height:1.6}
+.bA{background:rgba(63,185,80,.15);color:var(--a);border:1px solid rgba(63,185,80,.3)}
+.bB{background:rgba(88,166,255,.15);color:var(--b);border:1px solid rgba(88,166,255,.3)}
+.bC{background:rgba(210,153,34,.15);color:var(--c);border:1px solid rgba(210,153,34,.3)}
+.bP{background:rgba(248,81,73,.15);color:var(--d);border:1px solid rgba(248,81,73,.3)}
+.pos{color:var(--a)}.neg{color:var(--d)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{background:var(--panel2);border:1px solid var(--bd);border-radius:7px;padding:12px 14px}
+.kpi .k{color:var(--tx3);font-size:11.5px}
+.kpi .v{font-size:22px;font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .u{color:var(--tx2);font-size:11.5px;margin-top:1px}
+.bars{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.bar{display:grid;grid-template-columns:52px 1fr 58px;align-items:center;gap:10px;font-size:12px}
+.bar .track{background:var(--panel2);border-radius:3px;height:19px;position:relative;overflow:hidden}
+.bar .fill{height:100%;border-radius:3px}
+.bar .lbl{color:var(--tx2);font-variant-numeric:tabular-nums}
+.even .fill{background:linear-gradient(90deg,#1f6feb,#58a6ff)}
+.odd .fill{background:linear-gradient(90deg,#8b5cf6,#bc8cff)}
+.cmp{position:absolute;top:0;bottom:0;width:2px;background:#f0f6fc;opacity:.85}
+.alert{border-radius:7px;padding:13px 15px;margin-bottom:11px;border:1px solid}
+.a-warn{background:rgba(248,81,73,.07);border-color:rgba(248,81,73,.35)}
+.a-ok{background:rgba(63,185,80,.06);border-color:rgba(63,185,80,.28)}
+.a-info{background:rgba(88,166,255,.06);border-color:rgba(88,166,255,.28)}
+.alert .hd{font-weight:600;font-size:13px;margin-bottom:3px}
+.alert .why{color:var(--tx2);font-size:12.5px;margin-bottom:9px}
+.ev{width:100%;font-size:12px;background:var(--panel);border-radius:5px;overflow:hidden}
+.ev th{background:rgba(255,255,255,.025);padding:5px 8px}
+.ev td{padding:5px 8px;font-variant-numeric:tabular-nums}
+.tag-s{color:var(--d);font-weight:600}.tag-x{color:var(--a);font-weight:600}.tag-n{color:var(--tx3)}
+ul{padding-left:18px;color:var(--tx2);font-size:12.5px;li{margin:3px 0}}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--bd);color:var(--tx3);font-size:11.5px}
+.mono{font-family:"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--tx2)}
+.pend{border:1px dashed var(--bd2);border-radius:7px;padding:13px 15px;color:var(--tx3);font-size:12.5px}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <h1>抗体偶联药物 · 计算预筛报告</h1>
+  <div class="sub">Trastuzumab（IgG1，4 根链间二硫键）× vc-MMAE（马来酰亚胺–巯基共价加成）　·　五道闸门分解式判定</div>
+  <div class="meta">
+    <span class="chip">工艺：<b>pH 7.0 · 25 °C</b></span>
+    <span class="chip">还原：<b>TCEP 2.5 当量 · 2 h</b></span>
+    <span class="chip">偶联：<b>payload 6 当量 · 2 h</b></span>
+    <span class="chip">抗体：<b>10 mg/mL（67 µM）</b></span>
+    <span class="chip">报告版本：<b>v6 + 闸门① v8</b></span>
+  </div>
+</header>
+
+<!-- 执行摘要 -->
+<h2>一、执行摘要</h2>
+<div class="grid3" style="margin-bottom:14px">
+  <div class="kpi"><div class="k">平均 DAR（预测）</div><div class="v">4.59</div><div class="u">实测 4.55　偏离 +0.04</div></div>
+  <div class="kpi"><div class="k">主峰 DAR4 占比</div><div class="v">35.3<span style="font-size:14px">%</span></div><div class="u">实测 37.9%</div></div>
+  <div class="kpi"><div class="k">奇数 DAR 占比</div><div class="v">2.25<span style="font-size:14px">%</span></div><div class="u">实测 &lt;3%　一致</div></div>
+</div>
+
+<div class="grid2">
+  <div class="panel">
+    <h3>核心结论</h3>
+    <ul>
+      <li><b>DAR 高低只由还原这一步决定。</b>可及性、活化、偶联动力学三步在本工艺窗口下全部饱和（位点间暴露时间差 3.3 倍，偶联概率都是 0.995）。它们不是限速环节。</li>
+      <li><b>还原剂是限量试剂。</b>2.5 当量 TCEP 对应最多开 2.5 根键（实际 2.305 根），不是"每个抗体平均被开 2.5 次"——每个分子开几根是随机的，由各键好开程度加权。</li>
+      <li><b>分布预测通过独立检验。</b>零参数预测的整条 DAR 分布与实测五点对照，最大偏差 1.97 个百分点。</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>可信度分档</h3>
+    <table>
+      <tr><td><span class="badge bA">A</span> 物理必然</td><td class="n">2 条</td><td style="color:var(--tx2)">违反即为错误，无需校准</td></tr>
+      <tr><td><span class="badge bB">B</span> 模型稳健</td><td class="n">5 条</td><td style="color:var(--tx2)">合理区间内结论不变</td></tr>
+      <tr><td><span class="badge bC">C</span> 待实验裁决</td><td class="n">4 条</td><td style="color:var(--tx2)">需自有工艺数据校准</td></tr>
+      <tr><td><span class="badge bP">待接入</span></td><td class="n">3 项</td><td style="color:var(--tx2)">生物学层尚未实现</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 五道闸门 -->
+<h2>二、五道闸门判定结果</h2>
+<div class="panel">
+<table>
+  <tr><th style="width:34px">#</th><th>回答什么问题</th><th>怎么判</th><th>本次答案</th><th style="width:60px">可信度</th></tr>
+  <tr><td>⓪</td><td>有多少个可偶联位点</td><td>32 个 Cys 按 SG–SG 距离全局匹配</td><td>4 根链间键 → 8 个巯基</td><td><span class="badge bA">A</span></td></tr>
+  <tr><td>①</td><td><b>还原能打开几根键</b></td><td>共享还原剂池 + 物料守恒</td><td><b>2.305 根</b>（上限 2.5，达成 92.2%）</td><td><span class="badge bB">B</span></td></tr>
+  <tr><td>②</td><td>巯基在水里露出多少</td><td>分子动力学逐帧 · 按时间累积</td><td>223 最暴露、214 最埋，<b>全部通过</b></td><td><span class="badge bC">C</span></td></tr>
+  <tr><td>③</td><td>是不是活泼的硫醇阴离子</td><td>暴露构象条件化 pKa</td><td>硫醇阴离子 3.07%，无位点区分度</td><td><span class="badge bC">C</span></td></tr>
+  <tr><td>④</td><td>碰上了会不会反应</td><td>1 − exp(−速率×浓度×暴露时间)</td><td><b>转化率 ≈ 1.000</b>（最深位点也算）</td><td><span class="badge bA">A</span></td></tr>
+  <tr><td>⑤</td><td>最后挂上几个</td><td>四根键的泊松二项卷积</td><td>mean 4.59 · 主峰 DAR4 · 奇数 2.25%</td><td><span class="badge bB">B</span></td></tr>
+</table>
+</div>
+
+<!-- 闸门①核验 -->
+<h2>三、闸门① 还原步的函数形式核验</h2>
+<div class="grid2">
+  <div class="panel">
+    <h3>四个实测锚点的拟合残差</h3>
+    <table>
+      <tr><th>TCEP 当量</th><th class="n">开键数</th><th class="n">预测 DAR</th><th class="n">实测 DAR</th><th class="n">残差</th></tr>
+      <tr><td>2.00</td><td class="n">1.890</td><td class="n">3.761</td><td class="n">3.77</td><td class="n neg">−0.009</td></tr>
+      <tr><td>2.15</td><td class="n">2.018</td><td class="n">4.016</td><td class="n">3.97</td><td class="n pos">+0.046</td></tr>
+      <tr><td>2.50</td><td class="n">2.305</td><td class="n">4.586</td><td class="n">4.55</td><td class="n pos">+0.036</td></tr>
+      <tr><td>3.00</td><td class="n">2.678</td><td class="n">5.329</td><td class="n">5.38</td><td class="n neg">−0.051</td></tr>
+    </table>
+    <div style="margin-top:9px;font-size:12px;color:var(--tx2)">残差正负交替 = 只剩实验噪声。四种函数形式对比：共享还原剂池拟合误差 <b>0.031</b>，伪一级 <b>0.198</b>，纯化学计量 <b>0.080</b>；留一预测误差 0.029 / 0.282 / 0.092。</div>
+  </div>
+  <div class="panel">
+    <h3>唯一旋钮的物理身份</h3>
+    <div class="mono" style="padding:8px 0;line-height:1.9">
+      总开放程度 = 1.137<br>
+      <span style="color:var(--tx3)">= 还原速率常数 × 抗体浓度 × 还原时间</span>
+    </div>
+    <div style="font-size:12.5px;color:var(--tx2)">反推得 TCEP 还原速率 ≈ <b style="color:var(--tx)">2.36 M⁻¹s⁻¹</b>（按 10 mg/mL、2 h）。文献实测 TCEP 开蛋白二硫键：1.5（PTP1B）、3.66（Prx1）、6.25（Prx2）M⁻¹s⁻¹。<span class="pos">落在区间内。</span></div>
+    <div style="margin-top:9px;font-size:12px;color:var(--tx3)">对比：旧模型的旋钮 λ 是从 DAR 反解出来的，换一个当量要重解，两次解出的值之间没有可比性，也无法与任何实验量对照。</div>
+  </div>
+</div>
+
+<!-- DAR 分布 -->
+<h2>四、DAR 分布（2.5 当量）</h2>
+<div class="panel">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+    <h3 style="margin:0">预测 vs 实测</h3>
+    <span style="font-size:12px;color:var(--tx3)">白竖线 = 实测值　蓝=偶数 DAR　紫=奇数 DAR</span>
+  </div>
+  <div class="bars">
+    <div class="bar even"><span>DAR 0</span><div class="track"><div class="fill" style="width:3.16%"></div><div class="cmp" style="left:3.40%"></div></div><span class="lbl">3.16%</span></div>
+    <div class="bar odd"><span>DAR 1</span><div class="track"><div class="fill" style="width:0.17%"></div></div><span class="lbl">0.17%</span></div>
+    <div class="bar even"><span>DAR 2</span><div class="track"><div class="fill" style="width:17.32%"></div><div class="cmp" style="left:17.88%"></div></div><span class="lbl">17.32%</span></div>
+    <div class="bar odd"><span>DAR 3</span><div class="track"><div class="fill" style="width:0.71%"></div></div><span class="lbl">0.71%</span></div>
+    <div class="bar even"><span>DAR 4</span><div class="track"><div class="fill" style="width:35.26%"></div><div class="cmp" style="left:37.88%"></div></div><span class="lbl">35.26%</span></div>
+    <div class="bar odd"><span>DAR 5</span><div class="track"><div class="fill" style="width:0.95%"></div></div><span class="lbl">0.95%</span></div>
+    <div class="bar even"><span>DAR 6</span><div class="track"><div class="fill" style="width:31.54%"></div><div class="cmp" style="left:29.57%"></div></div><span class="lbl">31.54%</span></div>
+    <div class="bar odd"><span>DAR 7</span><div class="track"><div class="fill" style="width:0.42%"></div></div><span class="lbl">0.42%</span></div>
+    <div class="bar even"><span>DAR 8</span><div class="track"><div class="fill" style="width:10.46%"></div><div class="cmp" style="left:11.27%"></div></div><span class="lbl">10.46%</span></div>
+  </div>
+  <div style="margin-top:12px;font-size:12.5px;color:var(--tx2)">
+    偶数档（DAR 0/2/4/6/8）最大偏差 <b>1.97</b> 个百分点。整条分布是<b>零参数预测</b>——除均值锚点外未使用任何分布信息做拟合。奇数 DAR 合计 2.25%，实测 &lt;3%。
+  </div>
+  <div style="margin-top:9px;font-size:12px;color:var(--tx3)">这条对照的价值在于：<b>平均 DAR 定不住偶联概率</b>（0.96 和 0.995 都能把均值拟合得很好），但<b>奇数 DAR 比例能定住它</b>（15.9% 对 2.25%，差 7 倍）。只交付均值的方法在这个问题上不可辨识。</div>
+</div>
+
+<!-- 位点评分卡 -->
+<h2>五、位点评分卡</h2>
+<div class="panel">
+<table>
+  <tr><th>位点</th><th class="n">有效暴露时间 s</th><th class="n">硫醇阴离子 %</th><th class="n">偶联概率</th><th>判定</th><th>数据来源</th></tr>
+  <tr><td>B-Cys223</td><td class="n">5100</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td>MD 实测</td></tr>
+  <tr><td>A-Cys223</td><td class="n">4569</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td>MD 实测</td></tr>
+  <tr><td>A-Cys229</td><td class="n">3261</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td>MD 实测</td></tr>
+  <tr><td>B-Cys229</td><td class="n">3261</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td class="mono">对称镜像</td></tr>
+  <tr><td>A-Cys232</td><td class="n">3261</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td class="mono">借用 229</td></tr>
+  <tr><td>B-Cys232</td><td class="n">3261</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td class="mono">借用 229</td></tr>
+  <tr><td>C-Cys214</td><td class="n">1542</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td>MD 实测</td></tr>
+  <tr><td>D-Cys214</td><td class="n">1542</td><td class="n">3.07</td><td class="n">0.995</td><td class="pos">通过</td><td class="mono">对称镜像</td></tr>
+</table>
+<div style="margin-top:10px;font-size:12px;color:var(--tx3)">⚠ 8 个位点的数值只有 <b>4 个独立来源</b>。另外 4 个（B229 / A232 / B232 / D214）是对称假设的镜像填充，不能当作 8 个独立的实测值引用。位点间暴露时间差 <b>3.3 倍</b>，但因为偶联概率已饱和，这个差异不传导到结果。</div>
+</div>
+
+<!-- 预警与诊断 -->
+<h2>六、预警与诊断</h2>
+
+<div class="alert a-warn">
+  <div class="hd"><span class="badge bP">严重</span>　高 DAR 组分占比 42.4%</div>
+  <div class="why">DAR ≥ 6 合计 42.4%（DAR6 31.5% + DAR7 0.4% + DAR8 10.5%）。超过 25% 的规格线，关联聚集倾向与毒性风险。归因方向：还原当量。</div>
+  <table class="ev">
+    <tr><th>候选原因</th><th>证据量</th><th class="n">本次取值</th><th class="n">参考范围</th><th>判定</th></tr>
+    <tr><td>还原当量给多了</td><td>开键数 ÷ 当量</td><td class="n">0.922</td><td class="n">≤ 0.85</td><td class="tag-s">支持</td></tr>
+    <tr><td>偶联那步过于彻底</td><td>奇数 DAR 占比</td><td class="n">2.25%</td><td class="n">≥ 1%</td><td class="tag-x">排除</td></tr>
+    <tr><td>payload 投料过量</td><td>payload 剩余份数</td><td class="n">1.6 份</td><td class="n">≥ 0</td><td class="tag-x">排除</td></tr>
+    <tr><td>位点可及性失控</td><td>位点暴露时间比</td><td class="n">3.3 倍</td><td class="n">≤ 10 倍</td><td class="tag-x">排除</td></tr>
+    <tr><td>二硫键重排 / 错配</td><td>—</td><td class="n">模型外</td><td class="n">—</td><td class="tag-n">无法判断</td></tr>
+  </table>
+  <div style="margin-top:9px;font-size:12.5px"><b>建议动作：</b>降当量。扫描结果——2.0 当量 gives 高DAR 26.5%，3.0 当量 gives 58.6%。每降 0.5 当量，高 DAR 组分约降 15 个百分点。这是唯一有效的旋钮。</div>
+</div>
+
+<div class="alert a-info">
+  <div class="hd"><span class="badge bC">提示</span>　payload 处于亚化学计量投料</div>
+  <div class="why">payload 投 6 份，2.5 当量还原开出 4.61 个巯基。扣掉水解与表面损耗后余量约 1.6 份。当前尚够用，但<b>当量提到 3.0 以上时 payload 会成为新的限量试剂</b>（那时开出 5.36 个巯基，余量 &lt; 0.7 份）。</div>
+  <div style="font-size:12.5px"><b>建议动作：</b>若目标 DAR &gt; 5，payload 投料同步提到 8 份以上。这不是偶联概率的问题，是投料配比设计。</div>
+</div>
+
+<div class="alert a-ok">
+  <div class="hd"><span class="badge bA">通过</span>　以下检查项未触发预警</div>
+  <table class="ev" style="margin-top:6px">
+    <tr><th>检查项</th><th class="n">本次取值</th><th class="n">阈值</th><th>结果</th></tr>
+    <tr><td>物料守恒（开键数 &gt; 当量）</td><td class="n">2.305 ≤ 2.5</td><td class="n">不可超出</td><td class="tag-x">通过</td></tr>
+    <tr><td>最难开那根键的打开比例</td><td class="n">0.514</td><td class="n">≥ 0.30</td><td class="tag-x">通过</td></tr>
+    <tr><td>最埋位点的有效暴露时间</td><td class="n">1542 s</td><td class="n">≥ 300 s</td><td class="tag-x">通过</td></tr>
+    <tr><td>动力学完成度（速率×浓度×时间）</td><td class="n">27.8</td><td class="n">≥ 3</td><td class="tag-x">通过</td></tr>
+    <tr><td>还原完成度</td><td class="n">92.2%</td><td class="n">≥ 90%</td><td class="tag-x">通过</td></tr>
+    <tr><td>低 DAR（≤1）占比</td><td class="n">3.3%</td><td class="n">≤ 10%</td><td class="tag-x">通过</td></tr>
+  </table>
+</div>
+
+<!-- 生物学层 -->
+<h2>七、生物学层（待接入）</h2>
+<div class="grid3">
+  <div class="pend"><b style="color:var(--tx)">释放动力学</b><br>计划：组织蛋白酶 B 酶切 vc 连接子，Michaelis–Menten → 释放半衰期。需 kcat/Km 文献值。<br><br><span style="color:var(--b)">已排入计划</span></div>
+  <div class="pend"><b style="color:var(--tx)">旁观者效应</b><br>计划：一维径向反应-扩散稳态 PDE，Thiele 模数 φ² = 摄取速率 × 肿瘤半径² / 扩散系数，输出旁观者强度排序。<br><br><span style="color:var(--b)">已排入计划</span></div>
+  <div class="pend"><b style="color:var(--tx)">内化效率</b><br>计划：表位到细胞膜距离 + 抗原内化基序家族标签。<b>只能给定性标签，不能给数值</b>——需要实验训练集的部分不做。<br><br><span style="color:var(--b)">已排入计划</span></div>
+</div>
+<div style="margin-top:12px;padding:11px 14px;border:1px solid rgba(248,81,73,.3);background:rgba(248,81,73,.06);border-radius:7px;font-size:12.5px;color:var(--tx2)">
+  <b style="color:var(--tx)">明确不做：</b>真实结合能（无 GNINA 评估，当前所有结构只能称为"几何合理的初始构象"）· PK / 毒性 / 免疫原性 · ML 预测内化速率（无训练集）· 粗粒化 MD 模拟内吞（成本过高）。这些不会被写进任何结论。
+</div>
+
+<!-- 局限 -->
+<h2>八、必须随报告声明的局限</h2>
+<div class="panel">
+<ul>
+  <li><b>外部锚点只有一组，且来自工程化改造过的抗体。</b>本抗体预期略低。"略低"可来自三种不可区分的原因：还原慢 / 还原剂被浪费 / 偶联略差。三者在本当量区间预测值分别为 4.39 / 4.64 / 4.68，差异小于 HIC 测量精度。<b>需要 ≥ 4 当量的实测点才能分开。</b></li>
+  <li><b>动态模拟只有 2 ns。</b>够排顺序，不够给数值。已用 <span class="mono">md_convergence.py</span> 量化：要达到 ±20% 精度需要显著更长的轨迹。</li>
+  <li><b>用系综平均方程代替分子层面的随机过程。</b>还原剂被消耗完时这个近似很好；时间不够、动力学没跑完时会低估分布宽度。</li>
+  <li><b>无出处的数据一律不用。</b>早期报告里的"工艺收率 0.92~0.98"已废弃——查无原始出处，且疑似全流程收率被误用作单步偶联概率。</li>
+  <li><b>8 个位点只有 4 个独立数值</b>，其余为对称镜像假设。</li>
+</ul>
+</div>
+
+<footer>
+数据溯源：闸门① <span class="mono">reduction_kinetics_v8.py</span> → <span class="mono">reduction_kinetics_v8.json</span>　·　闸门②④⑤ <span class="mono">dar_v6_complete.py</span> → <span class="mono">dar_v6_complete.json</span>　·　MD 来源 <span class="mono">run_md_v5.py</span> × 8 副本<br>
+所有数值均由脚本重算得出，无手写常量。实测锚点为外部提供，未参与函数形式选择之外的任何调整。
+</footer>
+
+</div></body></html>

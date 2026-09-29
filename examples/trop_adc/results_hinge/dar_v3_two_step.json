@@ -1,0 +1,409 @@
+{
+  "method": "DAR v3 two-step Monte Carlo: reduction (1st-order in TCEP x ease) -> Langmuir conjugation",
+  "params": {
+    "K_LANG": 3.0,
+    "R": 6.0,
+    "LAMBDA": 2.0,
+    "SAME_PAIR_PENALTY": 0.85,
+    "N_MC": 400000,
+    "SEED": 20260916,
+    "SYMMETRIZE": true,
+    "steric_gate": "clip((SASA_A2-5.0)/15.0,0,1)"
+  },
+  "notes": [
+    "steric gate: pure Langmuir gave C-Cys214 (SG SASA 2.9 A^2) p_conj=0.47, physically impossible for a ~10-15 A payload. SG-exposure gate fixes it.",
+    "symmetrize: IgG1 is a C2-symmetric homodimer; A/B chain differences here come from Boltz model noise, not real physics. Averaging mirror sites removes it.",
+    "K_LANG is a CALIBRATION parameter (maleimide-thiol >90% conversion at payload excess), not a fitted parameter for shaping results. See k_scan."
+  ],
+  "reduction_ease": {
+    "A-Cys229--B-Cys229": 0.317,
+    "A-Cys223--C-Cys214": 0.2905,
+    "B-Cys223--D-Cys214": 0.2905,
+    "A-Cys232--B-Cys232": 0.237
+  },
+  "index_v3": {
+    "A-Cys223": 0.6304,
+    "A-Cys229": 0.298,
+    "A-Cys232": 0.4267,
+    "B-Cys223": 0.6304,
+    "B-Cys229": 0.298,
+    "B-Cys232": 0.4267,
+    "C-Cys214": 0.1102,
+    "D-Cys214": 0.1102
+  },
+  "sasa_A2": {
+    "A-Cys223": 41.35,
+    "A-Cys229": 13.02,
+    "A-Cys232": 24.18,
+    "B-Cys223": 41.35,
+    "B-Cys229": 13.02,
+    "B-Cys232": 24.18,
+    "C-Cys214": 1.77,
+    "D-Cys214": 1.77
+  },
+  "p_conj_if_reduced": {
+    "A-Cys223": 0.919,
+    "A-Cys229": 0.4507,
+    "A-Cys232": 0.8848,
+    "B-Cys223": 0.919,
+    "B-Cys229": 0.4507,
+    "B-Cys232": 0.8848,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "scans": {
+    "0.5": {
+      "distribution": {
+        "0": 0.3788,
+        "1": 0.3273,
+        "2": 0.1889,
+        "3": 0.0803,
+        "4": 0.021,
+        "5": 0.0035,
+        "6": 0.0003,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 1.049,
+      "std_dar": 1.067,
+      "mode_dar": 0,
+      "even_fraction": 0.589,
+      "odd_fraction": 0.411,
+      "even_odd_ratio": 1.433,
+      "p_dar0": 0.3788,
+      "p_dar_ge6": 0.0003,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.2717,
+        "A-Cys223--C-Cys214": 0.2521,
+        "B-Cys223--D-Cys214": 0.2521,
+        "A-Cys232--B-Cys232": 0.211
+      },
+      "mean_free_thiols": 1.974
+    },
+    "1.0": {
+      "distribution": {
+        "0": 0.1492,
+        "1": 0.2862,
+        "2": 0.2717,
+        "3": 0.1851,
+        "4": 0.0831,
+        "5": 0.0213,
+        "6": 0.0034,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 1.844,
+      "std_dar": 1.274,
+      "mode_dar": 1,
+      "even_fraction": 0.5074,
+      "odd_fraction": 0.4926,
+      "even_odd_ratio": 1.03,
+      "p_dar0": 0.1492,
+      "p_dar_ge6": 0.0034,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.4695,
+        "A-Cys223--C-Cys214": 0.4407,
+        "B-Cys223--D-Cys214": 0.4407,
+        "A-Cys232--B-Cys232": 0.3775
+      },
+      "mean_free_thiols": 3.457
+    },
+    "1.5": {
+      "distribution": {
+        "0": 0.0615,
+        "1": 0.196,
+        "2": 0.273,
+        "3": 0.2482,
+        "4": 0.1572,
+        "5": 0.054,
+        "6": 0.0101,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 2.446,
+      "std_dar": 1.33,
+      "mode_dar": 2,
+      "even_fraction": 0.5018,
+      "odd_fraction": 0.4982,
+      "even_odd_ratio": 1.007,
+      "p_dar0": 0.0615,
+      "p_dar_ge6": 0.0101,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.6136,
+        "A-Cys223--C-Cys214": 0.5817,
+        "B-Cys223--D-Cys214": 0.5817,
+        "A-Cys232--B-Cys232": 0.5088
+      },
+      "mean_free_thiols": 4.572
+    },
+    "2.0": {
+      "distribution": {
+        "0": 0.0266,
+        "1": 0.1257,
+        "2": 0.2384,
+        "3": 0.2753,
+        "4": 0.2197,
+        "5": 0.0943,
+        "6": 0.02,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 2.899,
+      "std_dar": 1.322,
+      "mode_dar": 3,
+      "even_fraction": 0.5047,
+      "odd_fraction": 0.4953,
+      "even_odd_ratio": 1.019,
+      "p_dar0": 0.0266,
+      "p_dar_ge6": 0.02,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.7186,
+        "A-Cys223--C-Cys214": 0.6871,
+        "B-Cys223--D-Cys214": 0.6871,
+        "A-Cys232--B-Cys232": 0.6125
+      },
+      "mean_free_thiols": 5.411
+    },
+    "2.75": {
+      "distribution": {
+        "0": 0.0084,
+        "1": 0.0625,
+        "2": 0.1758,
+        "3": 0.2713,
+        "4": 0.2872,
+        "5": 0.1579,
+        "6": 0.0368,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.387,
+      "std_dar": 1.266,
+      "mode_dar": 4,
+      "even_fraction": 0.5082,
+      "odd_fraction": 0.4918,
+      "even_odd_ratio": 1.033,
+      "p_dar0": 0.0084,
+      "p_dar_ge6": 0.0368,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.8251,
+        "A-Cys223--C-Cys214": 0.7976,
+        "B-Cys223--D-Cys214": 0.7976,
+        "A-Cys232--B-Cys232": 0.7284
+      },
+      "mean_free_thiols": 6.297
+    },
+    "4.0": {
+      "distribution": {
+        "0": 0.0016,
+        "1": 0.021,
+        "2": 0.1006,
+        "3": 0.232,
+        "4": 0.34,
+        "5": 0.2431,
+        "6": 0.0618,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.864,
+      "std_dar": 1.149,
+      "mode_dar": 4,
+      "even_fraction": 0.5039,
+      "odd_fraction": 0.4961,
+      "even_odd_ratio": 1.016,
+      "p_dar0": 0.0016,
+      "p_dar_ge6": 0.0618,
+      "p_reduce": {
+        "A-Cys229--B-Cys229": 0.9208,
+        "A-Cys223--C-Cys214": 0.9021,
+        "B-Cys223--D-Cys214": 0.9021,
+        "A-Cys232--B-Cys232": 0.8498
+      },
+      "mean_free_thiols": 7.15
+    }
+  },
+  "primary_condition": "TCEP 2.75 eq",
+  "penalty_scan": {
+    "0.6": {
+      "distribution": {
+        "0": 0.0086,
+        "1": 0.068,
+        "2": 0.2043,
+        "3": 0.3078,
+        "4": 0.271,
+        "5": 0.122,
+        "6": 0.0182,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.204,
+      "std_dar": 1.198,
+      "mode_dar": 3,
+      "even_fraction": 0.5022,
+      "odd_fraction": 0.4978,
+      "even_odd_ratio": 1.009,
+      "p_dar0": 0.0086,
+      "p_dar_ge6": 0.0182,
+      "penalty": 0.6
+    },
+    "0.75": {
+      "distribution": {
+        "0": 0.0089,
+        "1": 0.0636,
+        "2": 0.1874,
+        "3": 0.2863,
+        "4": 0.2798,
+        "5": 0.1448,
+        "6": 0.0291,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.315,
+      "std_dar": 1.242,
+      "mode_dar": 3,
+      "even_fraction": 0.5053,
+      "odd_fraction": 0.4947,
+      "even_odd_ratio": 1.021,
+      "p_dar0": 0.0089,
+      "p_dar_ge6": 0.0291,
+      "penalty": 0.75
+    },
+    "0.85": {
+      "distribution": {
+        "0": 0.0083,
+        "1": 0.0619,
+        "2": 0.1758,
+        "3": 0.2717,
+        "4": 0.2874,
+        "5": 0.1574,
+        "6": 0.0376,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.391,
+      "std_dar": 1.265,
+      "mode_dar": 4,
+      "even_fraction": 0.509,
+      "odd_fraction": 0.491,
+      "even_odd_ratio": 1.037,
+      "p_dar0": 0.0083,
+      "p_dar_ge6": 0.0376,
+      "penalty": 0.85
+    },
+    "1.0": {
+      "distribution": {
+        "0": 0.0086,
+        "1": 0.0596,
+        "2": 0.1583,
+        "3": 0.2517,
+        "4": 0.2951,
+        "5": 0.1757,
+        "6": 0.051,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.496,
+      "std_dar": 1.298,
+      "mode_dar": 4,
+      "even_fraction": 0.513,
+      "odd_fraction": 0.487,
+      "even_odd_ratio": 1.053,
+      "p_dar0": 0.0086,
+      "p_dar_ge6": 0.051,
+      "penalty": 1.0
+    }
+  },
+  "k_scan": {
+    "1.2": {
+      "distribution": {
+        "0": 0.0192,
+        "1": 0.1086,
+        "2": 0.2419,
+        "3": 0.3013,
+        "4": 0.2269,
+        "5": 0.088,
+        "6": 0.0141,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 2.929,
+      "std_dar": 1.245,
+      "mode_dar": 3,
+      "even_fraction": 0.5021,
+      "odd_fraction": 0.4979,
+      "even_odd_ratio": 1.008,
+      "p_dar0": 0.0192,
+      "p_dar_ge6": 0.0141,
+      "k_lang": 1.2,
+      "top_p_conj": 0.8195
+    },
+    "2.0": {
+      "distribution": {
+        "0": 0.0115,
+        "1": 0.0764,
+        "2": 0.1987,
+        "3": 0.2885,
+        "4": 0.2694,
+        "5": 0.1294,
+        "6": 0.0262,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.221,
+      "std_dar": 1.258,
+      "mode_dar": 3,
+      "even_fraction": 0.5057,
+      "odd_fraction": 0.4943,
+      "even_odd_ratio": 1.023,
+      "p_dar0": 0.0115,
+      "p_dar_ge6": 0.0262,
+      "k_lang": 2.0,
+      "top_p_conj": 0.8832
+    },
+    "3.0": {
+      "distribution": {
+        "0": 0.0083,
+        "1": 0.0627,
+        "2": 0.176,
+        "3": 0.2718,
+        "4": 0.2863,
+        "5": 0.1573,
+        "6": 0.0375,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.387,
+      "std_dar": 1.267,
+      "mode_dar": 4,
+      "even_fraction": 0.5082,
+      "odd_fraction": 0.4918,
+      "even_odd_ratio": 1.033,
+      "p_dar0": 0.0083,
+      "p_dar_ge6": 0.0375,
+      "k_lang": 3.0,
+      "top_p_conj": 0.919
+    },
+    "4.0": {
+      "distribution": {
+        "0": 0.0072,
+        "1": 0.0556,
+        "2": 0.1638,
+        "3": 0.2601,
+        "4": 0.2945,
+        "5": 0.1746,
+        "6": 0.0442,
+        "7": 0.0,
+        "8": 0.0
+      },
+      "mean_dar": 3.48,
+      "std_dar": 1.27,
+      "mode_dar": 4,
+      "even_fraction": 0.5097,
+      "odd_fraction": 0.4903,
+      "even_odd_ratio": 1.039,
+      "p_dar0": 0.0072,
+      "p_dar_ge6": 0.0442,
+      "k_lang": 4.0,
+      "top_p_conj": 0.938
+    }
+  }
+}

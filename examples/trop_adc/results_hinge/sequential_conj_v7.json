@@ -1,0 +1,51 @@
+{
+  "n_reps": 200000,
+  "seed": 42,
+  "sigma_A": 2.0,
+  "p_red": 0.56,
+  "soft_scale": 0.5,
+  "site_info": {
+    "A:CYS223": {
+      "open_rays": 16,
+      "occlusion_8A": 90
+    },
+    "B:CYS223": {
+      "open_rays": 20,
+      "occlusion_8A": 86
+    },
+    "A:CYS229": {
+      "open_rays": 34,
+      "occlusion_8A": 63
+    },
+    "B:CYS229": {
+      "open_rays": 25,
+      "occlusion_8A": 71
+    },
+    "A:CYS232": {
+      "open_rays": 88,
+      "occlusion_8A": 61
+    },
+    "B:CYS232": {
+      "open_rays": 19,
+      "occlusion_8A": 72
+    },
+    "C:CYS214": {
+      "open_rays": 15,
+      "occlusion_8A": 79
+    },
+    "D:CYS214": {
+      "open_rays": 39,
+      "occlusion_8A": 78
+    }
+  },
+  "dar_distribution_P": {
+    "0": 0.6149,
+    "2": 0.316,
+    "4": 0.065,
+    "6": 0.0042,
+    "8": 0.0
+  },
+  "even_dar_fraction": 1.0,
+  "mean_dar": 0.92,
+  "note": "Pair-level disulfide reduction (4 pairs, Binomial p) + pair-level geometry gate (both Cys must fit). Even-DAR only."
+}

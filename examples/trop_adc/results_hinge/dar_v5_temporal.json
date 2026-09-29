@@ -1,0 +1,105 @@
+{
+  "method": "DAR v5: per-frame steric gate -> time-accumulated covalent conversion",
+  "params": {
+    "K2": 300.0,
+    "mAb_uM": 10.0,
+    "payload_eq": 6.0,
+    "time_h": 2.0,
+    "YIELD_MAX": 0.96,
+    "PEN": 1.0,
+    "GATE_LO": 5.0,
+    "GATE_SPAN": 15.0,
+    "TCEP_cal_eq": 2.75
+  },
+  "sites": {
+    "A-Cys223": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 44.8 >= C214，保守取同值"
+    },
+    "B-Cys223": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 37.9 >= C214，保守取同值"
+    },
+    "A-Cys232": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 25.0 >= C214，保守取同值"
+    },
+    "B-Cys232": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 23.3 >= C214，保守取同值"
+    },
+    "B-Cys229": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 16.1 >= C214，保守取同值"
+    },
+    "A-Cys229": {
+      "p_c": 0.9569,
+      "source": "extrapolated",
+      "note": "v1 均值 10.0 >= C214，保守取同值"
+    },
+    "C-Cys214": {
+      "p_c": 0.9569,
+      "source": "v5 MD measured"
+    },
+    "D-Cys214": {
+      "p_c": 0.9569,
+      "source": "mirror of C-Cys214 (C2 symmetry)"
+    }
+  },
+  "C_Cys214_evidence": {
+    "sasa_mean_A2": 1.811,
+    "sasa_p90_A2": 7.144,
+    "sasa_max_A2": 16.219,
+    "frac_frames_open_gt5": 0.11,
+    "t_eff_s": 318.3,
+    "raw_conversion": 0.9967,
+    "p_c_final": 0.9569,
+    "v4_mean_gate": 0.0
+  },
+  "primary": {
+    "TCEP_eq": 2.75,
+    "LAMBDA": 0.9526,
+    "p_red": {
+      "A-Cys229--B-Cys229": 0.5641,
+      "A-Cys223--C-Cys214": 0.563,
+      "B-Cys223--D-Cys214": 0.5005,
+      "A-Cys232--B-Cys232": 0.4625
+    },
+    "mean_dar": 4.0,
+    "std_dar": 1.949,
+    "mode_dar": 4,
+    "even_odd_ratio": 5.602,
+    "p_dar_0": 0.0516,
+    "p_dar_ge6": 0.2826,
+    "dist": [
+      0.0516,
+      0.0189,
+      0.212,
+      0.0571,
+      0.3211,
+      0.0569,
+      0.2123,
+      0.0186,
+      0.0517
+    ]
+  },
+  "comparison": {
+    "v4_scenario_A_mean_gate_C214_dead": {
+      "even_odd_ratio": 1.09,
+      "note": "v4 用平均 SASA 门控，C214 被判死，与实验矛盾"
+    },
+    "v4_scenario_B_all_accessible": {
+      "even_odd_ratio": 6.05,
+      "note": "v4 假设工艺条件下全可及（无实测依据，是假设）"
+    },
+    "v5_temporal_gate_measured": {
+      "even_odd_ratio": 5.602,
+      "note": "v5 用逐帧时间累积门控，C214 实测 p_c=0.957，情形 B 获得实测支持"
+    }
+  }
+}

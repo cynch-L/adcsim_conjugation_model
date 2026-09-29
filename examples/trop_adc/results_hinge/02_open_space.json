@@ -1,0 +1,34 @@
+{
+  "A:CYS223": {
+    "n_front": 4,
+    "n_back": 12
+  },
+  "B:CYS223": {
+    "n_front": 3,
+    "n_back": 17
+  },
+  "A:CYS229": {
+    "n_front": 1,
+    "n_back": 33
+  },
+  "B:CYS229": {
+    "n_front": 23,
+    "n_back": 2
+  },
+  "A:CYS232": {
+    "n_front": 4,
+    "n_back": 84
+  },
+  "B:CYS232": {
+    "n_front": 18,
+    "n_back": 1
+  },
+  "C:CYS214": {
+    "n_front": 13,
+    "n_back": 2
+  },
+  "D:CYS214": {
+    "n_front": 8,
+    "n_back": 31
+  }
+}

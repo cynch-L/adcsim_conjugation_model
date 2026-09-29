@@ -1,0 +1,66 @@
+{
+  "0.0": {
+    "B:CYS229": {
+      "front_rays": 23,
+      "back_rays": 2,
+      "front_poses": 0,
+      "back_poses": 3,
+      "sg_shift_A": 0.0
+    },
+    "B:CYS232": {
+      "front_rays": 18,
+      "back_rays": 1,
+      "front_poses": 1,
+      "back_poses": 0,
+      "sg_shift_A": 0.0
+    }
+  },
+  "2.0": {
+    "B:CYS229": {
+      "front_rays": 51,
+      "back_rays": 8,
+      "front_poses": 6,
+      "back_poses": 3,
+      "sg_shift_A": 2.0
+    },
+    "B:CYS232": {
+      "front_rays": 22,
+      "back_rays": 8,
+      "front_poses": 1,
+      "back_poses": 23,
+      "sg_shift_A": 2.0
+    }
+  },
+  "4.0": {
+    "B:CYS229": {
+      "front_rays": 42,
+      "back_rays": 22,
+      "front_poses": 4,
+      "back_poses": 17,
+      "sg_shift_A": 4.0
+    },
+    "B:CYS232": {
+      "front_rays": 49,
+      "back_rays": 13,
+      "front_poses": 4,
+      "back_poses": 12,
+      "sg_shift_A": 4.0
+    }
+  },
+  "6.0": {
+    "B:CYS229": {
+      "front_rays": 9,
+      "back_rays": 30,
+      "front_poses": 3,
+      "back_poses": 26,
+      "sg_shift_A": 6.0
+    },
+    "B:CYS232": {
+      "front_rays": 45,
+      "back_rays": 22,
+      "front_poses": 1,
+      "back_poses": 1,
+      "sg_shift_A": 6.0
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+ "pdb": "B220_235_disulfide_repaired.pdb",
+ "note": "成键态(二硫键完整)静态 SG SASA + v1 轨迹动态 SASA",
+ "bonded_ss": [
+  {
+   "pair": "A-Cys232/B-Cys232",
+   "kind": "interchain",
+   "sasa_s1": 22.38,
+   "sasa_s2": 8.71,
+   "sasa_sum": 31.1,
+   "ss_dist": 2.04,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys229/B-Cys229",
+   "kind": "interchain",
+   "sasa_s1": 11.39,
+   "sasa_s2": 16.22,
+   "sasa_sum": 27.61,
+   "ss_dist": 2.01,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "B-Cys223/D-Cys214",
+   "kind": "interchain",
+   "sasa_s1": 3.75,
+   "sasa_s2": 4.56,
+   "sasa_sum": 8.31,
+   "ss_dist": 2.03,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys223/C-Cys214",
+   "kind": "interchain",
+   "sasa_s1": 4.42,
+   "sasa_s2": 0.0,
+   "sasa_sum": 4.42,
+   "ss_dist": 2.02,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "B-Cys22/B-Cys96",
+   "kind": "intrachain",
+   "sasa_s1": 1.88,
+   "sasa_s2": 0.0,
+   "sasa_sum": 1.88,
+   "ss_dist": 1.99,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys22/A-Cys96",
+   "kind": "intrachain",
+   "sasa_s1": 1.74,
+   "sasa_s2": 0.0,
+   "sasa_sum": 1.74,
+   "ss_dist": 2.03,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "C-Cys23/C-Cys88",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 1.95,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "D-Cys23/D-Cys88",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 1.98,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "C-Cys134/C-Cys194",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.05,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "D-Cys134/D-Cys194",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.17,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys147/A-Cys203",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 1.99,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "B-Cys147/B-Cys203",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.02,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys264/A-Cys324",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.17,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "B-Cys264/B-Cys324",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.1,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "A-Cys370/A-Cys428",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.13,
+   "bfac_mean": 0.0
+  },
+  {
+   "pair": "B-Cys370/B-Cys428",
+   "kind": "intrachain",
+   "sasa_s1": 0.0,
+   "sasa_s2": 0.0,
+   "sasa_sum": 0.0,
+   "ss_dist": 2.05,
+   "bfac_mean": 0.0
+  }
+ ],
+ "v1_dynamic": {
+  "A-Cys223": {
+   "mean": 42.63,
+   "max": 67.29,
+   "p90": 63.21,
+   "open_frac": 0.983,
+   "n_frames": 60
+  },
+  "A-Cys229": {
+   "mean": 8.45,
+   "max": 25.87,
+   "p90": 14.54,
+   "open_frac": 0.7,
+   "n_frames": 60
+  },
+  "A-Cys232": {
+   "mean": 23.33,
+   "max": 75.2,
+   "p90": 54.51,
+   "open_frac": 0.833,
+   "n_frames": 60
+  },
+  "B-Cys223": {
+   "mean": 34.9,
+   "max": 69.7,
+   "p90": 51.54,
+   "open_frac": 1.0,
+   "n_frames": 60
+  },
+  "B-Cys229": {
+   "mean": 15.5,
+   "max": 28.01,
+   "p90": 23.07,
+   "open_frac": 0.883,
+   "n_frames": 60
+  },
+  "B-Cys232": {
+   "mean": 20.55,
+   "max": 48.93,
+   "p90": 37.4,
+   "open_frac": 0.967,
+   "n_frames": 60
+  },
+  "C-Cys214": {
+   "mean": 2.37,
+   "max": 18.9,
+   "p90": 6.53,
+   "open_frac": 0.183,
+   "n_frames": 60
+  },
+  "D-Cys214": {
+   "mean": 0.57,
+   "max": 3.89,
+   "p90": 1.5,
+   "open_frac": 0.0,
+   "n_frames": 60
+  }
+ }
+}

@@ -1,0 +1,424 @@
+{
+  "run_tag": "af_model2_staticSASA",
+  "inputs": {
+    "reduction_profile": "ss_reduction_profile_af.json",
+    "pc_source": "static-structure override"
+  },
+  "inverse": {
+    "max_reachable_mean_dar": 7.96,
+    "process_window": [
+      {
+        "target_dar": 2.0,
+        "reachable": true,
+        "tcep_eq": 1.0293,
+        "released_thiols_eq": 2.01,
+        "lp_min_eq": 3.015,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 2.0,
+        "pred_mode_dar": 2,
+        "even_odd_ratio": 99.738,
+        "p_dar_ge6": 0.0478,
+        "p_dar_le1": 0.3142
+      },
+      {
+        "target_dar": 3.0,
+        "reachable": true,
+        "tcep_eq": 1.5668,
+        "released_thiols_eq": 3.015,
+        "lp_min_eq": 4.523,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 3.0,
+        "pred_mode_dar": 2,
+        "even_odd_ratio": 66.409,
+        "p_dar_ge6": 0.1453,
+        "p_dar_le1": 0.1489
+      },
+      {
+        "target_dar": 4.0,
+        "reachable": true,
+        "tcep_eq": 2.1378,
+        "released_thiols_eq": 4.02,
+        "lp_min_eq": 6.03,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 4.0,
+        "pred_mode_dar": 4,
+        "even_odd_ratio": 49.747,
+        "p_dar_ge6": 0.304,
+        "p_dar_le1": 0.059
+      },
+      {
+        "target_dar": 5.0,
+        "reachable": true,
+        "tcep_eq": 2.7727,
+        "released_thiols_eq": 5.025,
+        "lp_min_eq": 7.538,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 5.0,
+        "pred_mode_dar": 6,
+        "even_odd_ratio": 39.752,
+        "p_dar_ge6": 0.5113,
+        "p_dar_le1": 0.0176
+      },
+      {
+        "target_dar": 6.0,
+        "reachable": true,
+        "tcep_eq": 3.5399,
+        "released_thiols_eq": 6.03,
+        "lp_min_eq": 9.045,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 6.0,
+        "pred_mode_dar": 6,
+        "even_odd_ratio": 33.089,
+        "p_dar_ge6": 0.7344,
+        "p_dar_le1": 0.0031
+      },
+      {
+        "target_dar": 7.7,
+        "reachable": true,
+        "tcep_eq": 6.4097,
+        "released_thiols_eq": 7.739,
+        "lp_min_eq": 11.608,
+        "lp_overage_margin": 0.5,
+        "pred_mean_dar": 7.7,
+        "pred_mode_dar": 8,
+        "even_odd_ratio": 25.736,
+        "p_dar_ge6": 0.9912,
+        "p_dar_le1": 0.0
+      }
+    ],
+    "self_consistency": [
+      {
+        "target_dar": 2.0,
+        "tcep_eq": 1.0293,
+        "forward_mean_dar": 2.0,
+        "residual": -0.0
+      },
+      {
+        "target_dar": 3.0,
+        "tcep_eq": 1.5668,
+        "forward_mean_dar": 3.0,
+        "residual": 0.0
+      },
+      {
+        "target_dar": 4.0,
+        "tcep_eq": 2.1378,
+        "forward_mean_dar": 3.9999,
+        "residual": -0.0001
+      },
+      {
+        "target_dar": 5.0,
+        "tcep_eq": 2.7727,
+        "forward_mean_dar": 5.0,
+        "residual": 0.0
+      },
+      {
+        "target_dar": 6.0,
+        "tcep_eq": 3.5399,
+        "forward_mean_dar": 6.0,
+        "residual": -0.0
+      },
+      {
+        "target_dar": 7.7,
+        "tcep_eq": 6.4097,
+        "forward_mean_dar": 7.7,
+        "residual": 0.0
+      }
+    ],
+    "max_abs_self_residual": 0.0001,
+    "lp_bottleneck": {
+      "current_feed_eq": 6.0,
+      "lp_limiting_below_eq": 0.9109,
+      "pc_floor": 0.98,
+      "per_site_eq": {
+        "A-Cys223": 0.9109,
+        "C-Cys214": 0.9109,
+        "B-Cys223": 0.9109,
+        "D-Cys214": 0.9109,
+        "A-Cys229": 0.9109,
+        "B-Cys229": 0.9109,
+        "A-Cys232": 0.9109,
+        "B-Cys232": 0.9109
+      }
+    }
+  },
+  "note": "TRUE inverse = target DAR -> TCEP eq (root-find, monotonic). LP eq is reported only as the minimum feed that keeps LP non-limiting (released thiols x (1 + overage margin)); it does NOT set DAR.",
+  "method": "DAR v6 + disulfide reduction shared-pool: disulfide reduction (shared-pool K, stoichiometric cap) x site accessibility (effective exposure time) x thiol activation (thiolate) x covalent conjugation (hydrolysis-aware AUC) x pair-convolution + MC uncertainty",
+  "config_source": "<repo>/examples/trop_adc/kaggle_md_8site/adc_model_config.yaml",
+  "params": {
+    "K2": 300.0,
+    "mAb_uM": 67.0,
+    "payload_eq": 6.0,
+    "time_h": 2.0,
+    "pH": 7.0,
+    "P_CONJ": 0.995,
+    "SASA_LO": 5.0,
+    "SASA_SPAN": 15.0,
+    "PKA_EFF": 8.5,
+    "PKA_SD": 1.0,
+    "K_HYD": 0.0,
+    "TCEP_cal_eq": 2.5,
+    "reduction_time_h": 2.0
+  },
+  "disulfide_reduction": {
+    "model": "shared_pool",
+    "K_open": 1.185,
+    "rmse": 0.0427,
+    "n_anchors": 4,
+    "residuals": [
+      -0.004,
+      0.05,
+      0.037,
+      -0.058
+    ],
+    "implied_k_TCEP_M_inv_s": 2.456,
+    "bonds_opened": 2.3052,
+    "stoich_cap": 2.5,
+    "old_pseudo_first_order": {
+      "lam": 0.6262,
+      "n_points": 4,
+      "rmse": 0.1989
+    },
+    "leave_one_out": {
+      "status": "OK",
+      "n_folds": 4,
+      "rows": [
+        {
+          "held_out_tcep": 2.0,
+          "actual_mean_dar": 3.77,
+          "predicted_mean_dar": 3.765,
+          "error": -0.005
+        },
+        {
+          "held_out_tcep": 2.15,
+          "actual_mean_dar": 3.97,
+          "predicted_mean_dar": 4.03,
+          "error": 0.06
+        },
+        {
+          "held_out_tcep": 2.5,
+          "actual_mean_dar": 4.55,
+          "predicted_mean_dar": 4.601,
+          "error": 0.051
+        },
+        {
+          "held_out_tcep": 3.0,
+          "actual_mean_dar": 5.38,
+          "predicted_mean_dar": 5.277,
+          "error": -0.103
+        }
+      ],
+      "mean_abs_error": 0.0547
+    },
+    "leave_one_out_old": {
+      "status": "OK",
+      "n_folds": 4,
+      "rows": [
+        {
+          "held_out_tcep": 2.0,
+          "actual_mean_dar": 3.77,
+          "predicted_mean_dar": 3.912,
+          "error": 0.142
+        },
+        {
+          "held_out_tcep": 2.15,
+          "actual_mean_dar": 3.97,
+          "predicted_mean_dar": 4.107,
+          "error": 0.137
+        },
+        {
+          "held_out_tcep": 2.5,
+          "actual_mean_dar": 4.55,
+          "predicted_mean_dar": 4.523,
+          "error": -0.027
+        },
+        {
+          "held_out_tcep": 3.0,
+          "actual_mean_dar": 5.38,
+          "predicted_mean_dar": 5.036,
+          "error": -0.344
+        }
+      ],
+      "mean_abs_error": 0.1625
+    }
+  },
+  "fixes_vs_v5": [
+    "thiol activation: f_thio now in the kinetic chain",
+    "payload hydrolysis [P](t) decay",
+    "MC uncertainty propagation",
+    "multipoint calibration + LOO framework"
+  ],
+  "key_caveat": "exposure-conditioned pKa used instead of static PROPKA: static C-Cys214 pKa=20.76 is an artifact of a buried conformer that site accessibility already excludes; using it would double-count burial.",
+  "sites": {
+    "A-Cys223": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "C-Cys214": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "B-Cys223": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "D-Cys214": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "A-Cys229": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "B-Cys229": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "A-Cys232": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    },
+    "B-Cys232": {
+      "source": "static-structure estimate (no MD for this structure)",
+      "t_eff_s": 229.1,
+      "f_thiolate": 0.03065,
+      "auc_M_s": 0.092103,
+      "raw_conversion": 1.0,
+      "p_c": 0.995
+    }
+  },
+  "lambda_calibrated": 0.6262,
+  "lambda_info": {
+    "n_points": 4,
+    "rmse": 0.1989
+  },
+  "primary": {
+    "mean_dar": 4.587,
+    "std_dar": 1.934,
+    "mode_dar": 4,
+    "even_odd_ratio": 43.348,
+    "p_dar_ge6": 0.4215,
+    "dist": [
+      0.0285,
+      0.0017,
+      0.1717,
+      0.0072,
+      0.3598,
+      0.0096,
+      0.3172,
+      0.004,
+      0.1003
+    ]
+  },
+  "leave_one_out": {
+    "status": "OK",
+    "n_folds": 4,
+    "rows": [
+      {
+        "held_out_tcep": 2.0,
+        "actual_mean_dar": 3.77,
+        "predicted_mean_dar": 3.765,
+        "error": -0.005
+      },
+      {
+        "held_out_tcep": 2.15,
+        "actual_mean_dar": 3.97,
+        "predicted_mean_dar": 4.03,
+        "error": 0.06
+      },
+      {
+        "held_out_tcep": 2.5,
+        "actual_mean_dar": 4.55,
+        "predicted_mean_dar": 4.601,
+        "error": 0.051
+      },
+      {
+        "held_out_tcep": 3.0,
+        "actual_mean_dar": 5.38,
+        "predicted_mean_dar": 5.277,
+        "error": -0.103
+      }
+    ],
+    "mean_abs_error": 0.0547
+  },
+  "uncertainty": {
+    "n_mc": 4000,
+    "mean_dar": 4.587,
+    "ci95": [
+      4.587,
+      4.587
+    ],
+    "sd": 0.0
+  },
+  "pka_sensitivity": [
+    {
+      "pH": 6.5,
+      "k2_apparent": 96.9,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 42.229,
+      "p_dar_ge6": 0.4213
+    },
+    {
+      "pH": 7.0,
+      "k2_apparent": 300.0,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 43.348,
+      "p_dar_ge6": 0.4215
+    },
+    {
+      "pH": 7.5,
+      "k2_apparent": 889.7,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 43.348,
+      "p_dar_ge6": 0.4215
+    },
+    {
+      "pH": 8.0,
+      "k2_apparent": 2351.3,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 43.348,
+      "p_dar_ge6": 0.4215
+    },
+    {
+      "pH": 8.5,
+      "k2_apparent": 4893.4,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 43.348,
+      "p_dar_ge6": 0.4215
+    },
+    {
+      "pH": 9.0,
+      "k2_apparent": 7435.5,
+      "mean_dar": 4.587,
+      "even_odd_ratio": 43.348,
+      "p_dar_ge6": 0.4215
+    }
+  ]
+}

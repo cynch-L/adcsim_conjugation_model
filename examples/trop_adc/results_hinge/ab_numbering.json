@@ -1,0 +1,328 @@
+{
+ "pdb": "B220_235_disulfide_repaired.pdb",
+ "rule": {
+  "chain_type": "intrachain disulfide pair count (H>=3, L<=2) + residue-count corroboration",
+  "half": "interchain disulfide union-find connectivity",
+  "domain": "intrachain disulfide midpoint -> domain center; adjacent centers' midpoint -> boundary; HINGE split at HH bond",
+  "address": "<half>.<domain>.<in-domain index>.<residue>"
+ },
+ "chains": {
+  "A": {
+   "type": "H",
+   "half": 1,
+   "n_res": 449,
+   "n_intra_ss": 4,
+   "domains": [
+    [
+     "VH",
+     1,
+     117
+    ],
+    [
+     "CH1",
+     118,
+     228
+    ],
+    [
+     "HINGE",
+     229,
+     234
+    ],
+    [
+     "CH2",
+     235,
+     346
+    ],
+    [
+     "CH3",
+     347,
+     449
+    ]
+   ]
+  },
+  "B": {
+   "type": "H",
+   "half": 2,
+   "n_res": 449,
+   "n_intra_ss": 4,
+   "domains": [
+    [
+     "VH",
+     1,
+     117
+    ],
+    [
+     "CH1",
+     118,
+     228
+    ],
+    [
+     "HINGE",
+     229,
+     234
+    ],
+    [
+     "CH2",
+     235,
+     346
+    ],
+    [
+     "CH3",
+     347,
+     449
+    ]
+   ]
+  },
+  "C": {
+   "type": "L",
+   "half": 1,
+   "n_res": 214,
+   "n_intra_ss": 2,
+   "domains": [
+    [
+     "VL",
+     1,
+     110
+    ],
+    [
+     "CL",
+     111,
+     214
+    ]
+   ]
+  },
+  "D": {
+   "type": "L",
+   "half": 2,
+   "n_res": 214,
+   "n_intra_ss": 2,
+   "domains": [
+    [
+     "VL",
+     1,
+     110
+    ],
+    [
+     "CL",
+     111,
+     214
+    ]
+   ]
+  }
+ },
+ "cys_address": {
+  "A22": "H1.VH.22.Cys",
+  "A96": "H1.VH.96.Cys",
+  "A147": "H1.CH1.30.Cys",
+  "A203": "H1.CH1.86.Cys",
+  "A223": "H1.CH1.106.Cys",
+  "A229": "H1.HINGE.1.Cys",
+  "A232": "H1.HINGE.4.Cys",
+  "A264": "H1.CH2.30.Cys",
+  "A324": "H1.CH2.90.Cys",
+  "A370": "H1.CH3.24.Cys",
+  "A428": "H1.CH3.82.Cys",
+  "B22": "H2.VH.22.Cys",
+  "B96": "H2.VH.96.Cys",
+  "B147": "H2.CH1.30.Cys",
+  "B203": "H2.CH1.86.Cys",
+  "B223": "H2.CH1.106.Cys",
+  "B229": "H2.HINGE.1.Cys",
+  "B232": "H2.HINGE.4.Cys",
+  "B264": "H2.CH2.30.Cys",
+  "B324": "H2.CH2.90.Cys",
+  "B370": "H2.CH3.24.Cys",
+  "B428": "H2.CH3.82.Cys",
+  "C23": "L1.VL.23.Cys",
+  "C88": "L1.VL.88.Cys",
+  "C134": "L1.CL.24.Cys",
+  "C194": "L1.CL.84.Cys",
+  "C214": "L1.CL.104.Cys",
+  "D23": "L2.VL.23.Cys",
+  "D88": "L2.VL.88.Cys",
+  "D134": "L2.CL.24.Cys",
+  "D194": "L2.CL.84.Cys",
+  "D214": "L2.CL.104.Cys"
+ },
+ "legacy_map": {
+  "A-Cys22": "H1.VH.22.Cys",
+  "A-Cys96": "H1.VH.96.Cys",
+  "A-Cys147": "H1.CH1.30.Cys",
+  "A-Cys203": "H1.CH1.86.Cys",
+  "A-Cys223": "H1.CH1.106.Cys",
+  "A-Cys229": "H1.HINGE.1.Cys",
+  "A-Cys232": "H1.HINGE.4.Cys",
+  "A-Cys264": "H1.CH2.30.Cys",
+  "A-Cys324": "H1.CH2.90.Cys",
+  "A-Cys370": "H1.CH3.24.Cys",
+  "A-Cys428": "H1.CH3.82.Cys",
+  "B-Cys22": "H2.VH.22.Cys",
+  "B-Cys96": "H2.VH.96.Cys",
+  "B-Cys147": "H2.CH1.30.Cys",
+  "B-Cys203": "H2.CH1.86.Cys",
+  "B-Cys223": "H2.CH1.106.Cys",
+  "B-Cys229": "H2.HINGE.1.Cys",
+  "B-Cys232": "H2.HINGE.4.Cys",
+  "B-Cys264": "H2.CH2.30.Cys",
+  "B-Cys324": "H2.CH2.90.Cys",
+  "B-Cys370": "H2.CH3.24.Cys",
+  "B-Cys428": "H2.CH3.82.Cys",
+  "C-Cys23": "L1.VL.23.Cys",
+  "C-Cys88": "L1.VL.88.Cys",
+  "C-Cys134": "L1.CL.24.Cys",
+  "C-Cys194": "L1.CL.84.Cys",
+  "C-Cys214": "L1.CL.104.Cys",
+  "D-Cys23": "L2.VL.23.Cys",
+  "D-Cys88": "L2.VL.88.Cys",
+  "D-Cys134": "L2.CL.24.Cys",
+  "D-Cys194": "L2.CL.84.Cys",
+  "D-Cys214": "L2.CL.104.Cys"
+ },
+ "ssbond": [
+  {
+   "c1": "A",
+   "r1": 22,
+   "c2": "A",
+   "r2": 96,
+   "kind": "intra",
+   "addr1": "H1.VH.22.Cys",
+   "addr2": "H1.VH.96.Cys"
+  },
+  {
+   "c1": "B",
+   "r1": 22,
+   "c2": "B",
+   "r2": 96,
+   "kind": "intra",
+   "addr1": "H2.VH.22.Cys",
+   "addr2": "H2.VH.96.Cys"
+  },
+  {
+   "c1": "C",
+   "r1": 23,
+   "c2": "C",
+   "r2": 88,
+   "kind": "intra",
+   "addr1": "L1.VL.23.Cys",
+   "addr2": "L1.VL.88.Cys"
+  },
+  {
+   "c1": "D",
+   "r1": 23,
+   "c2": "D",
+   "r2": 88,
+   "kind": "intra",
+   "addr1": "L2.VL.23.Cys",
+   "addr2": "L2.VL.88.Cys"
+  },
+  {
+   "c1": "C",
+   "r1": 134,
+   "c2": "C",
+   "r2": 194,
+   "kind": "intra",
+   "addr1": "L1.CL.24.Cys",
+   "addr2": "L1.CL.84.Cys"
+  },
+  {
+   "c1": "D",
+   "r1": 134,
+   "c2": "D",
+   "r2": 194,
+   "kind": "intra",
+   "addr1": "L2.CL.24.Cys",
+   "addr2": "L2.CL.84.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 147,
+   "c2": "A",
+   "r2": 203,
+   "kind": "intra",
+   "addr1": "H1.CH1.30.Cys",
+   "addr2": "H1.CH1.86.Cys"
+  },
+  {
+   "c1": "B",
+   "r1": 147,
+   "c2": "B",
+   "r2": 203,
+   "kind": "intra",
+   "addr1": "H2.CH1.30.Cys",
+   "addr2": "H2.CH1.86.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 223,
+   "c2": "C",
+   "r2": 214,
+   "kind": "inter",
+   "addr1": "H1.CH1.106.Cys",
+   "addr2": "L1.CL.104.Cys"
+  },
+  {
+   "c1": "B",
+   "r1": 223,
+   "c2": "D",
+   "r2": 214,
+   "kind": "inter",
+   "addr1": "H2.CH1.106.Cys",
+   "addr2": "L2.CL.104.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 229,
+   "c2": "B",
+   "r2": 229,
+   "kind": "inter",
+   "addr1": "H1.HINGE.1.Cys",
+   "addr2": "H2.HINGE.1.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 232,
+   "c2": "B",
+   "r2": 232,
+   "kind": "inter",
+   "addr1": "H1.HINGE.4.Cys",
+   "addr2": "H2.HINGE.4.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 264,
+   "c2": "A",
+   "r2": 324,
+   "kind": "intra",
+   "addr1": "H1.CH2.30.Cys",
+   "addr2": "H1.CH2.90.Cys"
+  },
+  {
+   "c1": "B",
+   "r1": 264,
+   "c2": "B",
+   "r2": 324,
+   "kind": "intra",
+   "addr1": "H2.CH2.30.Cys",
+   "addr2": "H2.CH2.90.Cys"
+  },
+  {
+   "c1": "A",
+   "r1": 370,
+   "c2": "A",
+   "r2": 428,
+   "kind": "intra",
+   "addr1": "H1.CH3.24.Cys",
+   "addr2": "H1.CH3.82.Cys"
+  },
+  {
+   "c1": "B",
+   "r1": 370,
+   "c2": "B",
+   "r2": 428,
+   "kind": "intra",
+   "addr1": "H2.CH3.24.Cys",
+   "addr2": "H2.CH3.82.Cys"
+  }
+ ],
+ "symmetry_check_passed": true
+}

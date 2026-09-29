@@ -1,0 +1,13 @@
+{
+  "input": "B220_235_rosetta_best.pdb",
+  "output": "B220_235_disulfide_repaired.pdb",
+  "repaired_pairs": [
+    "A:223-C:214"
+  ],
+  "final_sg_distances": {
+    "A:CYS223-C:CYS214": 2.022,
+    "B:CYS223-D:CYS214": 2.028,
+    "A:CYS229-B:CYS229": 2.012,
+    "A:CYS232-B:CYS232": 2.04
+  }
+}

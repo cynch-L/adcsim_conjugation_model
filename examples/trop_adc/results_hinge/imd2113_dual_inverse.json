@@ -1,0 +1,27 @@
+{
+  "run": "IMD2113 dual-payload inverse",
+  "reduction_temp_C": 25.0,
+  "tcep_eq": 13.5,
+  "K": 0.4971,
+  "k_ratio": 1.0,
+  "warhead": "N-substituted maleimide (same for both payloads)",
+  "target_total_dar": 7.9,
+  "tcep_eq_table": {},
+  "recommended_feed": {
+    "target_4_4": {
+      "A": 9.02,
+      "B": 6.98
+    },
+    "equal_molar": {
+      "A": 8.0,
+      "B": 8.0
+    }
+  },
+  "assumption": {
+    "same_warhead": true,
+    "availability": 1.0,
+    "mw_unit_DXd": 893.5,
+    "mw_agonist": 800.0,
+    "tier": "C"
+  }
+}

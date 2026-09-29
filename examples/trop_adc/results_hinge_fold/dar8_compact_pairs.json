@@ -1,0 +1,15 @@
+{
+  "n_compact_pairs": 0,
+  "compact_counts": {
+    "A:CYS223": 60,
+    "B:CYS223": 60,
+    "A:CYS229": 60,
+    "B:CYS229": 4,
+    "A:CYS232": 60,
+    "B:CYS232": 1,
+    "C:CYS214": 12,
+    "D:CYS214": 35
+  },
+  "found": false,
+  "nodes": 0
+}

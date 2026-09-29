@@ -1,0 +1,423 @@
+# ADC conjugation model — every tunable parameter lives here.
+# Usage: python dar_v6_complete.py [--config adc_model_config.yaml]
+# Change numbers here, never in code. The code contains no magic numbers.
+#
+# SECTION NAMES follow the six links of the model, in Chinese-free English:
+#   disulfide_reduction    how many interchain disulfides open at a given TCEP feed
+#   site_accessibility     whether an opened thiol is exposed long enough
+#   thiol_activation       whether the thiol is in its reactive thiolate form
+# Covalent conjugation and combinatorial statistics are computed inside the
+# chemistry / process sections and carry no separate tuning block.
+# Sequence QC lives in packages/adcsim/seqqc.py and has no knobs here.
+# Renamed 2026-09-27 from the older gate1_reduction / gate2_accessibility /
+# gate3_activation keys. A config still carrying the old names will be silently
+# ignored: rename them, do not add aliases.
+
+process:
+  # ---- Default process window (set by the user, 2026-09-20) ----
+  # IgG1 only. Other isotypes (especially the IgG2 A1/A2 isoforms) do not apply.
+  reduction_buffer: PBS, pH 7.0     # reduction buffer
+  conjugation_buffer: PBS, pH 7.0   # conjugation buffer
+  desalting: complete               # model assumes complete desalting (TCEP -> 0)
+  quench_enabled: false             # quench is optional
+  quench_reagent: NAC               # default quencher: N-acetylcysteine
+  quench_excess: 20.0               # quencher : maleimide excess (only if enabled)
+
+  ph: 7.0                    # conjugation pH
+  # ---- Reduction pH (added 2026-09-26) ----
+  # The reduction step has its own pH, and TCEP's reactivity depends on it
+  # strongly (its nucleophilic phosphorus has pKa 7.6, see chemistry.tcep_p_pka),
+  # so a reduction pH different from the anchors' changes how many disulfides
+  # open. This is what made the model miss MediLink's pH 7.4 runs by 0.5 DAR.
+  reduction_ph: 7.0          # default = conjugation pH; set it explicitly
+  mab_uM: 67.0               # antibody molarity (µM) — 10 mg/mL ÷ 150 kDa ≈ 67 µM
+                             # CAREFUL: this one number sets BOTH the reduction
+                             # extent and the payload concentration. Get it wrong
+                             # and the physical reading of K is off entirely.
+  reduction_time_h: 2.0      # reduction duration (h) — drives the reduction extent
+  conjugation_time_h: 2.0    # conjugation duration (h) — drives effective exposure time
+  payload_feed_ratio: 6.0    # payload : antibody molar equivalents
+  tcep_eq: 2.5               # TCEP : antibody equivalents (the predicted condition)
+
+  # ---- Temperature (2026-09-26: user requirement) ----
+  # Why it is here: the single fitted knob K = k_TCEP x [mAb] x t_reduction, and
+  # k_TCEP is strongly temperature dependent. Anchors taken at two different
+  # temperatures therefore cannot share one K. Temperature is now an explicit
+  # input, never silently assumed.
+  reduction_temp_C: null     # REQUIRED. No default on purpose. The model refuses
+                             # to run without it. Typical values: 4 / 12 / 22 / 25 / 37
+  conjugation_temp_C: 22.0   # default: room temperature. The user's process always
+                             # conjugates at 22 C.
+  temp_ref_notes: >
+    Arrhenius correction. Ea below is BACK-DERIVED from assuming Q10 ~ 2 for the
+    TCEP-disulfide reaction. Q10 ~ 2 is a generic chemistry rule of thumb, NOT a
+    measured value for this reaction -> tier C. Replace with a measured
+    activation energy as soon as one is found.
+  ea_tcep_kJ_per_mol: 53.0   # from Q10=2 across 25 K: Ea = R*ln(2)*T1*T2/(T2-T1)
+  ea_k2_kJ_per_mol: null     # maleimide-thiol conjugation Ea. null = no correction
+                             # applied; k2_ref=300 is taken as measured at 22 C.
+
+# =====================================================================
+# Input module: reaction system (solution composition)
+# Consumed by the MD force field / solvent box, the ionic-strength correction
+# of pKa, and the LP hydrophobic-collapse strength.
+# IgG1 only — change this block when moving to another system.
+# =====================================================================
+solutions:
+  antibody_stock:                   # (1) antibody stock, before buffer exchange
+    buffer: PBS
+    ph: 7.0
+    mab_mg_mL: 10.0
+    excipients: []                  # e.g. ["5% sucrose", "0.02% PS20"]
+  antibody_after_exchange:          # (2) after desalting / ultrafiltration
+    buffer: PBS
+    ph: 7.0
+    edta_mM: 1.0                    # chelates free metal, suppresses thiol re-oxidation
+    mab_mg_mL: 5.0
+    residual_tcep_uM: 0.0           # model default 0; non-zero consumes maleimide 1:1
+    excipients: []
+  payload_solvent:                  # (3) LP solvent (the small-molecule side)
+    solvent: DMSO                   # DMSO | DMA | DMF | acetonitrile
+    stock_mM: 10.0
+    co_solvent_vv_max: 0.20         # max organic co-solvent fraction; above this the antibody denatures
+  reductant_solvent:                # (3b) reductant stock (TCEP)
+    reagent: TCEP
+    stock_mM: 20.0                  # TCEP stock concentration. Used by
+                                    # cosolvent_fraction() to charge the
+                                    # reductant's own volume to the organic
+                                    # fraction. Externalised so every default
+                                    # that can affect a run is recorded here.
+  reaction_medium:                  # (4) final conjugation mixture ((2) + (3))
+    co_solvent_vv: 0.10             # default 10% DMSO / 90% aqueous
+    ph: 7.0
+    ionic_strength_mM: 160.0        # PBS approximation; sets Debye length and pKa shift
+    temperature_C: 4.0              # standard ice-bath practice
+  final_storage:                    # (5) storage buffer (product stability only, not used for DAR)
+    buffer: PBS
+    ph: 7.4
+    excipients: ["5% trehalose"]    # common lyoprotectant
+
+# ---- Linker-payload QC: conformation and colloidal stability in the reaction medium ----
+# Answers: "the small molecule is too hydrophobic, so it aggregates with itself in
+# water and buries its own maleimide reaction end — it cannot react."
+# f_active multiplies directly into the effective payload concentration used by
+# the covalent conjugation step.
+payload_qc:
+  ensemble: examples/trop_adc/data/payload_ensemble_79.sdf   # 79 ETKDG/MMFF conformers
+  f_active_warn: 0.70          # reactive-end availability below this -> warn
+  f_active_crit: 0.40          # below this -> critical (tier-C initial value, needs own data)
+  # Temperature and co-solvent fraction are read from solutions.reaction_medium;
+  # deliberately not repeated here.
+
+  # ---- How much of the payload is monomeric in the reaction medium (2026-09-26) ----
+  # Above a critical aggregation concentration (CAC) the extra drug-linker goes
+  # into aggregates whose maleimide is buried, so feeding more stops helping.
+  #   log10(CAC_water)  = cac_logP_c0 - cac_logP_c1 * logP
+  #   log10(CAC_medium) = log10(CAC_water) + cosolvent_sigma * f_cosolvent
+  #   f_available       = min(1, CAC_medium / [payload])
+  # TIER C, and fitted on ONE payload pair in ONE medium (DL003/DL012 in ~13 %
+  # DMSO). The three numbers below are a hypothesis with the right shape, not a
+  # validated correlation. What would actually test them: run one payload at
+  # several feeds spanning its CAC and watch the loading stop being linear.
+  cac_logP_c0: -1.60          # M, log10 CAC of a logP=0 solute in water
+  cac_logP_c1: 0.60           # decades of CAC lost per unit logP
+  cosolvent_sigma: 1.60       # decades of CAC recovered per unit v/v co-solvent
+
+  # ---- Measured availability anchors (2026-09-26) --------------------------
+  # A payload listed here has at least one run where its loading was limited by
+  # how much of it was USABLE, not by thiols and not by feed. That is the only
+  # way to see the ceiling: everything else is masked by one of the other two.
+  #
+  #   DL012 anchor: MediLink WO2024235127A1, example 3.1. Trastuzumab 24.7 mg/mL,
+  #     TCEP 5.5 eq / 25 C / 90 min (so ~7.8 thiols were free), DL012 fed 5.0 eq,
+  #     2 h -> DAR 1.8. Neither thiols (7.8) nor feed (5.0) was the limit, so
+  #     only ~1.8 eq was usable: f_available = 0.36 at 7.3 % v/v DMSO.
+  #
+  #   The ceiling is NOT a constant. Example 2.8 in the same patent (12.7 % DMSO)
+  #     loads 3.25 eq of DL012, so the ceiling rises with the co-solvent. The two
+  #     together require cosolvent_sigma >= 9.8; 9.8 is that lower bound.
+  #
+  #   TIER C: one binding observation and two one-sided bounds. The numbers are
+  #   the smallest co-solvent dependence consistent with the data, not a fit.
+  #
+  #   HOW TO UPGRADE FROM C: the model form has a traceable source (REFERENCES.md
+  #   R14, Yalkowsky log-linear cosolvency, sigma = M*logP + N), but the published
+  #   M/N table does not include DMSO or DMA, so sigma cannot yet be computed
+  #   ab initio for our medium. Two ways out, in order of value:
+  #     1. regression by definition: sigma = log10(S_neat_cosolvent / S_water).
+  #        Measure solubility at 4 co-solvent fractions (0 / 5 / 10 / 20 % v/v)
+  #        by turbidity or clarified-supernatant concentration, take the slope.
+  #        Half a day of bench work, no literature constant needed.
+  #     2. borrow M/N from ethanol or PEG400 and label it a proxy explicitly.
+  #   Which payloads need this: only those whose solubility is close to the
+  #   working concentration. When solubility is far above it, sigma barely moves
+  #   the DAR and the C-grade proxy is good enough.
+  #   vc-MMAE anchor (2026-09-27): the SAME logP-only correlation that anchors
+  #     DL012 puts vc-MMAE (logP 5.08) at CAC = 33 uM in 10 % DMSO, i.e. it would
+  #     flag vc-MMAE as "92 % clumped, more feed will not help". That is FALSE:
+  #     vc-MMAE reaches DAR 8 at 8-10 equivalents in 10 % DMA, so at least
+  #     536 uM of it is usable. The vc-MMAE entry below is that real observation
+  #     written in as an anchor. It is an anchor, NOT a prediction - it has no
+  #     predictive value for vc-MMAE itself, only for other payloads reached by
+  #     logP extrapolation from these two anchors.
+  #
+  #   WHY ONE logP PARAMETER CANNOT DO BOTH: vc-MMAE (logP 5.08) is usable at
+  #     >= 536 uM while DL012 is usable at only ~296 uM. A single logP -> CAC
+  #     line cannot reproduce both. The missing descriptor is amphiphilicity:
+  #     vc-MMAE carries a Val-Cit-PAB polar peptide (tPSA 347 A^2), DL012 does
+  #     not. Any payload WITHOUT a polar solubilising tail is the case where the
+  #     logP line is expected to hold; payloads WITH one are the case where it
+  #     over-flags. Until a third anchor exists, treat the logP extrapolation as
+  #     a conservative upper bound on clustering.
+  known_payloads:
+    vc-MMAE:
+      cac_water_M: 3.71e-4       # log10 = -3.431; +1.6*0.10 -> 536 uM at 10 % co-solvent
+      cosolvent_sigma: 1.60
+      source: "user CRO practice: DAR 8 reached at 8-10 eq in 10 % DMA -> >=536 uM usable. LOWER BOUND on CAC, not a fitted value"
+      tier: "B (anchor, no predictive value for itself)"
+    DL012:
+      cac_water_M: 5.71e-5
+      cosolvent_sigma: 9.8
+      aliases: [eribulin, "艾日布林", "eribulin-LP"]
+      source: "WO2024235127A1 example 3.1 (binding) + example 2.8 (lower bound)"
+      tier: "C"
+
+  # ---- Steric discrimination between site classes (see class_factor_from_descriptors) ----
+  #   ln f_class = class_gamma0 * ln(MW_B/MW_A) * class_crowding[class]
+  # Calibrated on DL003 / DL012 (MW 1348 / 1673) with f_HC = 2.59, f_LC = 1.01.
+  # Heavy-chain sites are the crowding reference (=1); the light-chain site is
+  # ~100x less size-sensitive, consistent with it sitting on a flexible tail.
+  # ZERO DEGREES OF FREEDOM: one payload pair fixes two constants. It cannot be
+  # validated until a second pair with a different size ratio is measured.
+  class_gamma0: 4.41
+  class_crowding: {HC: 1.0, LC: 0.0105}
+
+chemistry:
+  # ---- TCEP pH dependence (added 2026-09-26) ----
+  # The nucleophilic phosphorus of TCEP has a measured pKa of 7.6, so only a
+  # fraction of the reductant is in the reactive form at process pH:
+  #   pH 7.0 -> 0.201 | pH 7.4 -> 0.386 | pH 7.5 -> 0.443 | pH 8.0 -> 0.715
+  # Source: Cline DJ et al., Biochemistry 2004;43(48):15195-203.
+  #   DOI 10.1021/bi048329a, PMID 15568811 ("...relative to that of TCEP (pK = 7.6)").
+  # MEASURED, tier B — unlike ea_tcep_kJ_per_mol above, which is assumed.
+  tcep_p_pka: 7.6
+  k2_ref: 300.0              # M⁻¹s⁻¹ apparent second-order rate, maleimide–thiol (literature, measured at pH 7)
+  k2_ph_ref: 7.0             # pH at which k2_ref was measured; scaling applies only away from this pH
+  k_hyd: 0.0                 # s⁻¹ maleimide hydrolysis rate. Verified negligible (t½ ≈ 26 h vs 38 s conjugation)
+  p_conj: 0.995              # conjugation probability = 1 − incomplete kinetics − hydrolysis − sterics
+                             # Source: computed by the covalent conjugation step
+                             # (raw conversion ≈ 1.000), NOT an external empirical value
+  k_hyd_note: "competition ratio ~2400:1, deduction <0.05%, negligible across the whole process window"
+
+disulfide_reduction:
+  model: shared_pool          # shared_pool (current) | pseudo_first_order (legacy, for comparison only)
+  k_open: null                # total opening extent; null = fitted from anchors
+  eta: 1.0                    # bookkeeping placeholder: share of TCEP spent on interchain bonds
+                              # *** DO NOT TUNE THIS TO MATCH A MEASURED DAR ***
+                              # (2026-09-28) Setting eta < 1 to close a gap to one experiment is
+                              # fitting a number to a result; it has no predictive power and will
+                              # be wrong again on the next batch. Keep 1.0 unless an independent
+                              # measurement of the consumed fraction exists.
+  n_bond: 4                   # number of interchain disulfides in IgG1
+
+site_accessibility:
+  sasa_lo: 5.0                # Å² threshold where scoring starts
+  sasa_span: 15.0             # Å² span over which scoring saturates
+  mirror_policy: conservative # sites without MD data are mirrored by symmetry (must be stated in the report)
+  # Per-site steric discount (0..1). When present, the model multiplies each
+  # site's conjugation probability by this factor. 1.0 = no discount (vc-MMAE
+  # reference). Computed by payload_qc.steric_discount(); leave null to skip.
+  steric_discount: null
+
+thiol_activation:
+  pka_eff: 8.5                # typical pKa of an exposed cysteine (not the buried static pKa)
+  pka_sd: 1.0                 # conformational spread
+  pka_scan: [7.0, 11.0]
+
+anchors:
+  # User-supplied HIC measurements; all 4 points are real measurements.
+  # A single fitted K is only valid for ONE reduction temperature, so the
+  # reduction temperature of each anchor must be stated. Mixed temperatures in
+  # one anchor set are supported (each row carries its own temperature).
+  tcep_eq: [2.00, 2.15, 2.50, 3.00]
+  mean_dar: [3.77, 3.97, 4.55, 5.38]
+  reduction_temp_C: [37.0, 37.0, 37.0, 37.0]   # CONFIRMED by the user 2026-09-26:
+                                               # all four HIC batches were reduced
+                                               # at 37 C. No longer an assumption,
+                                               # so K_ref = 1.1368 refers to 37 C
+                                               # unambiguously.
+  # The anchors' own process conditions. Needed because the single knob is
+  # K = k_TCEP x [mAb] x t_reduction: back-solving k_TCEP from K_ref requires the
+  # [mAb] and reduction time the anchors were ACTUALLY run at. A new protocol with
+  # different [mAb] / time must recombine these, not reuse K directly.
+  mab_uM: 67.0               # 10 mg/mL / 150 kDa (the user's standard process)
+  reduction_time_h: 2.0
+  # pH the anchors were reduced at. K_ref was fitted under THIS pH, so it must be
+  # peeled off before the constant is reused elsewhere (see f_tcep_active).
+  # TODO CONFIRM with the user: the 4 HIC batches are known to have been reduced
+  # at 37 C; their pH is still assumed to be 7.0 (the standard PBS process pH).
+  reduction_ph: 7.0
+  source: "user-supplied; all 4 points are real measurements"
+
+anchors_brentuximab:
+  # Second antibody (Brentuximab / cAC10, anti-CD30, chimeric IgG1-kappa) +
+  # vc-MMAE. Source: Mycenax conference poster. 25 mg/mL, 37 C, 2 h reduction,
+  # 6.6 eq payload. These are the ONLY anchors for a non-trastuzumab antibody
+  # in the project; they are what proves the model needs a per-antibody K.
+  tcep_eq: [2.5, 3.5, 4.5]
+  mean_dar: [4.0, 5.5, 7.0]
+  reduction_temp_C: [37.0, 37.0, 37.0]
+  mab_uM: 167.0               # 25 mg/mL / 150 kDa
+  reduction_time_h: 2.0
+  reduction_ph: 7.0
+  # Fitted with the Brentuximab ease profile (AF model 0, constant domain
+  # rebuilt on the trastuzumab IgG1 geometry because AlphaFold did not dimerise
+  # the Fc). Result: k_TCEP = 0.82 M^-1 s^-1, i.e. ~2.9x SLOWER than
+  # trastuzumab's 2.36. Leave-one-out (fit on 2 points, predict the 3rd):
+  # mean absolute error 0.49 DAR.
+  fitted_K: 0.9809
+  fitted_k_tcep_M_s: 0.816
+  loo_mae: 0.490
+  profile: results_hinge/ss_reduction_profile_brentuximab.json
+  source: "Mycenax poster: Brentuximab + vc-MMAE, 25 mg/mL, 37 C, 2 h, 6.6 eq"
+
+thresholds:
+  # Alarm specification limits (tier-C initial values; calibrate against own HIC batches)
+  odd_dar_pct_warn: 5.0
+  odd_dar_pct_crit: 10.0
+  high_dar_ge6_pct: 25.0
+  low_dar_le1_pct: 10.0
+  dar_std: 2.0
+  mean_dar_tolerance: 0.5
+  p_conj_warn: 0.98
+  p_conj_crit: 0.95
+  bond_yield_ratio_warn: 0.85
+  bond_yield_ratio_crit: 0.70
+  min_bond_open_ratio: 0.30
+  min_teff_s: 300.0
+  min_thiolate_pct: 1.0
+  kinetic_completion_min: 3.0
+  ph_window: [6.5, 8.5]
+
+# ---- Dual payload (two different payloads competing for the same thiols) ----
+# Branching ratio per thiol:  q_A = k_A*[A]_eff / (k_A*[A]_eff + k_B*[B]_eff)
+# With two maleimides k_A/k_B is measurable independently, so nothing here is fitted.
+dual_payload:
+  enabled: false
+  payload_A: null             # name of payload A, e.g. "Topo1i / C24"
+  payload_B: null             # name of payload B, e.g. "eribulin"
+  feed_eq_A: null             # molar equivalents vs antibody
+  feed_eq_B: null
+  k_ratio_A_over_B: 1.0       # k2_A / k2_B. 1.0 = same reactive group (two maleimides)
+  # ---- Per-site-class competitiveness factor for payload A ----
+  # Why this exists: two payloads compete with equal odds at every site only if
+  # reaching a site costs them the same. Size / charge / hydrophobicity make that
+  # false, and each site differs in how cramped it is, so the odds carry a site
+  # dimension. See dual_split_by_class(). 1.0 everywhere = old feed-ratio behaviour.
+  #
+  # Calibrated 2026-09-26 on MediLink WO2024235127A1 examples ADC-005..009,
+  # A = DL003 (Topo1i), B = DL012 (eribulin), from reduced-chain MS:
+  #   f_LC = 1.01, f_HC = 2.59   ->  RMSE 17.2 pp -> 10.4 pp (10 obs)
+  # Reading: at the heavy-chain sites DL003 is ~2.6x more competitive than at the
+  # light-chain sites, relative to DL012. Consistently 1.7-3.6x across all 5 runs.
+  #
+  # CAREFUL: these two numbers belong to THIS payload pair in THIS medium. They
+  # are a fitted observation, not a prediction; a new pair must be calibrated
+  # again. TIER C.
+  # WHAT IS STILL WRONG: the leftover 10.4 pp does not average out - it shifts
+  # together with the total drug-linker load, so the prime suspect is how much
+  # of the payload is actually available (solubility / self-association), not the
+  # competition itself. That is the payload-QC input still missing.
+  class_factor: null          # e.g. {LC: 1.01, HC: 2.59} for DL003 / DL012
+  # ---- What each payload IS, so the class factor can be computed instead of fitted ----
+  # Leaving both null keeps the old "one pair of numbers you must supply" route.
+  # Giving mw_A/mw_B switches on class_factor_from_descriptors(): the class
+  # factor then comes from the size ratio plus the shared crowding constants.
+  mw_A: null                  # g/mol of drug-linker A (not the naked toxin)
+  mw_B: null
+  logp_A: null                # optional; only used if class_logp_weight != 0
+  logp_B: null
+  # ---- Dosing order ----
+  # simultaneous (default): both present from t = 0, competing for every thiol.
+  # sequential:  A is added alone for stage1_h, then B joins for stage2_h and the
+  #              two compete only for the thiols A left behind. This is how most
+  #              published dual-payload ADCs with a controlled ratio are made.
+  dosing: simultaneous        # simultaneous | sequential
+  stage1_h: null              # hours A reacts alone (sequential only)
+  stage2_h: null              # hours after B is added (sequential only)
+
+# ---- Glycan conjugation (site-specific, N-glycan at Asn297) ----------------
+# A DIFFERENT chemistry with a DIFFERENT site rule, so it does not reuse the
+# cysteine route at all:
+#   · no disulfide reduction step (nothing needs opening)
+#   · sites are the conserved Fc N-glycans, one per heavy chain -> 2 sites
+#   · attachment is a three-stage enzymatic + click sequence, not one reaction
+#
+#   p_site = eff_trim x eff_transfer x eff_click      (staged, the real thing)
+#   p_site = eff_total                                (lumped, what we can
+#                                                      actually anchor today)
+#
+# Sites: Asn297 (EU numbering), the globally conserved IgG Fc N-glycosylation
+#   site. seqqc.find_glyco_sites() finds N-X-S/T sequons and splits Fab / Fc;
+#   the glycan route takes the Fc one only.
+# DAR: linear BCN-linker-drug -> 1 payload per site -> DAR 2.
+#      branched construct     -> 2 payloads per site -> DAR 4.
+#   Sources: van Geel et al., Bioconjug Chem 2015;26(11):2233-2242
+#            (DOI 10.1021/acs.bioconjchem.5b00224) and van Delft et al. 2022
+#            (PMID 35634725), which reports DAR 2 / DAR 4 formats.
+#
+# TIER: eff_total is a PLACEHOLDER (1.0) until a measured glycan-ADC DAR is
+# entered below. It is not fitted and not literature-sourced. Everything the
+# branch reports is proportional to it, so until `anchor` is set the branch
+# answers "what shape does the distribution have", not "what DAR will I get".
+glycan_conjugation:
+  enabled: false
+  site_rule: N297                 # EU numbering; the conserved Fc glycan
+  n_sites: 2                      # one per heavy chain
+  payloads_per_site: 1            # 1 -> DAR 2 (linear) | 2 -> DAR 4 (branched)
+  efficiency_mode: total          # total (one lumped number) | staged (three)
+  eff_total: 1.0                  # PLACEHOLDER, tier C. Replace with an anchor.
+  eff_trim: null                  # endoglycosidase trimming to core GlcNAc
+  eff_transfer: null              # glycosyl transferase, azidosugar tagging
+  eff_click: null                 # metal-free click (SPAAC, BCN or DBCO)
+  anchor_mean_dar: null           # measured mean DAR of a glycan ADC -> sets eff
+  anchor_source: null             # must be filled in together with the anchor
+  # What splitting into three stages would cost: three numbers instead of one,
+  # and each needs its own measurement. Listed so the split is a decision, not
+  # an accident.
+  staged_note: >
+    Three stages are only identifiable separately if each can be measured alone:
+    trimming by released-glycan or MS of the trimmed intermediate, transfer by
+    azide incorporation, click by DAR of the finished product given the first
+    two. Until then eff_total is the honest form and the staged form is a
+    sensitivity study, not a prediction.
+
+stats:
+  n_mc: 4000
+  seed: 20260918
+
+# ---- Biology layer: payload release kinetics (lysosomal) --------------------
+biology:
+  release:
+    kcat_km_M_s: 51111.0        # Dubowchik 2002 Bioconjug Chem 13:855-869 (DOI 10.1021/bc025536j)
+    km_M: 80.0e-6               # reported range 60–120 µM, midpoint taken (tier C)
+    catb_lysosome_M: 1.0e-3     # Xing 1998 Biochem J 332:499 (PMID 9601080), tumour-cell upper bound
+    catb_scan_M: [1.0e-9, 1.0e-6, 1.0e-3]   # sensitivity: enzyme level itself spans 3 orders of magnitude
+    lysosome_volume_fL: 0.1
+    n_adc_per_cell: 1.0e5       # ADC molecules internalised into lysosomes per cell (needs measurement)
+    n_lysosome_per_cell: 500
+    internalization_t_half_h: 4.0   # internalisation + trafficking timescale; default reference, MUST be replaced
+    ph_lysosome: 4.8            # consistent with the literature assay at pH 5.0; no pH correction applied
+
+  # ---- Bystander effect ----
+  bystander:
+    # Geometry: Krogh cylinder (Vasalou 2015 PLoS ONE 10(3):e0118977)
+    r_cap_um: 8.0            # capillary radius
+    r_krogh_um: 72.0         # Krogh cylinder radius = half the inter-capillary spacing
+    source_depth_um: 30.0    # depth the antibody can reach; tier C, needs own IHC calibration
+    d_payload_um2_s: 320.0   # effective payload diffusivity
+    d_adc_um2_s: 13.0        # effective antibody diffusivity (reference; antibody only reaches ~30 µm)
+    # k_clear is the most fragile number in this module: derived, not cited.
+    # It decides the top-three ranking and must be calibrated.
+    k_clear_per_s: 1.0e-3
+    k_clear_scan: [1.0e-5, 1.0e-4, 3.0e-4, 1.0e-3, 3.0e-3, 1.0e-2, 1.0e-1]

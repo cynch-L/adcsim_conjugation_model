@@ -1,0 +1,77 @@
+{
+  "score_cards": [
+    {
+      "file": "ADC_DAR1_min.pdb",
+      "n_lig_atoms": 94,
+      "rg": 11.75,
+      "span": 37.56,
+      "reach": 15.29,
+      "surface_contact": 7,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR2_min.pdb",
+      "n_lig_atoms": 188,
+      "rg": 16.11,
+      "span": 42.72,
+      "reach": 27.63,
+      "surface_contact": 17,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR3_min.pdb",
+      "n_lig_atoms": 282,
+      "rg": 17.98,
+      "span": 54.12,
+      "reach": 17.92,
+      "surface_contact": 43,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR4_min.pdb",
+      "n_lig_atoms": 376,
+      "rg": 21.3,
+      "span": 64.79,
+      "reach": 20.99,
+      "surface_contact": 79,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR5_min.pdb",
+      "n_lig_atoms": 470,
+      "rg": 21.17,
+      "span": 73.02,
+      "reach": 28.48,
+      "surface_contact": 87,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR6_min.pdb",
+      "n_lig_atoms": 564,
+      "rg": 21.59,
+      "span": 72.11,
+      "reach": 28.9,
+      "surface_contact": 95,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR7_omit_B229_min.pdb",
+      "n_lig_atoms": 658,
+      "rg": 20.3,
+      "span": 68.48,
+      "reach": 34.39,
+      "surface_contact": 115,
+      "local_ca_rmsd": 0.0
+    },
+    {
+      "file": "ADC_DAR7_omit_B232_min.pdb",
+      "n_lig_atoms": 658,
+      "rg": 21.2,
+      "span": 74.97,
+      "reach": 27.74,
+      "surface_contact": 113,
+      "local_ca_rmsd": 0.0
+    }
+  ],
+  "note": "scorecard != binding free energy; computational DAR != experimental DAR"
+}

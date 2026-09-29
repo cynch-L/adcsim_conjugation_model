@@ -1,0 +1,30 @@
+{
+  "sites": [
+    "A:CYS232",
+    "A:CYS229",
+    "A:CYS223",
+    "D:CYS214"
+  ],
+  "s_c_distances": [
+    {
+      "site": "A:CYS232",
+      "s_c": 1.820000000000001,
+      "pass": true
+    },
+    {
+      "site": "A:CYS229",
+      "s_c": 1.820000000000001,
+      "pass": true
+    },
+    {
+      "site": "A:CYS223",
+      "s_c": 1.8200000000000003,
+      "pass": true
+    },
+    {
+      "site": "D:CYS214",
+      "s_c": 1.820000000000001,
+      "pass": true
+    }
+  ]
+}

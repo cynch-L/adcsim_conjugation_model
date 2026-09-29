@@ -1,0 +1,27 @@
+{
+ "experimental_reference": "1N8Z (trastuzumab Fab + HER2, X-ray 2.52A)",
+ "key_finding": "Rosetta B220 over-buries light-chain C214 (5.9A clearance) vs experimental 9.1A",
+ "c214_sasa_1n8z": 77.20778105462279,
+ "c214_sasa_b220": 0.0,
+ "correction_factor_c214": 2.5,
+ "b220_sasa": {
+  "A:CYS223": 28.6,
+  "C:CYS214": 7.9,
+  "A:CYS229": 73.0,
+  "B:CYS229": 46.7,
+  "A:CYS232": 93.5,
+  "B:CYS232": 24.9,
+  "B:CYS223": 23.5,
+  "D:CYS214": 8.4
+ },
+ "corrected_sasa": {
+  "A:CYS223": 28.6,
+  "C:CYS214": 19.75,
+  "A:CYS229": 73.0,
+  "B:CYS229": 46.7,
+  "A:CYS232": 93.5,
+  "B:CYS232": 24.9,
+  "B:CYS223": 23.5,
+  "D:CYS214": 21.0
+ }
+}

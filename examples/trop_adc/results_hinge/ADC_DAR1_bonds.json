@@ -1,0 +1,12 @@
+{
+  "sites": [
+    "A:CYS232"
+  ],
+  "s_c_distances": [
+    {
+      "site": "A:CYS232",
+      "s_c": 1.8200000000000016,
+      "pass": true
+    }
+  ]
+}

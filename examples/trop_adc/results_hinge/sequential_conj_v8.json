@@ -1,0 +1,94 @@
+{
+  "n_reps": 200000,
+  "seed": 42,
+  "flex_radius_A": 15.0,
+  "flex_budget_A": 3.0,
+  "hard_cutoff_A": 2.0,
+  "p_red": 1.0,
+  "conformer_cap": 30,
+  "site_info": {
+    "A:CYS223": {
+      "site": "A:CYS223",
+      "n_soft_atoms_15A": 409,
+      "n_hard_atoms_15A": 9803,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 0.84,
+      "q_site": 1.0
+    },
+    "B:CYS223": {
+      "site": "B:CYS223",
+      "n_soft_atoms_15A": 462,
+      "n_hard_atoms_15A": 9750,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 1.13,
+      "q_site": 1.0
+    },
+    "A:CYS229": {
+      "site": "A:CYS229",
+      "n_soft_atoms_15A": 241,
+      "n_hard_atoms_15A": 9971,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 0.53,
+      "q_site": 1.0
+    },
+    "B:CYS229": {
+      "site": "B:CYS229",
+      "n_soft_atoms_15A": 272,
+      "n_hard_atoms_15A": 9940,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 0.7,
+      "q_site": 1.0
+    },
+    "A:CYS232": {
+      "site": "A:CYS232",
+      "n_soft_atoms_15A": 269,
+      "n_hard_atoms_15A": 9943,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 0.52,
+      "q_site": 1.0
+    },
+    "B:CYS232": {
+      "site": "B:CYS232",
+      "n_soft_atoms_15A": 324,
+      "n_hard_atoms_15A": 9888,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 0.72,
+      "q_site": 1.0
+    },
+    "C:CYS214": {
+      "site": "C:CYS214",
+      "n_soft_atoms_15A": 471,
+      "n_hard_atoms_15A": 9739,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 1.07,
+      "q_site": 1.0
+    },
+    "D:CYS214": {
+      "site": "D:CYS214",
+      "n_soft_atoms_15A": 490,
+      "n_hard_atoms_15A": 9720,
+      "n_directions": 266,
+      "n_dir_hard_blocked": 0,
+      "mean_max_push_A": 1.22,
+      "q_site": 1.0
+    }
+  },
+  "q_pair": {
+    "A:CYS223|B:CYS223": 1.0,
+    "A:CYS229|B:CYS229": 1.0,
+    "A:CYS232|B:CYS232": 1.0,
+    "C:CYS214|D:CYS214": 1.0
+  },
+  "dar_distribution_P": {
+    "8": 1.0
+  },
+  "mean_dar": 8.0,
+  "note": "Pure-geometric even-DAR. 4 pairs all reduced (p_red), DAR = 2 * sum Bernoulli(q_a*q_b). 15A flexible shell: hard atoms impenetrable, soft atoms pushable up to flex_budget."
+}

@@ -1,0 +1,666 @@
+{
+  "report": "<repo>/examples/trop_adc/results_hinge/polished/POLISH_REPORT.md",
+  "n": 8,
+  "results": [
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR1.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR1_min.pdb",
+      "engine": "fold+MMFF/UFF",
+      "n_solv": 1,
+      "n_fold": 1,
+      "n_mmff": 1,
+      "n_atoms_moved": 94,
+      "before": {
+        "n_lp": 1,
+        "protein_min": 3.1053969150496687,
+        "lp_min": null,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 3.1053969150496687
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 1,
+        "protein_min": 3.1053969150496687,
+        "lp_min": null,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 3.1053969150496687
+          }
+        ]
+      },
+      "note": "solv-collapsed 1; folded 1; smoothed 1 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR2.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR2_min.pdb",
+      "engine": "solv+fold",
+      "n_solv": 2,
+      "n_fold": 2,
+      "n_mmff": 0,
+      "n_atoms_moved": 188,
+      "before": {
+        "n_lp": 2,
+        "protein_min": 2.4212422431470992,
+        "lp_min": 2.4256681553749266,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.4212422431470992
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 2,
+        "protein_min": 2.3638246550875976,
+        "lp_min": 2.4256681553749266,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.3638246550875976
+          }
+        ]
+      },
+      "note": "solv-collapsed 2; folded 2; smoothed 0 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR3.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR3_min.pdb",
+      "engine": "fold+MMFF/UFF",
+      "n_solv": 3,
+      "n_fold": 2,
+      "n_mmff": 1,
+      "n_atoms_moved": 282,
+      "before": {
+        "n_lp": 3,
+        "protein_min": 2.378203313428017,
+        "lp_min": 2.35875475622202,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8198560382623665,
+            "protein_min": 2.6083103726358945
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012295,
+            "protein_min": 2.378203313428017
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS229",
+            "s_c": 1.8196060013090747,
+            "protein_min": 2.382773803784152
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 3,
+        "protein_min": 2.382773803784152,
+        "lp_min": 2.3405396813555623,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8198560382623665,
+            "protein_min": 2.6083103726358945
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012295,
+            "protein_min": 2.421802840860502
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS229",
+            "s_c": 1.8196060013090747,
+            "protein_min": 2.382773803784152
+          }
+        ]
+      },
+      "note": "solv-collapsed 3; folded 2; smoothed 1 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR4.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR4_min.pdb",
+      "engine": "fold+MMFF/UFF",
+      "n_solv": 4,
+      "n_fold": 2,
+      "n_mmff": 1,
+      "n_atoms_moved": 376,
+      "before": {
+        "n_lp": 4,
+        "protein_min": 2.3389132091636067,
+        "lp_min": 2.35875475622202,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8198560382623665,
+            "protein_min": 2.6083103726358945
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012295,
+            "protein_min": 2.378203313428017
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS229",
+            "s_c": 1.8196060013090747,
+            "protein_min": 2.382773803784152
+          },
+          {
+            "lp": 1004,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 4,
+        "protein_min": 2.3389132091636067,
+        "lp_min": 2.3405396813555623,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8198560382623665,
+            "protein_min": 2.6083103726358945
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012295,
+            "protein_min": 2.421802840860502
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS229",
+            "s_c": 1.8196060013090747,
+            "protein_min": 2.382773803784152
+          },
+          {
+            "lp": 1004,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          }
+        ]
+      },
+      "note": "solv-collapsed 4; folded 2; smoothed 1 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR5.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR5_min.pdb",
+      "engine": "solv+fold",
+      "n_solv": 5,
+      "n_fold": 4,
+      "n_mmff": 0,
+      "n_atoms_moved": 470,
+      "before": {
+        "n_lp": 5,
+        "protein_min": 2.271981293937078,
+        "lp_min": 2.343380037467247,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.4212422431470992
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8200928547741737,
+            "protein_min": 2.2833284914790517
+          },
+          {
+            "lp": 1005,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012297,
+            "protein_min": 2.271981293937078
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 5,
+        "protein_min": 2.271981293937078,
+        "lp_min": 2.343380037467247,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.4212422431470992
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8200928547741737,
+            "protein_min": 2.2833284914790517
+          },
+          {
+            "lp": 1005,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012297,
+            "protein_min": 2.271981293937078
+          }
+        ]
+      },
+      "note": "solv-collapsed 5; folded 4; smoothed 0 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR6.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR6_min.pdb",
+      "engine": "solv+fold",
+      "n_solv": 6,
+      "n_fold": 5,
+      "n_mmff": 0,
+      "n_atoms_moved": 564,
+      "before": {
+        "n_lp": 6,
+        "protein_min": 2.019587334085853,
+        "lp_min": 2.343380037467247,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.4212422431470992
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8200928547741737,
+            "protein_min": 2.2833284914790517
+          },
+          {
+            "lp": 1005,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012297,
+            "protein_min": 2.271981293937078
+          },
+          {
+            "lp": 1006,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.019587334085853
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 6,
+        "protein_min": 2.019587334085853,
+        "lp_min": 2.343380037467247,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "A:CYS232",
+            "s_c": 1.8199640106331771,
+            "protein_min": 2.7477483509229885
+          },
+          {
+            "lp": 1002,
+            "site": "A:CYS229",
+            "s_c": 1.8198733472415052,
+            "protein_min": 2.4212422431470992
+          },
+          {
+            "lp": 1003,
+            "site": "A:CYS223",
+            "s_c": 1.8200013736258553,
+            "protein_min": 2.3389132091636067
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8200928547741737,
+            "protein_min": 2.2833284914790517
+          },
+          {
+            "lp": 1005,
+            "site": "B:CYS229",
+            "s_c": 1.8199093384012297,
+            "protein_min": 2.271981293937078
+          },
+          {
+            "lp": 1006,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.019587334085853
+          }
+        ]
+      },
+      "note": "solv-collapsed 6; folded 5; smoothed 0 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR7_omit_B229.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR7_omit_B229_min.pdb",
+      "engine": "fold+MMFF/UFF",
+      "n_solv": 7,
+      "n_fold": 5,
+      "n_mmff": 1,
+      "n_atoms_moved": 658,
+      "before": {
+        "n_lp": 7,
+        "protein_min": 2.019587334085853,
+        "lp_min": 2.321613878318271,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.019587334085853
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS232",
+            "s_c": 1.8196285335199602,
+            "protein_min": 2.0482919713751753
+          },
+          {
+            "lp": 1003,
+            "site": "D:CYS214",
+            "s_c": 1.8200928547741726,
+            "protein_min": 2.210926502622825
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8199093384012293,
+            "protein_min": 2.187223125334953
+          },
+          {
+            "lp": 1005,
+            "site": "A:CYS223",
+            "s_c": 1.8205905635260227,
+            "protein_min": 2.0524867843667116
+          },
+          {
+            "lp": 1006,
+            "site": "A:CYS229",
+            "s_c": 1.8199640106331778,
+            "protein_min": 2.0754021297088423
+          },
+          {
+            "lp": 1007,
+            "site": "A:CYS232",
+            "s_c": 1.8199744503701138,
+            "protein_min": 2.229235294893744
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 7,
+        "protein_min": 2.019587334085853,
+        "lp_min": 2.321613878318271,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.019587334085853
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS232",
+            "s_c": 1.8196285335199602,
+            "protein_min": 2.0482919713751753
+          },
+          {
+            "lp": 1003,
+            "site": "D:CYS214",
+            "s_c": 1.8200928547741726,
+            "protein_min": 2.2137872526509867
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8199093384012293,
+            "protein_min": 2.2214297197975896
+          },
+          {
+            "lp": 1005,
+            "site": "A:CYS223",
+            "s_c": 1.8205905635260227,
+            "protein_min": 2.0524867843667116
+          },
+          {
+            "lp": 1006,
+            "site": "A:CYS229",
+            "s_c": 1.8199640106331778,
+            "protein_min": 2.0754021297088423
+          },
+          {
+            "lp": 1007,
+            "site": "A:CYS232",
+            "s_c": 1.8199744503701138,
+            "protein_min": 2.0456434195626563
+          }
+        ]
+      },
+      "note": "solv-collapsed 7; folded 5; smoothed 1 LP with MMFF/UFF"
+    },
+    {
+      "input": "<repo>/examples/trop_adc/results_hinge/ADC_DAR7_omit_B232.pdb",
+      "output": "<repo>/examples/trop_adc/results_hinge/polished/ADC_DAR7_omit_B232_min.pdb",
+      "engine": "solv+fold",
+      "n_solv": 7,
+      "n_fold": 5,
+      "n_mmff": 0,
+      "n_atoms_moved": 658,
+      "before": {
+        "n_lp": 7,
+        "protein_min": 2.0073913420158016,
+        "lp_min": 2.062499696969675,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.0073913420158016
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.819856038262368,
+            "protein_min": 2.122802393064412
+          },
+          {
+            "lp": 1003,
+            "site": "D:CYS214",
+            "s_c": 1.8200200548345606,
+            "protein_min": 2.0400132352511826
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8198560382623679,
+            "protein_min": 2.0336767196385956
+          },
+          {
+            "lp": 1005,
+            "site": "A:CYS223",
+            "s_c": 1.8205905635260227,
+            "protein_min": 2.035850190952174
+          },
+          {
+            "lp": 1006,
+            "site": "A:CYS229",
+            "s_c": 1.8199640106331776,
+            "protein_min": 2.00900572423276
+          },
+          {
+            "lp": 1007,
+            "site": "A:CYS232",
+            "s_c": 1.820176639779777,
+            "protein_min": 2.6223983297737217
+          }
+        ]
+      },
+      "after": {
+        "n_lp": 7,
+        "protein_min": 2.0073913420158016,
+        "lp_min": 2.0400946056494544,
+        "bond_ok": true,
+        "clash_ok": true,
+        "pass": true,
+        "per_site": [
+          {
+            "lp": 1001,
+            "site": "C:CYS214",
+            "s_c": 1.81952576238975,
+            "protein_min": 2.0073913420158016
+          },
+          {
+            "lp": 1002,
+            "site": "B:CYS229",
+            "s_c": 1.819856038262368,
+            "protein_min": 2.066742848058268
+          },
+          {
+            "lp": 1003,
+            "site": "D:CYS214",
+            "s_c": 1.8200200548345606,
+            "protein_min": 2.0400132352511826
+          },
+          {
+            "lp": 1004,
+            "site": "B:CYS223",
+            "s_c": 1.8198560382623679,
+            "protein_min": 2.0336767196385956
+          },
+          {
+            "lp": 1005,
+            "site": "A:CYS223",
+            "s_c": 1.8205905635260227,
+            "protein_min": 2.035850190952174
+          },
+          {
+            "lp": 1006,
+            "site": "A:CYS229",
+            "s_c": 1.8199640106331776,
+            "protein_min": 2.00900572423276
+          },
+          {
+            "lp": 1007,
+            "site": "A:CYS232",
+            "s_c": 1.820176639779777,
+            "protein_min": 2.6223983297737217
+          }
+        ]
+      },
+      "note": "solv-collapsed 7; folded 5; smoothed 0 LP with MMFF/UFF"
+    }
+  ]
+}

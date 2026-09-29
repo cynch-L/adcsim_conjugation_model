@@ -1,0 +1,438 @@
+{
+  "ADC_DAR1.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.802,
+      "conformer_idx": 37,
+      "cos": 0.97,
+      "span_new": 18.3,
+      "span_old": 17.1,
+      "roll_deg": 120.0,
+      "reason": null
+    }
+  },
+  "ADC_DAR2.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.798,
+      "conformer_idx": 27,
+      "cos": 0.957,
+      "span_new": 18.1,
+      "span_old": 17.1,
+      "roll_deg": 75.0,
+      "reason": null
+    },
+    "1002": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.964,
+      "conformer_idx": 34,
+      "cos": 0.872,
+      "span_new": 18.2,
+      "span_old": 16.5,
+      "roll_deg": 90.0,
+      "reason": null
+    }
+  },
+  "ADC_DAR3.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.798,
+      "conformer_idx": 27,
+      "cos": 0.957,
+      "span_new": 18.1,
+      "span_old": 17.1,
+      "roll_deg": 75.0,
+      "reason": null
+    },
+    "1002": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.964,
+      "conformer_idx": 34,
+      "cos": 0.872,
+      "span_new": 18.2,
+      "span_old": 16.5,
+      "roll_deg": 90.0,
+      "reason": null
+    },
+    "1003": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.361,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 28.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    }
+  },
+  "ADC_DAR4.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.798,
+      "conformer_idx": 27,
+      "cos": 0.957,
+      "span_new": 18.1,
+      "span_old": 17.1,
+      "roll_deg": 75.0,
+      "reason": null
+    },
+    "1002": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.964,
+      "conformer_idx": 34,
+      "cos": 0.872,
+      "span_new": 18.2,
+      "span_old": 16.5,
+      "roll_deg": 90.0,
+      "reason": null
+    },
+    "1003": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.361,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 28.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1004": {
+      "site": "D:CYS214",
+      "ok": true,
+      "tier": "plus",
+      "min_dist_protein": 1.971,
+      "conformer_idx": 96,
+      "cos": 0.263,
+      "span_new": 33.2,
+      "span_old": 33.2,
+      "roll_deg": 300.0,
+      "reason": null
+    }
+  },
+  "ADC_DAR5.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.853,
+      "conformer_idx": 49,
+      "cos": 0.921,
+      "span_new": 18.5,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    },
+    "1002": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.785,
+      "conformer_idx": 30,
+      "cos": 0.911,
+      "span_new": 18.1,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    },
+    "1003": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.628,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1004": {
+      "site": "B:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.454,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.9,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1005": {
+      "site": "B:CYS229",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.533,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.4,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    }
+  },
+  "ADC_DAR6.pdb": {
+    "1001": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.853,
+      "conformer_idx": 49,
+      "cos": 0.921,
+      "span_new": 18.5,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    },
+    "1002": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.785,
+      "conformer_idx": 30,
+      "cos": 0.911,
+      "span_new": 18.1,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    },
+    "1003": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.628,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1004": {
+      "site": "B:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.454,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.9,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1005": {
+      "site": "B:CYS229",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.533,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.4,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1006": {
+      "site": "C:CYS214",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.498,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 36.3,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    }
+  },
+  "ADC_DAR7_omit_B229.pdb": {
+    "1001": {
+      "site": "C:CYS214",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.498,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 36.3,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1002": {
+      "site": "B:CYS232",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.208,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.4,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1003": {
+      "site": "D:CYS214",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.338,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 36.8,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1004": {
+      "site": "B:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.464,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1005": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.461,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 41.5,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1006": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.943,
+      "conformer_idx": 6,
+      "cos": 0.39,
+      "span_new": 17.5,
+      "span_old": 37.5,
+      "roll_deg": 45.0,
+      "reason": null
+    },
+    "1007": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.718,
+      "conformer_idx": 36,
+      "cos": 0.498,
+      "span_new": 18.3,
+      "span_old": 36.5,
+      "roll_deg": 120.0,
+      "reason": null
+    }
+  },
+  "ADC_DAR7_omit_B232.pdb": {
+    "1001": {
+      "site": "C:CYS214",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.496,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 38.8,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1002": {
+      "site": "B:CYS229",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.5,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 39.4,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1003": {
+      "site": "D:CYS214",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.171,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 41.3,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1004": {
+      "site": "B:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.279,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 41.3,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1005": {
+      "site": "A:CYS223",
+      "ok": false,
+      "tier": null,
+      "min_dist_protein": 0.461,
+      "conformer_idx": null,
+      "cos": null,
+      "span_new": null,
+      "span_old": 32.7,
+      "roll_deg": null,
+      "reason": "no clash-free conformer in either tier"
+    },
+    "1006": {
+      "site": "A:CYS229",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 1.941,
+      "conformer_idx": 49,
+      "cos": 0.874,
+      "span_new": 18.5,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    },
+    "1007": {
+      "site": "A:CYS232",
+      "ok": true,
+      "tier": "collapsed",
+      "min_dist_protein": 2.115,
+      "conformer_idx": 46,
+      "cos": 0.941,
+      "span_new": 18.5,
+      "span_old": 37.5,
+      "roll_deg": 315.0,
+      "reason": null
+    }
+  }
+}

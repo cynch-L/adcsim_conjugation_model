@@ -1,0 +1,170 @@
+{
+  "DAR1": {
+    "sites": [
+      "A232"
+    ],
+    "n_requested": 1,
+    "n_placed": 1,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 1217,
+    "frames_fully_placed": 40,
+    "n_frames_scanned": 40,
+    "mean_rg": 6.24,
+    "min_dist": 2.57,
+    "n_collapsed": 1,
+    "tiers": {
+      "A232": "collapsed"
+    }
+  },
+  "DAR2": {
+    "sites": [
+      "A229",
+      "A232"
+    ],
+    "n_requested": 2,
+    "n_placed": 2,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 214,
+    "frames_fully_placed": 38,
+    "n_frames_scanned": 38,
+    "mean_rg": 6.21,
+    "min_dist": 2.18,
+    "n_collapsed": 2,
+    "tiers": {
+      "A229": "collapsed",
+      "A232": "collapsed"
+    }
+  },
+  "DAR3": {
+    "sites": [
+      "A223",
+      "A229",
+      "A232"
+    ],
+    "n_requested": 3,
+    "n_placed": 3,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 118,
+    "frames_fully_placed": 30,
+    "n_frames_scanned": 36,
+    "mean_rg": 6.32,
+    "min_dist": 2.02,
+    "n_collapsed": 3,
+    "tiers": {
+      "A223": "collapsed",
+      "A229": "collapsed",
+      "A232": "collapsed"
+    }
+  },
+  "DAR4": {
+    "sites": [
+      "A223",
+      "A229",
+      "A232",
+      "D214"
+    ],
+    "n_requested": 4,
+    "n_placed": 4,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 118,
+    "frames_fully_placed": 32,
+    "n_frames_scanned": 38,
+    "mean_rg": 6.3,
+    "min_dist": 2.02,
+    "n_collapsed": 4,
+    "tiers": {
+      "A223": "collapsed",
+      "A229": "collapsed",
+      "A232": "collapsed",
+      "D214": "collapsed"
+    }
+  },
+  "DAR5": {
+    "sites": [
+      "A223",
+      "A229",
+      "A232",
+      "B223",
+      "B229"
+    ],
+    "n_requested": 5,
+    "n_placed": 5,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 118,
+    "frames_fully_placed": 32,
+    "n_frames_scanned": 40,
+    "mean_rg": 6.36,
+    "min_dist": 2.02,
+    "n_collapsed": 5,
+    "tiers": {
+      "A223": "collapsed",
+      "A229": "collapsed",
+      "A232": "collapsed",
+      "B223": "collapsed",
+      "B229": "collapsed"
+    }
+  },
+  "DAR6": {
+    "sites": [
+      "A223",
+      "A229",
+      "A232",
+      "B223",
+      "B229",
+      "C214"
+    ],
+    "n_requested": 6,
+    "n_placed": 6,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 1,
+    "frames_fully_placed": 10,
+    "n_frames_scanned": 31,
+    "mean_rg": 7.08,
+    "min_dist": 2.01,
+    "n_collapsed": 5,
+    "tiers": {
+      "A223": "collapsed",
+      "A229": "collapsed",
+      "A232": "extended",
+      "B223": "collapsed",
+      "B229": "collapsed",
+      "C214": "collapsed"
+    }
+  },
+  "DAR7_omit": {
+    "sites": [
+      "A223",
+      "A229",
+      "A232",
+      "B223",
+      "B229",
+      "C214",
+      "D214"
+    ],
+    "n_requested": 7,
+    "n_placed": 7,
+    "complete": true,
+    "source_npz": "allcut_r2.npz",
+    "best_frame": 1,
+    "frames_fully_placed": 10,
+    "n_frames_scanned": 32,
+    "mean_rg": 6.95,
+    "min_dist": 2.01,
+    "n_collapsed": 6,
+    "tiers": {
+      "A223": "collapsed",
+      "A229": "collapsed",
+      "A232": "extended",
+      "B223": "collapsed",
+      "B229": "collapsed",
+      "C214": "collapsed",
+      "D214": "collapsed"
+    }
+  }
+}

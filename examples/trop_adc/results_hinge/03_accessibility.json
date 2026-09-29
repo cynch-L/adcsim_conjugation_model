@@ -1,0 +1,148 @@
+{
+  "n_cys": 32,
+  "conjugation_type": "cysteine",
+  "warhead": null,
+  "classifier": null,
+  "n_disulfides": 16,
+  "reduction_profile": [
+    {
+      "bond": "A:CYS229-B:CYS229",
+      "type": "interchain",
+      "distance_A": 2.01,
+      "sg_sasa_A2": 20.9,
+      "reduction_difficulty": "medium"
+    },
+    {
+      "bond": "A:CYS223-C:CYS214",
+      "type": "interchain",
+      "distance_A": 2.02,
+      "sg_sasa_A2": 2.1,
+      "reduction_difficulty": "hard"
+    },
+    {
+      "bond": "B:CYS223-D:CYS214",
+      "type": "interchain",
+      "distance_A": 2.03,
+      "sg_sasa_A2": 4.3,
+      "reduction_difficulty": "hard"
+    },
+    {
+      "bond": "A:CYS232-B:CYS232",
+      "type": "interchain",
+      "distance_A": 2.04,
+      "sg_sasa_A2": 19.7,
+      "reduction_difficulty": "medium"
+    }
+  ],
+  "sites_in": [
+    "A:CYS223",
+    "B:CYS223",
+    "A:CYS229",
+    "B:CYS229",
+    "A:CYS232",
+    "B:CYS232",
+    "C:CYS214",
+    "D:CYS214"
+  ],
+  "sites_keep": [
+    "A:CYS223",
+    "B:CYS223",
+    "A:CYS229",
+    "B:CYS229",
+    "A:CYS232",
+    "B:CYS232",
+    "C:CYS214",
+    "D:CYS214"
+  ],
+  "sites_dropped": [],
+  "rows": [
+    {
+      "site": "A:CYS223",
+      "cys_sasa": 32.33303073530937,
+      "sg_sasa": 2.1446605848506324,
+      "neighbors_4A": 14,
+      "n_open_rays": 28,
+      "n_attack_rays": 22,
+      "best_attack_angle_deg": 70.00070324555755,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "B:CYS223",
+      "cys_sasa": 19.504965452906166,
+      "sg_sasa": 2.1446605848506324,
+      "neighbors_4A": 7,
+      "n_open_rays": 22,
+      "n_attack_rays": 22,
+      "best_attack_angle_deg": 94.7579943531506,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "A:CYS229",
+      "cys_sasa": 54.979295626490995,
+      "sg_sasa": 7.908435906636706,
+      "neighbors_4A": 10,
+      "n_open_rays": 35,
+      "n_attack_rays": 22,
+      "best_attack_angle_deg": 70.67776874510531,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "B:CYS229",
+      "cys_sasa": 36.22423357598447,
+      "sg_sasa": 13.002004795656958,
+      "neighbors_4A": 8,
+      "n_open_rays": 25,
+      "n_attack_rays": 14,
+      "best_attack_angle_deg": 73.09172344039563,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "A:CYS232",
+      "cys_sasa": 59.70658099204146,
+      "sg_sasa": 16.621119532592402,
+      "neighbors_4A": 6,
+      "n_open_rays": 87,
+      "n_attack_rays": 66,
+      "best_attack_angle_deg": 71.19476333083445,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "B:CYS232",
+      "cys_sasa": 21.000148880516914,
+      "sg_sasa": 3.082949590722784,
+      "neighbors_4A": 6,
+      "n_open_rays": 19,
+      "n_attack_rays": 8,
+      "best_attack_angle_deg": 72.06921206521005,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    },
+    {
+      "site": "C:CYS214",
+      "cys_sasa": 10.204818399695515,
+      "sg_sasa": 0.0,
+      "neighbors_4A": 13,
+      "n_open_rays": 2,
+      "n_attack_rays": 2,
+      "best_attack_angle_deg": 82.2268472908797,
+      "verdict": "WARN",
+      "reason": "few open rays (2)"
+    },
+    {
+      "site": "D:CYS214",
+      "cys_sasa": 7.432898262650575,
+      "sg_sasa": 2.1446605848506324,
+      "neighbors_4A": 9,
+      "n_open_rays": 40,
+      "n_attack_rays": 10,
+      "best_attack_angle_deg": 70.91746090951418,
+      "verdict": "PASS",
+      "reason": "solvent-accessible thiol with an open approach cone"
+    }
+  ]
+}

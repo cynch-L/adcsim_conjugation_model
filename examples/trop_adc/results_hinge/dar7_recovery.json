@@ -1,0 +1,779 @@
+{
+  "note": "Beam funnel (max_states=80) reported DAR7 empty. Full-library backtrack finds DAR7 if B229 xor B232 is omitted. DAR8 impossible: B229 vs B232 have 0 compatible pose pairs.",
+  "pairwise_hard_block": [
+    "B:CYS229",
+    "B:CYS232"
+  ],
+  "hits": [
+    {
+      "omit": "B:CYS229",
+      "tag": "omit_B229",
+      "hit": 1,
+      "pass": true,
+      "protein_min": 2.0194546898197814,
+      "lp_min": 2.321484243498983,
+      "sites": [
+        "C:CYS214",
+        "B:CYS232",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 1,
+        "B:CYS232": 2,
+        "D:CYS214": 1,
+        "B:CYS223": 80,
+        "A:CYS223": 84,
+        "A:CYS229": 0,
+        "A:CYS232": 5
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.0194546898197814,
+          "roll": 0
+        },
+        {
+          "site": "B:CYS232",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.048482517027811,
+          "roll": 240
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.211084749853006,
+          "roll": 240
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.187539527731074,
+          "roll": 210
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0529634010053237,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.0754373002642503,
+          "roll": 90
+        },
+        {
+          "site": "A:CYS232",
+          "side": "front",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.228781756572911,
+          "roll": 0
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS229",
+      "tag": "omit_B229",
+      "hit": 2,
+      "pass": true,
+      "protein_min": 2.0194546898197814,
+      "lp_min": 2.2191590728086004,
+      "sites": [
+        "C:CYS214",
+        "B:CYS232",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 1,
+        "B:CYS232": 2,
+        "D:CYS214": 1,
+        "B:CYS223": 80,
+        "A:CYS223": 84,
+        "A:CYS229": 0,
+        "A:CYS232": 40
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.0194546898197814,
+          "roll": 0
+        },
+        {
+          "site": "B:CYS232",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.048482517027811,
+          "roll": 240
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.211084749853006,
+          "roll": 240
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.187539527731074,
+          "roll": 210
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0529634010053237,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.0754373002642503,
+          "roll": 90
+        },
+        {
+          "site": "A:CYS232",
+          "side": "front",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.2267862001949923,
+          "roll": 240
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS229",
+      "tag": "omit_B229",
+      "hit": 3,
+      "pass": true,
+      "protein_min": 2.0194546898197814,
+      "lp_min": 2.0517069056260215,
+      "sites": [
+        "C:CYS214",
+        "B:CYS232",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 1,
+        "B:CYS232": 2,
+        "D:CYS214": 1,
+        "B:CYS223": 80,
+        "A:CYS223": 84,
+        "A:CYS229": 0,
+        "A:CYS232": 58
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.0194546898197814,
+          "roll": 0
+        },
+        {
+          "site": "B:CYS232",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.048482517027811,
+          "roll": 240
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.211084749853006,
+          "roll": 240
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.187539527731074,
+          "roll": 210
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0529634010053237,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.0754373002642503,
+          "roll": 90
+        },
+        {
+          "site": "A:CYS232",
+          "side": "front",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.334654192324553,
+          "roll": 300
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS229",
+      "tag": "omit_B229",
+      "hit": 4,
+      "pass": true,
+      "protein_min": 2.0194546898197814,
+      "lp_min": 2.1877556933266717,
+      "sites": [
+        "C:CYS214",
+        "B:CYS232",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 1,
+        "B:CYS232": 2,
+        "D:CYS214": 1,
+        "B:CYS223": 80,
+        "A:CYS223": 84,
+        "A:CYS229": 0,
+        "A:CYS232": 91
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.0194546898197814,
+          "roll": 0
+        },
+        {
+          "site": "B:CYS232",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.048482517027811,
+          "roll": 240
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.211084749853006,
+          "roll": 240
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.187539527731074,
+          "roll": 210
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0529634010053237,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.0754373002642503,
+          "roll": 90
+        },
+        {
+          "site": "A:CYS232",
+          "side": "front",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.17870256466581,
+          "roll": 0
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS229",
+      "tag": "omit_B229",
+      "hit": 5,
+      "pass": true,
+      "protein_min": 2.0194546898197814,
+      "lp_min": 2.1576792649387926,
+      "sites": [
+        "C:CYS214",
+        "B:CYS232",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 1,
+        "B:CYS232": 2,
+        "D:CYS214": 1,
+        "B:CYS223": 80,
+        "A:CYS223": 84,
+        "A:CYS229": 0,
+        "A:CYS232": 112
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.0194546898197814,
+          "roll": 0
+        },
+        {
+          "site": "B:CYS232",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.048482517027811,
+          "roll": 240
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.211084749853006,
+          "roll": 240
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.187539527731074,
+          "roll": 210
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0529634010053237,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.0754373002642503,
+          "roll": 90
+        },
+        {
+          "site": "A:CYS232",
+          "side": "front",
+          "bond": 1.8200000000000005,
+          "protein_min": 2.287643920276705,
+          "roll": 60
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS232",
+      "tag": "omit_B232",
+      "hit": 1,
+      "pass": true,
+      "protein_min": 2.007697327139121,
+      "lp_min": 2.06167516900204,
+      "sites": [
+        "C:CYS214",
+        "B:CYS229",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 0,
+        "B:CYS229": 2,
+        "D:CYS214": 0,
+        "B:CYS223": 8,
+        "A:CYS223": 88,
+        "A:CYS229": 4,
+        "A:CYS232": 198
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.007697327139121,
+          "roll": 300
+        },
+        {
+          "site": "B:CYS229",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.1231641502721397,
+          "roll": 210
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.820000000000001,
+          "protein_min": 2.0400713913133024,
+          "roll": 210
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.03418120494431,
+          "roll": 300
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0357301986591745,
+          "roll": 0
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.009051997853991,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS232",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.6225347268484422,
+          "roll": 240
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS232",
+      "tag": "omit_B232",
+      "hit": 2,
+      "pass": true,
+      "protein_min": 2.007697327139121,
+      "lp_min": 2.1746900157502345,
+      "sites": [
+        "C:CYS214",
+        "B:CYS229",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 0,
+        "B:CYS229": 2,
+        "D:CYS214": 0,
+        "B:CYS223": 8,
+        "A:CYS223": 88,
+        "A:CYS229": 4,
+        "A:CYS232": 209
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.007697327139121,
+          "roll": 300
+        },
+        {
+          "site": "B:CYS229",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.1231641502721397,
+          "roll": 210
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.820000000000001,
+          "protein_min": 2.0400713913133024,
+          "roll": 210
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.03418120494431,
+          "roll": 300
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0357301986591745,
+          "roll": 0
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.009051997853991,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS232",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.081842945077443,
+          "roll": 0
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS232",
+      "tag": "omit_B232",
+      "hit": 3,
+      "pass": true,
+      "protein_min": 2.007697327139121,
+      "lp_min": 2.1746900157502345,
+      "sites": [
+        "C:CYS214",
+        "B:CYS229",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 0,
+        "B:CYS229": 2,
+        "D:CYS214": 0,
+        "B:CYS223": 8,
+        "A:CYS223": 88,
+        "A:CYS229": 4,
+        "A:CYS232": 214
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.007697327139121,
+          "roll": 300
+        },
+        {
+          "site": "B:CYS229",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.1231641502721397,
+          "roll": 210
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.820000000000001,
+          "protein_min": 2.0400713913133024,
+          "roll": 210
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.03418120494431,
+          "roll": 300
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0357301986591745,
+          "roll": 0
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.009051997853991,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS232",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.2949482150650473,
+          "roll": 330
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS232",
+      "tag": "omit_B232",
+      "hit": 4,
+      "pass": true,
+      "protein_min": 2.007697327139121,
+      "lp_min": 2.1746900157502345,
+      "sites": [
+        "C:CYS214",
+        "B:CYS229",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 0,
+        "B:CYS229": 2,
+        "D:CYS214": 0,
+        "B:CYS223": 8,
+        "A:CYS223": 88,
+        "A:CYS229": 4,
+        "A:CYS232": 215
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.007697327139121,
+          "roll": 300
+        },
+        {
+          "site": "B:CYS229",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.1231641502721397,
+          "roll": 210
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.820000000000001,
+          "protein_min": 2.0400713913133024,
+          "roll": 210
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.03418120494431,
+          "roll": 300
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0357301986591745,
+          "roll": 0
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.009051997853991,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS232",
+          "side": "back",
+          "bond": 1.8200000000000014,
+          "protein_min": 2.5012410949936474,
+          "roll": 0
+        }
+      ]
+    },
+    {
+      "omit": "B:CYS232",
+      "tag": "omit_B232",
+      "hit": 5,
+      "pass": true,
+      "protein_min": 2.007697327139121,
+      "lp_min": 2.1746900157502345,
+      "sites": [
+        "C:CYS214",
+        "B:CYS229",
+        "D:CYS214",
+        "B:CYS223",
+        "A:CYS223",
+        "A:CYS229",
+        "A:CYS232"
+      ],
+      "pose_indices": {
+        "C:CYS214": 0,
+        "B:CYS229": 2,
+        "D:CYS214": 0,
+        "B:CYS223": 8,
+        "A:CYS223": 88,
+        "A:CYS229": 4,
+        "A:CYS232": 216
+      },
+      "per_site": [
+        {
+          "site": "C:CYS214",
+          "side": "front",
+          "bond": 1.8199999999999996,
+          "protein_min": 2.007697327139121,
+          "roll": 300
+        },
+        {
+          "site": "B:CYS229",
+          "side": "front",
+          "bond": 1.8199999999999998,
+          "protein_min": 2.1231641502721397,
+          "roll": 210
+        },
+        {
+          "site": "D:CYS214",
+          "side": "front",
+          "bond": 1.820000000000001,
+          "protein_min": 2.0400713913133024,
+          "roll": 210
+        },
+        {
+          "site": "B:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.03418120494431,
+          "roll": 300
+        },
+        {
+          "site": "A:CYS223",
+          "side": "back",
+          "bond": 1.82,
+          "protein_min": 2.0357301986591745,
+          "roll": 0
+        },
+        {
+          "site": "A:CYS229",
+          "side": "back",
+          "bond": 1.8200000000000003,
+          "protein_min": 2.009051997853991,
+          "roll": 30
+        },
+        {
+          "site": "A:CYS232",
+          "side": "back",
+          "bond": 1.8200000000000014,
+          "protein_min": 2.3470774536939683,
+          "roll": 30
+        }
+      ]
+    }
+  ]
+}

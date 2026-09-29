@@ -1,0 +1,58 @@
+{
+  "run_tag": null,
+  "chemistry": "glycan (N297, enzymatic remodel + click)",
+  "n_sites": 2,
+  "payloads_per_site": 1,
+  "p_site": 0.857,
+  "p_site_info": {
+    "mode": "total",
+    "eff_total": 0.857,
+    "p_site": 0.857,
+    "note": "one lumped number; the staged split is only honest once each stage is measured on its own"
+  },
+  "inverse": null,
+  "staged_split": {
+    "equal_split_each": 0.9499,
+    "n_stage": 3,
+    "if_one_stage_is_worse": [
+      {
+        "one_stage_at": 0.99,
+        "other_two_each": 0.9304,
+        "feasible": true
+      },
+      {
+        "one_stage_at": 0.95,
+        "other_two_each": 0.9498,
+        "feasible": true
+      },
+      {
+        "one_stage_at": 0.9,
+        "other_two_each": 0.9758,
+        "feasible": true
+      },
+      {
+        "one_stage_at": 0.8,
+        "other_two_each": 1.035,
+        "feasible": false
+      }
+    ],
+    "note": "equal split is the optimistic case; a single bad stage forces the others above what they would otherwise need"
+  },
+  "tier": "C",
+  "dar_values": [
+    0,
+    1,
+    2
+  ],
+  "p": [
+    0.0204,
+    0.2451,
+    0.7344
+  ],
+  "mean_dar": 1.714,
+  "mode_dar": 2,
+  "sd_dar": 0.4951,
+  "p_empty": 0.0204,
+  "p_full": 0.7344,
+  "max_dar": 2
+}

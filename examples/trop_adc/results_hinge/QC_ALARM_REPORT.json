@@ -1,0 +1,966 @@
+{
+  "meta": {
+    "generated": "2026-09-23T15:47:36",
+    "pdb_path": "<repo>/examples/trop_adc/data/trastuzumab_boltz_model_0.pdb",
+    "dar_json": "<repo>/examples/trop_adc/results_hinge/dar_v6_complete.json",
+    "md_dir": null,
+    "payload_sdf": null
+  },
+  "summary": {
+    "n_crit": 2,
+    "n_warn": 6,
+    "worst": "crit",
+    "triggered": [
+      {
+        "gate": "sequence QC",
+        "item": "conformation confidence at conjugation sites",
+        "value": 48.9,
+        "unit": "pLDDT",
+        "level": "crit",
+        "reference": "",
+        "meaning": "Mean local pLDDT across the 8 conjugatable sites = 48.9 (A-Cys223:54.0, A-Cys229:42.7, A-Cys232:42.0, B-Cys223:49.1, B-Cys229:43.0, B-Cys232:43.1, C-Cys214:59.0, D-Cys214:58.3)",
+        "action": "Lower pLDDT means the structure is more uncertain; conformational sampling must perturb the low-confidence regions more strongly",
+        "confidence": "B"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys223 local charge deviation",
+        "value": 0.5064,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys229 local charge deviation",
+        "value": 0.6684,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "C-Cys214 local charge deviation",
+        "value": 0.8574,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "D-Cys214 local charge deviation",
+        "value": 0.6653,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "linker-payload QC",
+        "item": "Working concentration / aqueous solubility",
+        "value": 15.3,
+        "unit": "x (>1 means the part exceeding solubility)",
+        "reference": "\u2264 2 (placeholder threshold, needs calibration with your own DLS/solubility data)",
+        "level": "crit",
+        "confidence": "C",
+        "meaning": "working concentration 402 \u00b5M, most-optimistic estimated aqueous solubility only 26.3 \u00b5M (melting point unknown, liquid/amorphous assumption, already the upper bound). The excess exists as aggregates or precipitate, **does not participate in conjugation** \u2014\u2014 this is the mechanism behind \"feed ratio was sufficient yet it will not conjugate\", not freshness nor pH.",
+        "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v) / lower the payload feed concentration and use a longer time / switch to a more hydrophilic linker / use DLS to inspect particle size or turbidity, or post-centrifugation supernatant concentration to confirm how much actually dissolved"
+      },
+      {
+        "gate": "linker-payload QC",
+        "item": "Computed partition coefficient logP",
+        "value": 5.08,
+        "unit": "(Crippen)",
+        "reference": "\u2264 5 as a warning reference (needs calibration with your own data)",
+        "level": "warn",
+        "confidence": "C",
+        "meaning": "the higher the logP, the more it tends to self-aggregate in aqueous phase rather than spread out",
+        "action": "when logP > 5, always check the reactive-end availability, not just the feed ratio"
+      },
+      {
+        "gate": "combinatorial statistics",
+        "item": "High DAR (\u22656) fraction",
+        "value": 42.42,
+        "unit": "%",
+        "level": "warn",
+        "reference": "\u2264 25.0",
+        "meaning": "High DAR correlates with aggregation propensity and toxicity risk",
+        "action": "Directly lower the equivalents \u2014 this is the only effective knob; no other adjustment needed",
+        "confidence": "C",
+        "causes": [
+          {
+            "name": "too many reduction equivalents fed",
+            "metric": "opened bonds \u00f7 equivalents",
+            "value": 0.9218,
+            "ref": "\u2264 0.85",
+            "verdict": "undetermined"
+          },
+          {
+            "name": "conjugation too complete",
+            "metric": "odd-numbered DAR fraction",
+            "value": 2.25,
+            "ref": "\u2265 1%",
+            "verdict": "excluded"
+          },
+          {
+            "name": "site accessibility out of control",
+            "metric": "site exposure-time ratio",
+            "value": 3.31,
+            "ref": "\u2264 10\u00d7",
+            "verdict": "undetermined"
+          }
+        ]
+      }
+    ]
+  },
+  "diagnostics": {
+    "sequence QC": {
+      "status": "ok",
+      "n": 7
+    },
+    "thiol activation": {
+      "status": "ok",
+      "n": 10
+    },
+    "linker-payload QC": {
+      "status": "ok",
+      "n": 4
+    },
+    "combinatorial / process checks (check_all)": {
+      "status": "ok",
+      "n": 12
+    }
+  },
+  "state": {
+    "dist": [
+      0.0316,
+      0.0017,
+      0.1733,
+      0.0071,
+      0.3526,
+      0.0095,
+      0.3154,
+      0.0042,
+      0.1046
+    ],
+    "mean_dar": 4.586,
+    "dar_std": 1.965,
+    "tcep_eq": 2.5,
+    "bonds_opened": 2.3045,
+    "t_eff_s": [
+      4568.5,
+      1541.6,
+      5100.1,
+      1541.6,
+      3261.1,
+      3261.1,
+      3261.1,
+      3261.1
+    ],
+    "thiolate_pct": 3.065,
+    "ph": 7.0,
+    "p_conj": 0.995,
+    "payload_feed_ratio": 6.0
+  },
+  "by_stage": {
+    "sequence QC": [
+      {
+        "gate": "sequence QC",
+        "item": "conjugatable site count",
+        "value": 8,
+        "unit": "sites",
+        "level": "ok",
+        "reference": "",
+        "meaning": "4 interchain disulfides -> 8 conjugatable thiols, consistent with the model's premise",
+        "action": "No action needed",
+        "confidence": "A"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "site list matches MD frame library",
+        "value": true,
+        "unit": "",
+        "level": "ok",
+        "reference": "",
+        "meaning": "Conjugatable sites inferred from sequence vs. sites in the existing MD frame library",
+        "action": "Inconsistency means downstream simulations ran on the wrong sites",
+        "confidence": "A"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "heavy-chain isotype",
+        "value": "IgG1",
+        "unit": "",
+        "level": "ok",
+        "reference": "",
+        "meaning": "Hinge motif matches IgG1, consistent with the model's IgG1-only scope",
+        "action": "No action needed",
+        "confidence": "B"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "Fc N-glycosylation sequon (chain A)",
+        "value": 1,
+        "unit": "sites",
+        "level": "ok",
+        "reference": "",
+        "meaning": "Located at [300]; conservative glycosylation, the model's default case",
+        "action": "No action needed",
+        "confidence": "B"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "Fc N-glycosylation sequon (chain B)",
+        "value": 1,
+        "unit": "sites",
+        "level": "ok",
+        "reference": "",
+        "meaning": "Located at [300]; conservative glycosylation, the model's default case",
+        "action": "No action needed",
+        "confidence": "B"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "degradation liability far from conjugation site",
+        "value": 22,
+        "unit": "sites",
+        "level": "ok",
+        "reference": "",
+        "meaning": "Present but not adjacent to a conjugation site; limited impact on conjugation itself",
+        "action": "No action needed",
+        "confidence": "C"
+      },
+      {
+        "gate": "sequence QC",
+        "item": "conformation confidence at conjugation sites",
+        "value": 48.9,
+        "unit": "pLDDT",
+        "level": "crit",
+        "reference": "",
+        "meaning": "Mean local pLDDT across the 8 conjugatable sites = 48.9 (A-Cys223:54.0, A-Cys229:42.7, A-Cys232:42.0, B-Cys223:49.1, B-Cys229:43.0, B-Cys232:43.1, C-Cys214:59.0, D-Cys214:58.3)",
+        "action": "Lower pLDDT means the structure is more uncertain; conformational sampling must perturb the low-confidence regions more strongly",
+        "confidence": "B"
+      }
+    ],
+    "disulfide reduction": [
+      {
+        "gate": "disulfide reduction",
+        "item": "Mass conservation (opened bonds \u2264 reductant molar equivalents)",
+        "value": 2.304,
+        "unit": "bonds (cap 2.5)",
+        "level": "ok",
+        "reference": "\u2264 2.5",
+        "meaning": "Opened bonds exceed the reductant molar amount = TCEP-disulfide 1:1 conservation is violated",
+        "action": "**This is a model bug, not a process problem** \u2014 check the code; do not tune the process",
+        "confidence": "A"
+      },
+      {
+        "gate": "disulfide reduction",
+        "item": "Reductant utilization (opened bonds \u00f7 equivalents)",
+        "value": 0.922,
+        "unit": "\u2014",
+        "level": "ok",
+        "reference": "\u2265 0.85",
+        "meaning": "Reductant wasted: not going to interchain bonds",
+        "action": "Check TCEP freshness / whether intrachain bonds consumed it / raise equivalents or extend time",
+        "confidence": "C"
+      }
+    ],
+    "site accessibility": [
+      {
+        "gate": "site accessibility",
+        "item": "Effective exposure time of the most buried site",
+        "value": 1541.6,
+        "unit": "s",
+        "level": "ok",
+        "reference": "\u2265 300.0",
+        "meaning": "This site is essentially buried inside the protein",
+        "action": "This site is unsuitable as a conjugation site; or pick a mutant with a more open conformation",
+        "confidence": "C"
+      },
+      {
+        "gate": "site accessibility",
+        "item": "Site exposure time, max / min",
+        "value": 3.31,
+        "unit": "fold",
+        "level": "ok",
+        "reference": "\u2264 10.0",
+        "meaning": "Site heterogeneity is extreme, so the product will inevitably be inhomogeneous",
+        "action": "Unrelated to process parameters; it is a property of the antibody itself / site selection",
+        "confidence": "C"
+      }
+    ],
+    "thiol activation": [
+      {
+        "gate": "thiol activation",
+        "item": "A-Cys223 \u0394pKa sensitive to dielectric constant",
+        "value": 0.6109,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "A-Cys229 \u0394pKa sensitive to dielectric constant",
+        "value": 0.6881,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys223 local charge deviation",
+        "value": 0.5064,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys223 \u0394pKa sensitive to dielectric constant",
+        "value": 0.7595,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys229 local charge deviation",
+        "value": 0.6684,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "B-Cys229 \u0394pKa sensitive to dielectric constant",
+        "value": 1.0027,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "C-Cys214 local charge deviation",
+        "value": 0.8574,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "C-Cys214 \u0394pKa sensitive to dielectric constant",
+        "value": 1.286,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "D-Cys214 local charge deviation",
+        "value": 0.6653,
+        "unit": "pKa units",
+        "level": "warn",
+        "reference": "\u00b10.5",
+        "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+        "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "D-Cys214 \u0394pKa sensitive to dielectric constant",
+        "value": 0.9979,
+        "unit": "pKa units",
+        "level": "info",
+        "reference": "< 0.3",
+        "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+        "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "Thiolate fraction",
+        "value": 3.065,
+        "unit": "%",
+        "level": "ok",
+        "reference": "\u2265 1.0",
+        "meaning": "Too few activated thiols; the reaction cannot get going",
+        "action": "Raise pH (or check whether pKa is abnormally high)",
+        "confidence": "C"
+      },
+      {
+        "gate": "thiol activation",
+        "item": "pH within process window",
+        "value": 7.0,
+        "unit": "\u2014",
+        "level": "ok",
+        "reference": "6.5\u20138.5",
+        "meaning": "Too low and the reaction stalls; too high and payload hydrolysis and side reactions accelerate",
+        "action": "Bring pH back into the window",
+        "confidence": "C"
+      }
+    ],
+    "covalent conjugation": [
+      {
+        "gate": "covalent conjugation",
+        "item": "Conjugation probability",
+        "value": 0.995,
+        "unit": "\u2014",
+        "level": "ok",
+        "reference": "\u2265 0.98",
+        "meaning": "Mathematically guarantees a large fraction of odd-numbered DAR (bond opened but only one payload attached)",
+        "action": "Check payload freshness / pH / hydrolysis / site sterics",
+        "confidence": "B"
+      },
+      {
+        "gate": "covalent conjugation",
+        "item": "payload margin (charge equivalents \u2212 thiols opened)",
+        "value": 1.39,
+        "unit": "equiv (need 4.61)",
+        "level": "ok",
+        "reference": "\u2265 0.7",
+        "meaning": "payload is fed sub-stoichiometrically; when the margin is too thin it becomes the new limiting reagent",
+        "action": "Raise the payload charge in proportion to equivalents; this is a feed-ratio design issue, not a conjugation-probability issue",
+        "confidence": "C"
+      }
+    ],
+    "combinatorial statistics": [
+      {
+        "gate": "combinatorial statistics",
+        "item": "Odd-numbered DAR fraction",
+        "value": 2.25,
+        "unit": "%",
+        "level": "ok",
+        "reference": "\u2264 5.0",
+        "meaning": "A bond opened but only one payload attached \u2014 can only be the conjugation step, unrelated to reduction",
+        "action": "This is the fastest attribution: first check payload freshness and feed",
+        "confidence": "A"
+      },
+      {
+        "gate": "combinatorial statistics",
+        "item": "High DAR (\u22656) fraction",
+        "value": 42.42,
+        "unit": "%",
+        "level": "warn",
+        "reference": "\u2264 25.0",
+        "meaning": "High DAR correlates with aggregation propensity and toxicity risk",
+        "action": "Directly lower the equivalents \u2014 this is the only effective knob; no other adjustment needed",
+        "confidence": "C",
+        "causes": [
+          {
+            "name": "too many reduction equivalents fed",
+            "metric": "opened bonds \u00f7 equivalents",
+            "value": 0.9218,
+            "ref": "\u2264 0.85",
+            "verdict": "undetermined"
+          },
+          {
+            "name": "conjugation too complete",
+            "metric": "odd-numbered DAR fraction",
+            "value": 2.25,
+            "ref": "\u2265 1%",
+            "verdict": "excluded"
+          },
+          {
+            "name": "site accessibility out of control",
+            "metric": "site exposure-time ratio",
+            "value": 3.31,
+            "ref": "\u2264 10\u00d7",
+            "verdict": "undetermined"
+          }
+        ]
+      },
+      {
+        "gate": "combinatorial statistics",
+        "item": "Low DAR (\u22641) fraction",
+        "value": 3.33,
+        "unit": "%",
+        "level": "ok",
+        "reference": "\u2264 10.0",
+        "meaning": "Too much naked antibody, which competes with the drug for the target",
+        "action": "Read the diagnostic table: low opened bonds \u2192 check reduction; enough opened bonds \u2192 check conjugation",
+        "confidence": "C"
+      },
+      {
+        "gate": "combinatorial statistics",
+        "item": "DAR distribution standard deviation",
+        "value": 1.965,
+        "unit": "\u2014",
+        "level": "ok",
+        "reference": "\u2264 2.0",
+        "meaning": "Product is too heterogeneous",
+        "action": "Unrelated to process parameters; caused by excessive site-to-site variation",
+        "confidence": "C"
+      }
+    ],
+    "linker-payload QC": [
+      {
+        "gate": "linker-payload QC",
+        "item": "Reactive-end availability",
+        "value": 1.0,
+        "unit": "(population fraction)",
+        "reference": "\u2265 0.7",
+        "level": "ok",
+        "confidence": "C",
+        "meaning": "fraction of conformers where the payload buries its maleimide end inside its own hydrophobic core in aqueous phase; the lower it is, the more molecules must first unfold before they can react",
+        "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v) / switch to a more hydrophilic linker / use DLS or solubility measurements to confirm whether clustering truly occurs"
+      },
+      {
+        "gate": "linker-payload QC",
+        "item": "Exposed nonpolar area (intermolecular aggregation driving force)",
+        "value": 198.7,
+        "unit": "\u00c5\u00b2",
+        "reference": "\u2264 200 (placeholder threshold, must be calibrated with your own DLS/solubility data)",
+        "level": "ok",
+        "confidence": "C",
+        "meaning": "the hydrophobic area a single molecule presents outward when spread in solution; the larger it is, the more readily several molecules stick together. **This is the intermolecular-aggregation driving force, not intramolecular self-burial** \u2014 the two mechanisms differ, do not conflate them.",
+        "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v), lower the payload concentration, add a surfactant (e.g. PS20), or use DLS to look at the particle-size distribution directly"
+      },
+      {
+        "gate": "linker-payload QC",
+        "item": "Working concentration / aqueous solubility",
+        "value": 15.3,
+        "unit": "x (>1 means the part exceeding solubility)",
+        "reference": "\u2264 2 (placeholder threshold, needs calibration with your own DLS/solubility data)",
+        "level": "crit",
+        "confidence": "C",
+        "meaning": "working concentration 402 \u00b5M, most-optimistic estimated aqueous solubility only 26.3 \u00b5M (melting point unknown, liquid/amorphous assumption, already the upper bound). The excess exists as aggregates or precipitate, **does not participate in conjugation** \u2014\u2014 this is the mechanism behind \"feed ratio was sufficient yet it will not conjugate\", not freshness nor pH.",
+        "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v) / lower the payload feed concentration and use a longer time / switch to a more hydrophilic linker / use DLS to inspect particle size or turbidity, or post-centrifugation supernatant concentration to confirm how much actually dissolved"
+      },
+      {
+        "gate": "linker-payload QC",
+        "item": "Computed partition coefficient logP",
+        "value": 5.08,
+        "unit": "(Crippen)",
+        "reference": "\u2264 5 as a warning reference (needs calibration with your own data)",
+        "level": "warn",
+        "confidence": "C",
+        "meaning": "the higher the logP, the more it tends to self-aggregate in aqueous phase rather than spread out",
+        "action": "when logP > 5, always check the reactive-end availability, not just the feed ratio"
+      }
+    ]
+  },
+  "alarms": [
+    {
+      "gate": "sequence QC",
+      "item": "conjugatable site count",
+      "value": 8,
+      "unit": "sites",
+      "level": "ok",
+      "reference": "",
+      "meaning": "4 interchain disulfides -> 8 conjugatable thiols, consistent with the model's premise",
+      "action": "No action needed",
+      "confidence": "A"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "site list matches MD frame library",
+      "value": true,
+      "unit": "",
+      "level": "ok",
+      "reference": "",
+      "meaning": "Conjugatable sites inferred from sequence vs. sites in the existing MD frame library",
+      "action": "Inconsistency means downstream simulations ran on the wrong sites",
+      "confidence": "A"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "heavy-chain isotype",
+      "value": "IgG1",
+      "unit": "",
+      "level": "ok",
+      "reference": "",
+      "meaning": "Hinge motif matches IgG1, consistent with the model's IgG1-only scope",
+      "action": "No action needed",
+      "confidence": "B"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "Fc N-glycosylation sequon (chain A)",
+      "value": 1,
+      "unit": "sites",
+      "level": "ok",
+      "reference": "",
+      "meaning": "Located at [300]; conservative glycosylation, the model's default case",
+      "action": "No action needed",
+      "confidence": "B"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "Fc N-glycosylation sequon (chain B)",
+      "value": 1,
+      "unit": "sites",
+      "level": "ok",
+      "reference": "",
+      "meaning": "Located at [300]; conservative glycosylation, the model's default case",
+      "action": "No action needed",
+      "confidence": "B"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "degradation liability far from conjugation site",
+      "value": 22,
+      "unit": "sites",
+      "level": "ok",
+      "reference": "",
+      "meaning": "Present but not adjacent to a conjugation site; limited impact on conjugation itself",
+      "action": "No action needed",
+      "confidence": "C"
+    },
+    {
+      "gate": "sequence QC",
+      "item": "conformation confidence at conjugation sites",
+      "value": 48.9,
+      "unit": "pLDDT",
+      "level": "crit",
+      "reference": "",
+      "meaning": "Mean local pLDDT across the 8 conjugatable sites = 48.9 (A-Cys223:54.0, A-Cys229:42.7, A-Cys232:42.0, B-Cys223:49.1, B-Cys229:43.0, B-Cys232:43.1, C-Cys214:59.0, D-Cys214:58.3)",
+      "action": "Lower pLDDT means the structure is more uncertain; conformational sampling must perturb the low-confidence regions more strongly",
+      "confidence": "B"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "A-Cys223 \u0394pKa sensitive to dielectric constant",
+      "value": 0.6109,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "A-Cys229 \u0394pKa sensitive to dielectric constant",
+      "value": 0.6881,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "B-Cys223 local charge deviation",
+      "value": 0.5064,
+      "unit": "pKa units",
+      "level": "warn",
+      "reference": "\u00b10.5",
+      "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+      "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "B-Cys223 \u0394pKa sensitive to dielectric constant",
+      "value": 0.7595,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "B-Cys229 local charge deviation",
+      "value": 0.6684,
+      "unit": "pKa units",
+      "level": "warn",
+      "reference": "\u00b10.5",
+      "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+      "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "B-Cys229 \u0394pKa sensitive to dielectric constant",
+      "value": 1.0027,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "C-Cys214 local charge deviation",
+      "value": 0.8574,
+      "unit": "pKa units",
+      "level": "warn",
+      "reference": "\u00b10.5",
+      "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+      "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "C-Cys214 \u0394pKa sensitive to dielectric constant",
+      "value": 1.286,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "D-Cys214 local charge deviation",
+      "value": 0.6653,
+      "unit": "pKa units",
+      "level": "warn",
+      "reference": "\u00b10.5",
+      "meaning": "Net charge around the site is significant; negative charge raises pKa, activation slows down",
+      "action": "This site's reactivity will differ from the others; if site-occupancy spectra are measured, prioritize comparing against this one.",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "D-Cys214 \u0394pKa sensitive to dielectric constant",
+      "value": 0.9979,
+      "unit": "pKa units",
+      "level": "info",
+      "reference": "< 0.3",
+      "meaning": "With epsilon_eff ranging from 20 to 80 the conclusion changes, indicating this site sits very close to charged groups",
+      "action": "Do not cite its absolute pKa; use it only for relative comparison between sites.",
+      "confidence": "C"
+    },
+    {
+      "gate": "linker-payload QC",
+      "item": "Reactive-end availability",
+      "value": 1.0,
+      "unit": "(population fraction)",
+      "reference": "\u2265 0.7",
+      "level": "ok",
+      "confidence": "C",
+      "meaning": "fraction of conformers where the payload buries its maleimide end inside its own hydrophobic core in aqueous phase; the lower it is, the more molecules must first unfold before they can react",
+      "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v) / switch to a more hydrophilic linker / use DLS or solubility measurements to confirm whether clustering truly occurs"
+    },
+    {
+      "gate": "linker-payload QC",
+      "item": "Exposed nonpolar area (intermolecular aggregation driving force)",
+      "value": 198.7,
+      "unit": "\u00c5\u00b2",
+      "reference": "\u2264 200 (placeholder threshold, must be calibrated with your own DLS/solubility data)",
+      "level": "ok",
+      "confidence": "C",
+      "meaning": "the hydrophobic area a single molecule presents outward when spread in solution; the larger it is, the more readily several molecules stick together. **This is the intermolecular-aggregation driving force, not intramolecular self-burial** \u2014 the two mechanisms differ, do not conflate them.",
+      "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v), lower the payload concentration, add a surfactant (e.g. PS20), or use DLS to look at the particle-size distribution directly"
+    },
+    {
+      "gate": "linker-payload QC",
+      "item": "Working concentration / aqueous solubility",
+      "value": 15.3,
+      "unit": "x (>1 means the part exceeding solubility)",
+      "reference": "\u2264 2 (placeholder threshold, needs calibration with your own DLS/solubility data)",
+      "level": "crit",
+      "confidence": "C",
+      "meaning": "working concentration 402 \u00b5M, most-optimistic estimated aqueous solubility only 26.3 \u00b5M (melting point unknown, liquid/amorphous assumption, already the upper bound). The excess exists as aggregates or precipitate, **does not participate in conjugation** \u2014\u2014 this is the mechanism behind \"feed ratio was sufficient yet it will not conjugate\", not freshness nor pH.",
+      "action": "raise the organic co-solvent fraction (cap 10\u201320% v/v) / lower the payload feed concentration and use a longer time / switch to a more hydrophilic linker / use DLS to inspect particle size or turbidity, or post-centrifugation supernatant concentration to confirm how much actually dissolved"
+    },
+    {
+      "gate": "linker-payload QC",
+      "item": "Computed partition coefficient logP",
+      "value": 5.08,
+      "unit": "(Crippen)",
+      "reference": "\u2264 5 as a warning reference (needs calibration with your own data)",
+      "level": "warn",
+      "confidence": "C",
+      "meaning": "the higher the logP, the more it tends to self-aggregate in aqueous phase rather than spread out",
+      "action": "when logP > 5, always check the reactive-end availability, not just the feed ratio"
+    },
+    {
+      "gate": "disulfide reduction",
+      "item": "Mass conservation (opened bonds \u2264 reductant molar equivalents)",
+      "value": 2.304,
+      "unit": "bonds (cap 2.5)",
+      "level": "ok",
+      "reference": "\u2264 2.5",
+      "meaning": "Opened bonds exceed the reductant molar amount = TCEP-disulfide 1:1 conservation is violated",
+      "action": "**This is a model bug, not a process problem** \u2014 check the code; do not tune the process",
+      "confidence": "A"
+    },
+    {
+      "gate": "disulfide reduction",
+      "item": "Reductant utilization (opened bonds \u00f7 equivalents)",
+      "value": 0.922,
+      "unit": "\u2014",
+      "level": "ok",
+      "reference": "\u2265 0.85",
+      "meaning": "Reductant wasted: not going to interchain bonds",
+      "action": "Check TCEP freshness / whether intrachain bonds consumed it / raise equivalents or extend time",
+      "confidence": "C"
+    },
+    {
+      "gate": "site accessibility",
+      "item": "Effective exposure time of the most buried site",
+      "value": 1541.6,
+      "unit": "s",
+      "level": "ok",
+      "reference": "\u2265 300.0",
+      "meaning": "This site is essentially buried inside the protein",
+      "action": "This site is unsuitable as a conjugation site; or pick a mutant with a more open conformation",
+      "confidence": "C"
+    },
+    {
+      "gate": "site accessibility",
+      "item": "Site exposure time, max / min",
+      "value": 3.31,
+      "unit": "fold",
+      "level": "ok",
+      "reference": "\u2264 10.0",
+      "meaning": "Site heterogeneity is extreme, so the product will inevitably be inhomogeneous",
+      "action": "Unrelated to process parameters; it is a property of the antibody itself / site selection",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "Thiolate fraction",
+      "value": 3.065,
+      "unit": "%",
+      "level": "ok",
+      "reference": "\u2265 1.0",
+      "meaning": "Too few activated thiols; the reaction cannot get going",
+      "action": "Raise pH (or check whether pKa is abnormally high)",
+      "confidence": "C"
+    },
+    {
+      "gate": "thiol activation",
+      "item": "pH within process window",
+      "value": 7.0,
+      "unit": "\u2014",
+      "level": "ok",
+      "reference": "6.5\u20138.5",
+      "meaning": "Too low and the reaction stalls; too high and payload hydrolysis and side reactions accelerate",
+      "action": "Bring pH back into the window",
+      "confidence": "C"
+    },
+    {
+      "gate": "covalent conjugation",
+      "item": "Conjugation probability",
+      "value": 0.995,
+      "unit": "\u2014",
+      "level": "ok",
+      "reference": "\u2265 0.98",
+      "meaning": "Mathematically guarantees a large fraction of odd-numbered DAR (bond opened but only one payload attached)",
+      "action": "Check payload freshness / pH / hydrolysis / site sterics",
+      "confidence": "B"
+    },
+    {
+      "gate": "covalent conjugation",
+      "item": "payload margin (charge equivalents \u2212 thiols opened)",
+      "value": 1.39,
+      "unit": "equiv (need 4.61)",
+      "level": "ok",
+      "reference": "\u2265 0.7",
+      "meaning": "payload is fed sub-stoichiometrically; when the margin is too thin it becomes the new limiting reagent",
+      "action": "Raise the payload charge in proportion to equivalents; this is a feed-ratio design issue, not a conjugation-probability issue",
+      "confidence": "C"
+    },
+    {
+      "gate": "combinatorial statistics",
+      "item": "Odd-numbered DAR fraction",
+      "value": 2.25,
+      "unit": "%",
+      "level": "ok",
+      "reference": "\u2264 5.0",
+      "meaning": "A bond opened but only one payload attached \u2014 can only be the conjugation step, unrelated to reduction",
+      "action": "This is the fastest attribution: first check payload freshness and feed",
+      "confidence": "A"
+    },
+    {
+      "gate": "combinatorial statistics",
+      "item": "High DAR (\u22656) fraction",
+      "value": 42.42,
+      "unit": "%",
+      "level": "warn",
+      "reference": "\u2264 25.0",
+      "meaning": "High DAR correlates with aggregation propensity and toxicity risk",
+      "action": "Directly lower the equivalents \u2014 this is the only effective knob; no other adjustment needed",
+      "confidence": "C",
+      "causes": [
+        {
+          "name": "too many reduction equivalents fed",
+          "metric": "opened bonds \u00f7 equivalents",
+          "value": 0.9218,
+          "ref": "\u2264 0.85",
+          "verdict": "undetermined"
+        },
+        {
+          "name": "conjugation too complete",
+          "metric": "odd-numbered DAR fraction",
+          "value": 2.25,
+          "ref": "\u2265 1%",
+          "verdict": "excluded"
+        },
+        {
+          "name": "site accessibility out of control",
+          "metric": "site exposure-time ratio",
+          "value": 3.31,
+          "ref": "\u2264 10\u00d7",
+          "verdict": "undetermined"
+        }
+      ]
+    },
+    {
+      "gate": "combinatorial statistics",
+      "item": "Low DAR (\u22641) fraction",
+      "value": 3.33,
+      "unit": "%",
+      "level": "ok",
+      "reference": "\u2264 10.0",
+      "meaning": "Too much naked antibody, which competes with the drug for the target",
+      "action": "Read the diagnostic table: low opened bonds \u2192 check reduction; enough opened bonds \u2192 check conjugation",
+      "confidence": "C"
+    },
+    {
+      "gate": "combinatorial statistics",
+      "item": "DAR distribution standard deviation",
+      "value": 1.965,
+      "unit": "\u2014",
+      "level": "ok",
+      "reference": "\u2264 2.0",
+      "meaning": "Product is too heterogeneous",
+      "action": "Unrelated to process parameters; caused by excessive site-to-site variation",
+      "confidence": "C"
+    }
+  ]
+}

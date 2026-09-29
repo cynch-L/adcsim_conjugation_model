@@ -1,0 +1,74 @@
+{
+  "A-Cys223": {
+    "site": "A-Cys223",
+    "chain": "A",
+    "resid": 223,
+    "pka": 7.76,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 48
+  },
+  "A-Cys229": {
+    "site": "A-Cys229",
+    "chain": "A",
+    "resid": 229,
+    "pka": 9.21,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 0
+  },
+  "A-Cys232": {
+    "site": "A-Cys232",
+    "chain": "A",
+    "resid": 232,
+    "pka": 8.64,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 0
+  },
+  "B-Cys223": {
+    "site": "B-Cys223",
+    "chain": "B",
+    "resid": 223,
+    "pka": 7.27,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 60
+  },
+  "B-Cys229": {
+    "site": "B-Cys229",
+    "chain": "B",
+    "resid": 229,
+    "pka": 10.76,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 10
+  },
+  "B-Cys232": {
+    "site": "B-Cys232",
+    "chain": "B",
+    "resid": 232,
+    "pka": 10.46,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 30
+  },
+  "C-Cys214": {
+    "site": "C-Cys214",
+    "chain": "C",
+    "resid": 214,
+    "pka": 20.76,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 82
+  },
+  "D-Cys214": {
+    "site": "D-Cys214",
+    "chain": "D",
+    "resid": 214,
+    "pka": 18.69,
+    "still_bonded": false,
+    "low_confidence": true,
+    "buried_pct": 82
+  }
+}

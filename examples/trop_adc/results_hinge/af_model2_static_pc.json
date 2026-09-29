@@ -1,0 +1,91 @@
+{
+  "method": "reduced-state static SG SASA -> accessibility ramp -> effective exposure time -> p_c",
+  "bonded_pdb": "trastuzumab_alphafold.pdb",
+  "reduced_pdb": "trastuzumab_alphafold_interchain_reduced.pdb",
+  "note": "Static single conformer, NO MD. AlphaFold model_2 has no MD ensemble yet, so this replaces the per-frame SASA that the Boltz branch of the model uses. SASA is measured after pulling the two SG atoms of each interchain disulfide apart to 4.0 A (same protocol as the Boltz branch: make_interchain_reduced.py).",
+  "constants": {
+    "pH": 7.0,
+    "pka_eff": 8.5,
+    "k2_ref": 300.0,
+    "payload_eq": 6.0,
+    "mab_uM": 10.0,
+    "conj_time_h": 2.0,
+    "yield_max": 0.995,
+    "sasa_lo": 5.0,
+    "sasa_span": 15.0
+  },
+  "sites": {
+    "A-Cys223": {
+      "chain": "A",
+      "res_id": 223,
+      "sasa_oxidized_A2": 23.59,
+      "sasa_reduced_A2": 30.96,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "A-Cys229": {
+      "chain": "A",
+      "res_id": 229,
+      "sasa_oxidized_A2": 42.36,
+      "sasa_reduced_A2": 47.18,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "A-Cys232": {
+      "chain": "A",
+      "res_id": 232,
+      "sasa_oxidized_A2": 11.13,
+      "sasa_reduced_A2": 20.11,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "B-Cys223": {
+      "chain": "B",
+      "res_id": 223,
+      "sasa_oxidized_A2": 21.58,
+      "sasa_reduced_A2": 26.0,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "B-Cys229": {
+      "chain": "B",
+      "res_id": 229,
+      "sasa_oxidized_A2": 39.54,
+      "sasa_reduced_A2": 44.5,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "B-Cys232": {
+      "chain": "B",
+      "res_id": 232,
+      "sasa_oxidized_A2": 14.61,
+      "sasa_reduced_A2": 22.65,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    },
+    "C-Cys214": {
+      "chain": "C",
+      "res_id": 214,
+      "sasa_oxidized_A2": 17.56,
+      "sasa_reduced_A2": 19.97,
+      "open_fraction": 0.998,
+      "t_eff_s": 7186.6,
+      "p_c": 0.995
+    },
+    "D-Cys214": {
+      "chain": "D",
+      "res_id": 214,
+      "sasa_oxidized_A2": 19.3,
+      "sasa_reduced_A2": 20.91,
+      "open_fraction": 1.0,
+      "t_eff_s": 7200.0,
+      "p_c": 0.995
+    }
+  }
+}

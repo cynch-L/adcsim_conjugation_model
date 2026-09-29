@@ -1,0 +1,93 @@
+{
+  "score_cards": [
+    {
+      "file": "ADC_DAR1_min.pdb",
+      "n_lpp": 1,
+      "rg_mean": 11.65,
+      "span_mean": 37.23,
+      "reach_mean": 38.78,
+      "surface_contact": 6,
+      "cdr_min_dist_A": 61.06,
+      "mmff_stress_kcal": -183.3,
+      "hydrophobic_exposure_per_atom": 1777.3
+    },
+    {
+      "file": "ADC_DAR2_min.pdb",
+      "n_lpp": 2,
+      "rg_mean": 10.14,
+      "span_mean": 31.16,
+      "reach_mean": 21.7,
+      "surface_contact": 35,
+      "cdr_min_dist_A": 50.52,
+      "mmff_stress_kcal": -30.2,
+      "hydrophobic_exposure_per_atom": 3331.5
+    },
+    {
+      "file": "ADC_DAR3_min.pdb",
+      "n_lpp": 3,
+      "rg_mean": 10.79,
+      "span_mean": 34.34,
+      "reach_mean": 32.96,
+      "surface_contact": 54,
+      "cdr_min_dist_A": 51.42,
+      "mmff_stress_kcal": 2109.0,
+      "hydrophobic_exposure_per_atom": 5029.4
+    },
+    {
+      "file": "ADC_DAR4_min.pdb",
+      "n_lpp": 4,
+      "rg_mean": 11.02,
+      "span_mean": 35.67,
+      "reach_mean": 34.99,
+      "surface_contact": 82,
+      "cdr_min_dist_A": 40.57,
+      "mmff_stress_kcal": 2144.1,
+      "hydrophobic_exposure_per_atom": 6765.5
+    },
+    {
+      "file": "ADC_DAR5_min.pdb",
+      "n_lpp": 5,
+      "rg_mean": 10.88,
+      "span_mean": 34.31,
+      "reach_mean": 30.73,
+      "surface_contact": 85,
+      "cdr_min_dist_A": 50.98,
+      "mmff_stress_kcal": 328.2,
+      "hydrophobic_exposure_per_atom": 8293.6
+    },
+    {
+      "file": "ADC_DAR6_min.pdb",
+      "n_lpp": 6,
+      "rg_mean": 10.72,
+      "span_mean": 34.01,
+      "reach_mean": 31.16,
+      "surface_contact": 89,
+      "cdr_min_dist_A": 47.8,
+      "mmff_stress_kcal": 391.3,
+      "hydrophobic_exposure_per_atom": 9827.3
+    },
+    {
+      "file": "ADC_DAR7_omit_B229_min.pdb",
+      "n_lpp": 7,
+      "rg_mean": 10.61,
+      "span_mean": 34.05,
+      "reach_mean": 31.52,
+      "surface_contact": 114,
+      "cdr_min_dist_A": 34.5,
+      "mmff_stress_kcal": 18248.0,
+      "hydrophobic_exposure_per_atom": 11473.9
+    },
+    {
+      "file": "ADC_DAR7_omit_B232_min.pdb",
+      "n_lpp": 7,
+      "rg_mean": 10.95,
+      "span_mean": 34.83,
+      "reach_mean": 33.81,
+      "surface_contact": 147,
+      "cdr_min_dist_A": 37.71,
+      "mmff_stress_kcal": 46.8,
+      "hydrophobic_exposure_per_atom": 11795.7
+    }
+  ],
+  "note": "scorecard != binding free energy; computational DAR != experimental DAR; cdr_min_dist uses Kabat CDR (Trastuzumab)."
+}

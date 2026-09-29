@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+.DS_Store
+*.egg-info/
+.eggs/
+build/
+dist/
+examples/trop_adc/results/
+examples/trop_adc/results_smoke/
+*.pkl
+.ipynb_checkpoints/
+.venv/
+env/
+
+# ---- heavy / regenerable data (not source) ----
+*.npz
+*.npy
+*.nc
+*.dcd
+*.xtc
+examples/trop_adc/kaggle_md_8site/md_v5/
+examples/trop_adc/kaggle_md_8site/md_allcut/
+examples/trop_adc/data/fold_*/
+examples/trop_adc/results_hinge/*.pdb
+examples/trop_adc/_polished_*/
+examples/trop_adc/_archive_structures_*/

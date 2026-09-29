@@ -1,0 +1,50 @@
+{
+  "method": "v2 weighted DAR (Langmuir, payload:Ab=6:1, k=1.2)",
+  "k": 1.2,
+  "payload_ratio": 6,
+  "viable_sites": [
+    "A-Cys223",
+    "A-Cys232",
+    "B-Cys223",
+    "B-Cys229",
+    "B-Cys232"
+  ],
+  "dead_sites": [
+    "A-Cys229",
+    "C-Cys214",
+    "D-Cys214"
+  ],
+  "site_weights": {
+    "A-Cys223": 0.2837,
+    "A-Cys229": 0.0,
+    "A-Cys232": 0.1932,
+    "B-Cys223": 0.2435,
+    "B-Cys229": 0.1245,
+    "B-Cys232": 0.155,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "site_probabilities": {
+    "A-Cys223": 0.6714,
+    "A-Cys229": 0.0,
+    "A-Cys232": 0.5818,
+    "B-Cys223": 0.6368,
+    "B-Cys229": 0.4726,
+    "B-Cys232": 0.5275,
+    "C-Cys214": 0.0,
+    "D-Cys214": 0.0
+  },
+  "dar_distribution": {
+    "0": 0.0124,
+    "1": 0.0896,
+    "2": 0.2526,
+    "3": 0.3484,
+    "4": 0.235,
+    "5": 0.062,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.0
+  },
+  "mean_dar": 2.89,
+  "mode_dar": 3
+}

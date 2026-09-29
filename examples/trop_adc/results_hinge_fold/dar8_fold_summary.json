@@ -1,0 +1,211 @@
+{
+  "seconds": 49.13481593132019,
+  "note": "Inverted funnel: extended vacuum poses are the strict end; surface-folded poses are the relaxed end. Pairwise_rate is a necessary-condition occupancy proxy (antibody opening \u00d7 payload compactness \u00d7 clash), not experimental DAR.",
+  "extended_counts": {
+    "A:CYS223": 99,
+    "B:CYS223": 82,
+    "A:CYS229": 120,
+    "B:CYS229": 4,
+    "A:CYS232": 240,
+    "B:CYS232": 3,
+    "C:CYS214": 2,
+    "D:CYS214": 9
+  },
+  "folded_counts": {
+    "A:CYS223": 60,
+    "B:CYS223": 60,
+    "A:CYS229": 60,
+    "B:CYS229": 19,
+    "A:CYS232": 60,
+    "B:CYS232": 18,
+    "C:CYS214": 12,
+    "D:CYS214": 35
+  },
+  "compactness": {
+    "A:CYS223": {
+      "n_total": 131,
+      "n_extended": 24,
+      "n_folded": 107,
+      "rg_min": 9.277184641480543,
+      "rg_max": 12.32640538449862,
+      "reach_min": 18.810861467867326,
+      "reach_max": 42.78211512921317
+    },
+    "B:CYS223": {
+      "n_total": 139,
+      "n_extended": 24,
+      "n_folded": 115,
+      "rg_min": 8.913859029275912,
+      "rg_max": 12.400799399503756,
+      "reach_min": 24.957337012869548,
+      "reach_max": 42.67240658562479
+    },
+    "A:CYS229": {
+      "n_total": 222,
+      "n_extended": 24,
+      "n_folded": 198,
+      "rg_min": 8.251263092732012,
+      "rg_max": 11.972694002276041,
+      "reach_min": 19.83879396010874,
+      "reach_max": 40.37214092497709
+    },
+    "B:CYS229": {
+      "n_total": 19,
+      "n_extended": 4,
+      "n_folded": 15,
+      "rg_min": 9.759691152322215,
+      "rg_max": 11.838548106939816,
+      "reach_min": 20.542271324670466,
+      "reach_max": 40.517091631944226
+    },
+    "A:CYS232": {
+      "n_total": 187,
+      "n_extended": 24,
+      "n_folded": 163,
+      "rg_min": 9.06490281607601,
+      "rg_max": 11.972694002276047,
+      "reach_min": 18.363610566754694,
+      "reach_max": 40.372140924977124
+    },
+    "B:CYS232": {
+      "n_total": 18,
+      "n_extended": 3,
+      "n_folded": 15,
+      "rg_min": 9.92733381059014,
+      "rg_max": 11.838548106939811,
+      "reach_min": 22.699458742151,
+      "reach_max": 41.35661366962963
+    },
+    "C:CYS214": {
+      "n_total": 12,
+      "n_extended": 2,
+      "n_folded": 10,
+      "rg_min": 10.857019354828909,
+      "rg_max": 13.073977023635761,
+      "reach_min": 28.78590886403701,
+      "reach_max": 45.2463221460204
+    },
+    "D:CYS214": {
+      "n_total": 36,
+      "n_extended": 9,
+      "n_folded": 27,
+      "rg_min": 10.475319967827117,
+      "rg_max": 12.400799399503752,
+      "reach_min": 23.558899590622847,
+      "reach_max": 42.672406585624806
+    }
+  },
+  "pairwise_n_ok": {
+    "A:CYS223|B:CYS223": 193,
+    "A:CYS223|A:CYS229": 2498,
+    "A:CYS223|B:CYS229": 339,
+    "A:CYS223|A:CYS232": 3201,
+    "A:CYS223|B:CYS232": 614,
+    "A:CYS223|C:CYS214": 248,
+    "A:CYS223|D:CYS214": 997,
+    "B:CYS223|A:CYS229": 2050,
+    "B:CYS223|B:CYS229": 365,
+    "B:CYS223|A:CYS232": 2988,
+    "B:CYS223|B:CYS232": 611,
+    "B:CYS223|C:CYS214": 389,
+    "B:CYS223|D:CYS214": 1172,
+    "A:CYS229|B:CYS229": 607,
+    "A:CYS229|A:CYS232": 50,
+    "A:CYS229|B:CYS232": 701,
+    "A:CYS229|C:CYS214": 573,
+    "A:CYS229|D:CYS214": 1580,
+    "B:CYS229|A:CYS232": 670,
+    "B:CYS229|B:CYS232": 5,
+    "B:CYS229|C:CYS214": 203,
+    "B:CYS229|D:CYS214": 555,
+    "A:CYS232|B:CYS232": 673,
+    "A:CYS232|C:CYS214": 654,
+    "A:CYS232|D:CYS214": 1822,
+    "B:CYS232|C:CYS214": 171,
+    "B:CYS232|D:CYS214": 544,
+    "C:CYS214|D:CYS214": 143
+  },
+  "pairwise_max": {
+    "A:CYS223|B:CYS223": 4.514348115666643,
+    "A:CYS223|A:CYS229": 16.165557548026328,
+    "A:CYS223|B:CYS229": 11.37177314311046,
+    "A:CYS223|A:CYS232": 18.81095051930884,
+    "A:CYS223|B:CYS232": 13.952093429071995,
+    "A:CYS223|C:CYS214": 4.75107940843047,
+    "A:CYS223|D:CYS214": 5.809721243251221,
+    "B:CYS223|A:CYS229": 13.134981336776093,
+    "B:CYS223|B:CYS229": 6.089910850914182,
+    "B:CYS223|A:CYS232": 15.131548809835092,
+    "B:CYS223|B:CYS232": 9.58052686713496,
+    "B:CYS223|C:CYS214": 6.015038871990223,
+    "B:CYS223|D:CYS214": 5.000012193604298,
+    "A:CYS229|B:CYS229": 5.010189174152047,
+    "A:CYS229|A:CYS232": 2.8651280305564906,
+    "A:CYS229|B:CYS232": 6.1608079856437055,
+    "A:CYS229|C:CYS214": 19.09323130792027,
+    "A:CYS229|D:CYS214": 16.176128008680273,
+    "B:CYS229|A:CYS232": 7.114781733400538,
+    "B:CYS229|B:CYS232": 2.2639961602133907,
+    "B:CYS229|C:CYS214": 11.785040667139294,
+    "B:CYS229|D:CYS214": 12.233083809690303,
+    "A:CYS232|B:CYS232": 5.084300650340024,
+    "A:CYS232|C:CYS214": 21.335945607917015,
+    "A:CYS232|D:CYS214": 19.07698921199332,
+    "B:CYS232|C:CYS214": 15.111551749380567,
+    "B:CYS232|D:CYS214": 15.026292234716918,
+    "C:CYS214|D:CYS214": 4.865079019615455
+  },
+  "inverted_funnel": [
+    {
+      "dar": 1,
+      "n_subsets": 8,
+      "pairwise_feasible": 8,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 2,
+      "n_subsets": 28,
+      "pairwise_feasible": 28,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 3,
+      "n_subsets": 56,
+      "pairwise_feasible": 56,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 4,
+      "n_subsets": 70,
+      "pairwise_feasible": 70,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 5,
+      "n_subsets": 56,
+      "pairwise_feasible": 56,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 6,
+      "n_subsets": 28,
+      "pairwise_feasible": 28,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 7,
+      "n_subsets": 8,
+      "pairwise_feasible": 8,
+      "pairwise_rate": 1.0
+    },
+    {
+      "dar": 8,
+      "n_subsets": 1,
+      "pairwise_feasible": 1,
+      "pairwise_rate": 1.0
+    }
+  ],
+  "dar8_hits": [],
+  "dar8_found": false,
+  "pdbs": []
+}

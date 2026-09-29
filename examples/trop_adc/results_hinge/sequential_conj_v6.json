@@ -1,0 +1,54 @@
+{
+  "n_reps": 50000,
+  "seed": 42,
+  "sigma_A": 2.0,
+  "p_red": 0.56,
+  "soft_scale": 0.5,
+  "site_info": {
+    "A:CYS223": {
+      "open_rays": 16,
+      "occlusion_8A": 90
+    },
+    "B:CYS223": {
+      "open_rays": 20,
+      "occlusion_8A": 86
+    },
+    "A:CYS229": {
+      "open_rays": 34,
+      "occlusion_8A": 63
+    },
+    "B:CYS229": {
+      "open_rays": 25,
+      "occlusion_8A": 71
+    },
+    "A:CYS232": {
+      "open_rays": 88,
+      "occlusion_8A": 61
+    },
+    "B:CYS232": {
+      "open_rays": 19,
+      "occlusion_8A": 72
+    },
+    "C:CYS214": {
+      "open_rays": 15,
+      "occlusion_8A": 79
+    },
+    "D:CYS214": {
+      "open_rays": 39,
+      "occlusion_8A": 78
+    }
+  },
+  "dar_distribution_P": {
+    "0": 0.098,
+    "1": 0.3435,
+    "2": 0.3645,
+    "3": 0.1571,
+    "4": 0.0321,
+    "5": 0.0047,
+    "6": 0.0002,
+    "7": 0.0
+  },
+  "even_dar_fraction": 0.4948,
+  "mean_dar": 1.7,
+  "note": "Paired disulfide reduction (4 pairs, Binomial) + hinge breathing + soft-site gating. Relative propensity only."
+}
