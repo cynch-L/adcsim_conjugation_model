@@ -36,16 +36,36 @@ payload release, potency, PK, toxicity, aggregation or stability.
 One antibody, one linker-payload, one process recipe. The repository answers
 **two different questions** about that system:
 
-| | **A - process model** | **B - structure pipeline** |
+| | **A — process / DAR prediction** | **B — structure / conjugation feasibility** |
 |---|---|---|
-| question | how many payloads attach, and which step limits it | what the conjugate looks like in 3D |
-| entry | `examples/trop_adc/kaggle_md_8site/dar_v6_complete.py` | `bin/adcsim examples/trop_adc/config.yaml` |
-| code | one self-contained 2600-line script (numpy only) | the `packages/adcsim/` library (`python -m adcsim`) |
-| output | DAR 0-8 distribution, limiting-step attribution, inverse process window | placed ADC structures (`ADC_DAR*.pdb`), steric QC, PyMOL renders |
+| question it answers | how many payloads attach under this recipe, and which step limits it | can a payload physically sit on each cysteine, and what does the conjugate look like |
+| run with | `python dar_v6_complete.py ...` | `python -m adcsim <config.yaml>` |
+| code | one self-contained script (`numpy` only) | the reusable `packages/adcsim/` toolkit |
+| install | nothing beyond `numpy`, `scipy`, `pyyaml` | `pip install -e .` |
+| reads | reduction profile + per-frame MD SASA + process config | antibody PDB + payload conformer ensemble + `config.yaml` |
+| writes | `results_hinge/dar_v6_complete.json` | `results_hinge/ADC_DAR*.pdb`, QC reports, renders |
+| status | frozen process model, regression-locked | toolkit under active development |
 
-Both consume the same eight released cysteines (4 interchain disulfides), the
-same reduction profile and the same process config. The rest of this README is
-about entry **A**; the renders below come from entry **B**.
+They share the **same geometry** — the eight cysteines released by the four
+interchain disulfides — and nothing else. Entry A consumes pre-computed
+numbers; entry B produces structures. There is deliberately no merged entry
+point: see [How to run](#7-how-to-run), and section 10 for what each one can
+and cannot do.
+
+### Relationship: two layers, not one package
+
+```
+layer 1   structure / conjugation feasibility      entry B   packages/adcsim/
+          is this site reachable, does the payload fit
+                          |
+                          v
+layer 2   process / DAR prediction                 entry A   dar_v6_complete.py
+          given a recipe, how many actually attach
+```
+
+Keeping them apart means the frozen process model never has to follow the
+toolkit's interfaces. The cost is that there is no single command that does
+both; that is intentional.
 
 ### What the structure pipeline produces
 
@@ -146,33 +166,22 @@ process window, LP bottleneck, and the calibration diagnostics (`K_open`,
 
 ## 7. How to run
 
-### Install
+Two independent run paths. Neither needs the other. Python >= 3.10.
 
-Python ≥ 3.10. Dependencies are declared in `pyproject.toml`:
+### Entry A — DAR process model (no installation)
 
-```bash
-pip install numpy scipy biopython rdkit pyyaml pytest
-# or: pip install -e .
-```
-
-The main model itself needs only `numpy`, `scipy` and `pyyaml`;
-`biopython` / `rdkit` are needed by the structure and payload-QC tests.
-
-Note that `pip install -e .` installs the **entry-B** package (`adcsim`) only.
-The DAR model (entry A) is a standalone script run directly from
-`examples/trop_adc/kaggle_md_8site/`; nothing needs to be installed for it
-beyond `numpy`, `scipy` and `pyyaml`.
-
-### Minimal run
-
-Reduction temperature is **mandatory** (there is deliberately no default —
-reduction temperature is a real process input, so the model refuses to guess
-one):
+The model is a standalone script; it does not use the `adcsim` package and is
+not installed by `pip install -e .`.
 
 ```bash
+pip install numpy scipy pyyaml
 cd examples/trop_adc/kaggle_md_8site
 python dar_v6_complete.py --reduction-temp 37
 ```
+
+Reduction temperature is **mandatory** (there is deliberately no default —
+reduction temperature is a real process input, so the model refuses to guess
+one).
 
 Results are written to `examples/trop_adc/results_hinge/dar_v6_complete.json`.
 The run prints a DAR 0–8 distribution. The line to check is
@@ -183,9 +192,48 @@ mean = 4.587   mode = 4   even/odd = 43.346   P(DAR>=6) = 0.4215
 
 If you instead get `mean = 0.000` with every site marked `NO DATA`, the
 per-frame SASA arrays (`results_hinge/*_v5_sasa.npy`) are missing — see the
-end of section 13.
+end of section 13. Full flag list below ([CLI](#cli-flags)).
 
-### CLI
+### Entry B — structure toolkit
+
+```bash
+pip install -e .                       # installs the `adcsim` package
+python -m adcsim examples/trop_adc/config.yaml
+
+# or, without installing anything:
+PYTHONPATH=packages python -m adcsim examples/trop_adc/config.yaml
+```
+
+Run it **from the repository root**: the relative paths in the config
+(`data/B220_235_disulfide_repaired.pdb`, `data/payload_ensemble_100.sdf`) are
+resolved against the directory of the config file, not the working directory.
+
+Inputs and output location both come from the config: `outputs.dir` defaults to
+`results_hinge`. Two flags are worth knowing:
+
+| flag | effect |
+|---|---|
+| `--access-only` | chemical-accessibility check per site only (fast, no structures placed) — writes `03_accessibility.json` into `outputs.dir` |
+| `--polish` | constrained minimisation on the generated `ADC_DAR*.pdb` |
+
+> **Note:** a full run regenerates structures already committed under
+> `results_hinge/`. To leave the shipped outputs untouched, copy the config,
+> set `outputs.dir` to a scratch directory and run that copy instead.
+>
+> The `bin/adcsim` wrapper script is a known problem: it changes into `bin/`
+> before setting `PYTHONPATH`, so it currently fails with
+> `No module named adcsim`. Use one of the invocations above instead.
+
+Installing dependencies for the test suite as well:
+
+```bash
+pip install numpy scipy biopython rdkit pyyaml pytest
+```
+
+### CLI flags
+
+Flags for `dar_v6_complete.py` (entry A) — entry B takes only `--access-only`
+and `--polish`, listed above.
 
 | flag | meaning |
 |---|---|
@@ -246,6 +294,13 @@ payload feed), and attribute the limiting step.
 exposure/accessibility input, and `K` changes with the antibody — see the
 Brentuximab case, `k_TCEP` 0.816 vs trastuzumab 2.36). Cannot predict release,
 potency, PK, toxicity, aggregation or shelf stability.
+
+**Entry B (structure toolkit), separately:** it reports whether a site is
+solvent-reachable and whether a given payload conformer physically fits there.
+It does **not** predict how many of the eight sites end up occupied under a
+process recipe, and it models nothing downstream of attachment. Its output is a
+single plausible snapshot per DAR value, not a conformational ensemble — see
+section 2.
 
 ## 11. Known limitations (recorded, not bugs)
 
