@@ -258,6 +258,9 @@ them every site reports `NO DATA` and DAR silently collapses to 0.
 
 ## 13. License / status
 
-Research code — **not a validated drug-development tool**. MIT (add a `LICENSE`
-file before public release). Outputs are decision-support for process
-development and must be confirmed by HIC / LC-MS before being treated as fact.
+Released under the **MIT License** — see [`LICENSE`](LICENSE).
+Copyright `adcsim contributors`.
+
+Research code — **not a validated drug-development tool**. Outputs are
+decision-support for process development and must be confirmed by HIC / LC-MS
+before being treated as fact.
