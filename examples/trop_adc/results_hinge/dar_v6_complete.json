@@ -126,7 +126,7 @@
   },
   "note": "TRUE inverse = target DAR -> TCEP eq (root-find, monotonic). LP eq is reported only as the minimum feed that keeps LP non-limiting (released thiols x (1 + overage margin)); it does NOT set DAR.",
   "method": "DAR v6: disulfide reduction (shared-pool K, stoichiometric cap) x site accessibility (per-frame SASA -> effective exposure time) x thiol activation (thiolate fraction) x covalent conjugation (hydrolysis-aware AUC) x combinatorial statistics (4 disulfide-pair convolution + MC uncertainty)",
-  "config_source": "<repo>/examples/trop_adc/kaggle_md_8site/adc_model_config.yaml",
+  "config_source": "examples/trop_adc/kaggle_md_8site/adc_model_config.yaml",
   "params": {
     "K2": 300.0,
     "mAb_uM": 67.0,
@@ -421,6 +421,7 @@
       4.587,
       4.587
     ],
+    "ci95_note": "95% uncertainty range from MC (pKa jitter + frame bootstrap), not a frequentist confidence interval",
     "sd": 0.0
   },
   "pka_sensitivity": [

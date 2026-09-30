@@ -220,9 +220,10 @@ Inputs and output location both come from the config: `outputs.dir` defaults to
 > `results_hinge/`. To leave the shipped outputs untouched, copy the config,
 > set `outputs.dir` to a scratch directory and run that copy instead.
 >
-> The `bin/adcsim` wrapper script is a known problem: it changes into `bin/`
-> before setting `PYTHONPATH`, so it currently fails with
-> `No module named adcsim`. Use one of the invocations above instead.
+> `bin/adcsim` is the same command wrapped in a script: it resolves the
+> repository root itself, so it can be called from any working directory. It
+> always uses `examples/trop_adc/config.yaml`; to point it at a different
+> config, use `python -m adcsim <path>`.
 
 Installing dependencies for the test suite as well:
 

@@ -81,6 +81,30 @@ _FALLBACK = {
 }
 
 
+# Repo root — used only to record config provenance portably. HERE/ROOT sit at
+# <repo>/examples/trop_adc(/kaggle_md_8site), so two more hops reach <repo>.
+_REPO_ROOT = os.path.dirname(os.path.dirname(ROOT))
+
+
+def _portable_config_source(path):
+    """Where the config came from, recorded without machine-specific paths.
+
+    A config inside the repository becomes a repo-root-relative path; one
+    outside it is reduced to its file name. Either way no absolute path is
+    written into the output json. Computation reads CFG values, never this key.
+    """
+    if path == "fallback":
+        return "fallback"
+    abs_path = os.path.abspath(path)
+    try:
+        rel = os.path.relpath(abs_path, _REPO_ROOT)
+    except ValueError:                          # different drive, on Windows
+        rel = None
+    if rel and not rel.startswith(os.pardir) and not os.path.isabs(rel):
+        return rel
+    return os.path.basename(abs_path)
+
+
 def load_cfg(path=CFG_PATH):
     """Read yaml config; on missing or unreadable, fall back to defaults and warn on stderr."""
     if os.path.exists(path):
@@ -93,7 +117,7 @@ def load_cfg(path=CFG_PATH):
             # payload_qc (and everything in it) went missing for a while.
             keys = list(_FALLBACK) + [k for k in cfg if k not in _FALLBACK]
             merged = {k: dict(_FALLBACK.get(k, {}), **(cfg.get(k) or {})) for k in keys}
-            merged["_source"] = path
+            merged["_source"] = _portable_config_source(path)
             return merged
         except Exception as e:                      # noqa: BLE001
             print(f"[warn] config read failed ({e}); using built-in fallback values", file=sys.stderr)

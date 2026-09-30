@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 # Portable interpreter: honour $ADCSIM_PYTHON, else fall back to python3 on PATH.
 # (A machine-specific venv path used to be hardcoded here; it is not portable.)
 PY="${ADCSIM_PYTHON:-$(command -v python3 2>/dev/null)}"
