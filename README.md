@@ -2,6 +2,8 @@
 
 Main model: `dar_v6_complete.py`. Python package name is `adcsim`.
 
+![python](https://img.shields.io/badge/python-3.10%2B-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![tests](https://img.shields.io/badge/tests-120%20passed%2C%201%20skipped-brightgreen)
+
 Computational **IgG1 cysteine-conjugation** model. Given an antibody structure,
 a reduction profile, an MD exposure library and a set of process conditions, it
 predicts the **DAR distribution** (drug-to-antibody ratio 0–8) and attributes
@@ -29,7 +31,44 @@ DAR distribution comes out — and which step is holding the loading back?*
 It answers **"how many payloads end up attached"**. It does **not** answer
 payload release, potency, PK, toxicity, aggregation or stability.
 
-## 2. Inputs
+## 2. Two entry points
+
+One antibody, one linker-payload, one process recipe. The repository answers
+**two different questions** about that system:
+
+| | **A - process model** | **B - structure pipeline** |
+|---|---|---|
+| question | how many payloads attach, and which step limits it | what the conjugate looks like in 3D |
+| entry | `examples/trop_adc/kaggle_md_8site/dar_v6_complete.py` | `bin/adcsim examples/trop_adc/config.yaml` |
+| code | one self-contained 2600-line script (numpy only) | the `packages/adcsim/` library (`python -m adcsim`) |
+| output | DAR 0-8 distribution, limiting-step attribution, inverse process window | placed ADC structures (`ADC_DAR*.pdb`), steric QC, PyMOL renders |
+
+Both consume the same eight released cysteines (4 interchain disulfides), the
+same reduction profile and the same process config. The rest of this README is
+about entry **A**; the renders below come from entry **B**.
+
+### What the structure pipeline produces
+
+PyMOL renders of the placed conjugates at DAR 1, 4 and 7
+(`examples/trop_adc/results_hinge/pymol_images/adc_DAR*.png`). Heavy chain:
+slate blue; light chain: teal; vc-MMAE payload: orange surface. Labels at
+engaged sites give the SG-C91 thioether bond length; greyed-out sites stayed
+unconjugated. (In-image annotations are in Chinese: 重链 = heavy chain,
+轻链 = light chain, 未偶联 = unconjugated.)
+
+![DAR 1 - one payload](examples/trop_adc/results_hinge/pymol_images/adc_DAR1.png)
+
+![DAR 4 - four payloads on the hinge](examples/trop_adc/results_hinge/pymol_images/adc_DAR4.png)
+
+![DAR 7 - seven payloads](examples/trop_adc/results_hinge/pymol_images/adc_DAR7.png)
+
+*Trastuzumab + vc-MMAE, cysteine conjugation. Each structure is a single
+MD-frame snapshot of the fully reduced antibody with a collapsed-dominant
+payload ensemble; the hinge is intrinsically disordered (pLDDT about 40-60),
+so payload placement is one plausible representation, not a unique structure.
+Heavy-atom clearance >= 2.0 A was enforced at every placed site.*
+
+## 3. Inputs
 
 | input | file / source | what it carries |
 |---|---|---|
@@ -55,12 +94,12 @@ ss_reduction_profile.json                    (read by the main model)
 To run this on a **different antibody**, regenerate the profile with
 `packages/adcsim/sites.py :: reduction_difficulty_profile(pairs, model)` from
 that antibody's structure, then re-fit `K` on its own measured anchors.
-There is no one-command "new sequence → DAR" path — see section 9.
+There is no one-command "new sequence → DAR" path — see section 10.
 
 Every number lives in the config; the code contains no magic numbers. A config
 path can be switched with the `ADCSIM_CONFIG` environment variable.
 
-## 3. Computation flow
+## 4. Computation flow
 
 ```
 Input (structure + profile + MD + config)
@@ -87,7 +126,7 @@ Two independent optional branches hang off the same site logic:
 **dual payload** (two payloads competing for the same thiols) and
 **glycan conjugation** (N297, a different chemistry, disabled by default).
 
-## 4. Main modelling assumptions
+## 5. Main modelling assumptions
 
 1. **IgG1 only**, wild-type interchain cysteines (2 heavy–heavy hinge + 2 heavy–light = 4 bonds = 8 sites).
 2. **Shared reductant pool**: one TCEP reduces one disulfide; opened bonds ≤ min(TCEP eq, 4).
@@ -97,7 +136,7 @@ Two independent optional branches hang off the same site logic:
 6. Once released, thiols conjugate independently; **no disulfide scrambling, no intrachain consumption (`eta=1.0`), no trisulfide** handling.
 7. In the default process window the per-site conjugation probability is **saturated (p_c = 0.995)**, so the DAR is set by **disulfide reduction**, not by differences between the 8 sites. The MD exposure differences therefore do **not** drive the default result.
 
-## 5. Output
+## 6. Output
 
 `dar_v6_complete.json` — DAR distribution (0–8), mean / mode / std, even:odd
 ratio, `P(DAR>=6)`, 95 % **uncertainty range** (Monte-Carlo, not a frequentist
@@ -105,7 +144,7 @@ CI), per-site detail, temperature scan, leave-one-out validation, inverse-solve
 process window, LP bottleneck, and the calibration diagnostics (`K_open`,
 `k_TCEP`, residuals).
 
-## 6. How to run
+## 7. How to run
 
 ### Install
 
@@ -118,6 +157,11 @@ pip install numpy scipy biopython rdkit pyyaml pytest
 
 The main model itself needs only `numpy`, `scipy` and `pyyaml`;
 `biopython` / `rdkit` are needed by the structure and payload-QC tests.
+
+Note that `pip install -e .` installs the **entry-B** package (`adcsim`) only.
+The DAR model (entry A) is a standalone script run directly from
+`examples/trop_adc/kaggle_md_8site/`; nothing needs to be installed for it
+beyond `numpy`, `scipy` and `pyyaml`.
 
 ### Minimal run
 
@@ -139,7 +183,7 @@ mean = 4.587   mode = 4   even/odd = 43.346   P(DAR>=6) = 0.4215
 
 If you instead get `mean = 0.000` with every site marked `NO DATA`, the
 per-frame SASA arrays (`results_hinge/*_v5_sasa.npy`) are missing — see the
-end of section 12.
+end of section 13.
 
 ### CLI
 
@@ -155,13 +199,13 @@ end of section 12.
 | `--payload-a` / `--payload-b` / `--feed-a` / `--feed-b` / `--k-ratio` / `--class-factor` | dual payload |
 | `--glycan` (+ `--glycan-sites`, `--glycan-per-site`, `--glycan-anchor-dar`, `--glycan-eff`) | run the N297 glycan branch instead of the cysteine route |
 
-## 7. Reproducibility
+## 8. Reproducibility
 
 * Random seed `20260918`, Monte-Carlo `n_mc=4000` (fixed in config).
 * All parameters externalised to `adc_model_config.yaml`; `ADCSIM_CONFIG` can point at another config.
 * Locked reference numbers are asserted by the test suite (`tests/conftest.py: LOCKED`).
 
-## 8. Validation / regression
+## 9. Validation / regression
 
 ```
 pytest tests/          # ~160 s
@@ -192,7 +236,7 @@ Anchor residuals (predicted − measured mean DAR): `-0.004 / +0.051 / +0.037 / 
 Implied `k_TCEP = 2.46 M⁻¹s⁻¹`, inside the literature range for TCEP opening
 protein disulfides (1.5–6.25 M⁻¹s⁻¹).
 
-## 9. Scope — what v1 can and cannot do
+## 10. Scope — what v1 can and cannot do
 
 **Can:** predict the DAR response of **the same antibody** to process changes
 (TCEP equivalents, reduction temperature / time / pH, antibody concentration,
@@ -203,7 +247,7 @@ exposure/accessibility input, and `K` changes with the antibody — see the
 Brentuximab case, `k_TCEP` 0.816 vs trastuzumab 2.36). Cannot predict release,
 potency, PK, toxicity, aggregation or shelf stability.
 
-## 10. Known limitations (recorded, not bugs)
+## 11. Known limitations (recorded, not bugs)
 
 | limitation | status |
 |---|---|
@@ -215,21 +259,21 @@ potency, PK, toxicity, aggregation or shelf stability.
 | glycan `eff_total = 1.0` placeholder | Tier C; branch is **off** by default and needs an anchor |
 | no scrambling / intrachain / trisulfide / ADC aggregation / heterogeneity | known simplifications |
 
-## 11. Future work
+## 12. Future work
 
 * continuous steric discount (site fit → probability, not pass/fail)
 * wire the `conjugation_ceiling()` diagnostic into the output (currently defined, not called)
 * glycan anchor, and `K` predicted from structural descriptors (needs 20+ antibodies)
 * expand the anchor set from public patents / literature
 
-## 12. Repository layout
+## 13. Repository layout
 
 ```
 IgG1-ADC-conjugation-model/          ← this repository
 ├── examples/trop_adc/
 │   ├── kaggle_md_8site/dar_v6_complete.py   ← MAIN MODEL (this README)
 │   │   └── adc_model_config.yaml
-│   ├── results_hinge/                        profiles, MD SASA, outputs
+│   ├── results_hinge/                        profiles, MD SASA, outputs, PyMOL renders
 │   └── data/                                structures, payload ensembles, anchors
 ├── packages/adcsim/                         supporting library
 │   ├── seqqc.py         sequence QC / topology entry
@@ -256,7 +300,7 @@ The per-frame SASA arrays actually consumed by the model
 (`results_hinge/<site>_v5_sasa.npy`, ~7 KB each) **are** shipped — without
 them every site reports `NO DATA` and DAR silently collapses to 0.
 
-## 13. License / status
+## 14. License / status
 
 Released under the **MIT License** — see [`LICENSE`](LICENSE).
 Copyright `adcsim contributors`.
