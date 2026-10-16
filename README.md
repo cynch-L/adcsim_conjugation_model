@@ -70,11 +70,14 @@ both; that is intentional.
 ### What the structure pipeline produces
 
 PyMOL renders of the placed conjugates at DAR 1, 4 and 7
-(`examples/trop_adc/results_hinge/pymol_images/adc_DAR*.png`). Heavy chain:
-slate blue; light chain: teal; vc-MMAE payload: orange surface. Labels at
-engaged sites give the SG-C91 thioether bond length; greyed-out sites stayed
-unconjugated. (In-image annotations are in Chinese: 重链 = heavy chain,
-轻链 = light chain, 未偶联 = unconjugated.)
+(`examples/trop_adc/results_hinge/pymol_images/adc_DAR*.png`; regenerate with
+`examples/trop_adc/render_readme_figures.py`, which needs the interpreter
+bundled with PyMOL). Each figure pairs a whole-antibody view, rotated so the
+conjugation site faces the viewer, with a close-up of the conjugation cluster
+showing the payload in ball-and-stick and a label per engaged site. Heavy
+chain: blue; light chain: teal; vc-MMAE payload: orange; conjugated
+cysteine: amber. Only sites that actually carry a payload in the structure are
+labelled — unconjugated cysteines stay unmarked.
 
 ![DAR 1 - one payload](examples/trop_adc/results_hinge/pymol_images/adc_DAR1.png)
 
@@ -82,11 +85,9 @@ unconjugated. (In-image annotations are in Chinese: 重链 = heavy chain,
 
 ![DAR 7 - seven payloads](examples/trop_adc/results_hinge/pymol_images/adc_DAR7.png)
 
-*Trastuzumab + vc-MMAE, cysteine conjugation. Each structure is a single
-MD-frame snapshot of the fully reduced antibody with a collapsed-dominant
-payload ensemble; the hinge is intrinsically disordered (pLDDT about 40-60),
-so payload placement is one plausible representation, not a unique structure.
-Heavy-atom clearance >= 2.0 A was enforced at every placed site.*
+*Each structure is one snapshot from the collapsed-dominant payload ensemble;
+the hinge is intrinsically disordered, so payload placement is one plausible
+representation, not a unique structure.*
 
 ## 3. Inputs
 
