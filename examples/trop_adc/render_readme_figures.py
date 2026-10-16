@@ -145,17 +145,32 @@ def render(tag, pdb, sites):
     cmd.orient("focus")
     cmd.zoom("focus", buffer=15)
 
-    # spread labels around the cluster so 7 sites do not stack on one spot
-    offsets = [(4, 4, 4), (4, -4, -4), (-4, 4, 4), (-4, -4, -4),
-               (0, 5, -4), (0, -5, 4), (5, 0, 4), (-5, 0, -4)]
-    cmd.set("label_size", 24)
+    # 5+ sites: full "A-Cys232" labels overlap; fall back to numbered tags
+    # plus a site key drawn under the panels by annotate_figure.py.
+    numbered = len(sites) > 5
+    if numbered:
+        # wider spread for single digits so 7 tags never touch each other
+        offsets = [(7, 7, 7), (7, -7, -7), (-7, 7, 7), (-7, -7, -7),
+                   (0, 9, -7), (0, -9, 7), (9, 0, -7), (-9, 0, 7)]
+    else:
+        offsets = [(4, 4, 4), (4, -4, -4), (-4, 4, 4), (-4, -4, -4),
+                   (0, 5, -4), (0, -5, 4), (5, 0, 4), (-5, 0, -4)]
     cmd.set("label_color", "black")
     cmd.set("label_outline_color", "white")
     cmd.set("label_font_id", 7)
-    for (chain, resi), off in zip(sites, offsets):
+    if numbered:
+        cmd.set("label_size", 20)
+    else:
+        cmd.set("label_size", 24)
+    site_key = []
+    for idx, ((chain, resi), off) in enumerate(zip(sites, offsets)):
         obj = "site_%s%d" % (chain, resi)
         cmd.select(obj, "chain %s and resi %d and name SG" % (chain, resi))
-        cmd.label(obj, '"%s-Cys%d"' % (chain, resi))
+        if numbered:
+            cmd.label(obj, '"%d"' % (idx + 1))
+            site_key.append("%d = %s-Cys%d" % (idx + 1, chain, resi))
+        else:
+            cmd.label(obj, '"%s-Cys%d"' % (chain, resi))
         cmd.set("label_position", "(%g,%g,%g)" % off, obj)
 
     raw = os.path.join(OUTDIR, "_raw_%s_closeup.png" % tag)
@@ -170,7 +185,8 @@ def render(tag, pdb, sites):
          "--overview", stems[0],
          "--closeup", stems[1],
          "--sites", json.dumps(sites),
-         "--legend", json.dumps(LEGEND)],
+         "--legend", json.dumps(LEGEND),
+         "--site_key", json.dumps(site_key)],
         check=True)
     print("wrote", final)
     return True

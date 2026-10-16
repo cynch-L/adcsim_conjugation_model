@@ -49,6 +49,9 @@ def main():
     ap.add_argument("--closeup", required=True)
     ap.add_argument("--sites", required=True)
     ap.add_argument("--legend", required=True)
+    ap.add_argument("--site_key", default="[]",
+                    help="JSON list of 'N = Chain-Cys###' entries; "
+                         "drawn under the panels when labels are numbered")
     args = ap.parse_args()
 
     ov = Image.open(args.overview).convert("RGB")
@@ -103,6 +106,13 @@ def main():
         x += entry_w
     draw.text((MARGIN, sites_y), sites_text,
               fill=(30, 30, 30), font=legend_font)
+
+    site_key = json.loads(args.site_key)
+    if site_key:
+        # extra row height must exist; canvas H assumed <= 2 extra lines
+        key_text = "Site key:   " + "    ".join(site_key)
+        draw.text((MARGIN, sites_y + LEGEND_SIZE), key_text,
+                  fill=(30, 30, 30), font=legend_font)
 
     canvas.save(args.output, dpi=(220, 220))
     print("canvas", canvas.size)
