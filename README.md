@@ -69,15 +69,21 @@ both; that is intentional.
 
 ### What the structure pipeline produces
 
-PyMOL renders of the placed conjugates at DAR 1, 4 and 7
-(`examples/trop_adc/results_hinge/pymol_images/adc_DAR*.png`; regenerate with
-`examples/trop_adc/render_readme_figures.py`, which needs the interpreter
-bundled with PyMOL). Each figure pairs a whole-antibody view, rotated so the
-conjugation site faces the viewer, with a close-up of the conjugation cluster
-showing the payload in ball-and-stick and a label per engaged site. Heavy
-chain: blue; light chain: teal; vc-MMAE payload: orange; conjugated
-cysteine: amber. Only sites that actually carry a payload in the structure are
-labelled — unconjugated cysteines stay unmarked.
+PyMOL renders of the placed conjugates at DAR 1-7
+(`examples/trop_adc/results_hinge/pymol_images/adc_DAR*.png`). Each figure
+pairs a whole-antibody view (cartoon + translucent surface) with a close-up
+of the conjugation cluster. Heavy chain: blue-violet; light chain: teal;
+yellow spheres mark the conjugated cysteine SG. Each vc-MMAE molecule carries
+its own colour, keyed at the bottom of the figure to its conjugation site.
+Only sites that actually carry a payload in the structure are labelled -
+unconjugated cysteines stay unmarked.
+
+Every payload is bonded at an SG-C91 distance of 1.82 A, the standard
+Cys-SG / maleimide thioether bond (C-S single bonds measure 1.78-1.87 A;
+Cox & Jeffrey, Proc. R. Soc. A 1951, and a CSD mean of 1.807 A over 546
+structures). The bond is written into each PDB's CONECT records. These
+structures were regenerated with that fixed bond length and a 2.0 A
+heavy-atom clash cutoff; no bond-length tolerance is used.
 
 ![DAR 1 - one payload](examples/trop_adc/results_hinge/pymol_images/adc_DAR1.png)
 
