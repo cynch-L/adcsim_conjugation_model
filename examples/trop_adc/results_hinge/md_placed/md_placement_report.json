@@ -15,6 +15,19 @@
     "n_collapsed": 1,
     "tiers": {
       "A232": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A232": 1.825
+      },
+      "min_heavy_atom_distance_A": 2.317
     }
   },
   "DAR2": {
@@ -35,6 +48,20 @@
     "tiers": {
       "A229": "collapsed",
       "A232": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A229": 1.78,
+        "A232": 1.825
+      },
+      "min_heavy_atom_distance_A": 2.565
     }
   },
   "DAR3": {
@@ -57,6 +84,21 @@
       "A223": "collapsed",
       "A229": "collapsed",
       "A232": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A223": 1.81,
+        "A229": 1.84,
+        "A232": 1.87
+      },
+      "min_heavy_atom_distance_A": 2.022
     }
   },
   "DAR4": {
@@ -81,6 +123,22 @@
       "A229": "collapsed",
       "A232": "collapsed",
       "D214": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A223": 1.81,
+        "A229": 1.84,
+        "A232": 1.87,
+        "D214": 1.84
+      },
+      "min_heavy_atom_distance_A": 2.022
     }
   },
   "DAR5": {
@@ -107,6 +165,23 @@
       "A232": "collapsed",
       "B223": "collapsed",
       "B229": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A223": 1.78,
+        "A229": 1.825,
+        "A232": 1.87,
+        "B223": 1.81,
+        "B229": 1.78
+      },
+      "min_heavy_atom_distance_A": 2.25
     }
   },
   "DAR6": {
@@ -135,6 +210,24 @@
       "B223": "collapsed",
       "B229": "collapsed",
       "C214": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A223": 1.81,
+        "A229": 1.81,
+        "A232": 1.78,
+        "B223": 1.87,
+        "B229": 1.795,
+        "C214": 1.856
+      },
+      "min_heavy_atom_distance_A": 2.009
     }
   },
   "DAR7_omit": {
@@ -165,6 +258,25 @@
       "B229": "collapsed",
       "C214": "collapsed",
       "D214": "collapsed"
+    },
+    "final_refinement": {
+      "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "bond_range_A": [
+        1.78,
+        1.87
+      ],
+      "heavy_atom_cutoff_A": 2.0,
+      "energy_minimisation": false,
+      "sg_c91_lengths_A": {
+        "A223": 1.81,
+        "A229": 1.81,
+        "A232": 1.78,
+        "B223": 1.87,
+        "B229": 1.795,
+        "C214": 1.855,
+        "D214": 1.84
+      },
+      "min_heavy_atom_distance_A": 2.025
     }
   }
 }
