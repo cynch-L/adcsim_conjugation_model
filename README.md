@@ -75,15 +75,23 @@ pairs a whole-antibody view (cartoon + translucent surface) with a close-up
 of the conjugation cluster. Heavy chain: blue-violet; light chain: teal;
 yellow spheres mark the conjugated cysteine SG. Each vc-MMAE molecule carries
 its own colour, keyed at the bottom of the figure to its conjugation site.
-Only sites that actually carry a payload in the structure are labelled -
+Only sites that actually carry a payload in the structure are numbered -
 unconjugated cysteines stay unmarked.
 
-Every payload is bonded at an SG-C91 distance of 1.82 A, the standard
-Cys-SG / maleimide thioether bond (C-S single bonds measure 1.78-1.87 A;
-Cox & Jeffrey, Proc. R. Soc. A 1951, and a CSD mean of 1.807 A over 546
-structures). The bond is written into each PDB's CONECT records. These
-structures were regenerated with that fixed bond length and a 2.0 A
-heavy-atom clash cutoff; no bond-length tolerance is used.
+These figures show the final refinement of the placement step's optimised
+structures. That step had selected, for every site, one MD snapshot, one
+outward direction, one compact payload conformer and one of seven SG-C91
+lengths between 1.70 and 2.40 A. That window is wider than a real thioether
+bond, so the final step maps each site's own winning length into the measured
+C-S single-bond range 1.78-1.87 A (Cox & Jeffrey, Proc. R. Soc. A 1951; CSD
+mean 1.807 A over 546 structures), then re-optimises bond length, rotation
+about the tether and small tilts of the bond axis together against a 2.0 A
+heavy-atom clash cutoff. Every site keeps its own length (1.780-1.870 A across
+the seven figures) rather than being pinned to one value. Earlier versions
+either fixed every bond at 1.82 A or used the unjustified 1.70-2.40 A window
+as if it were a bond length; both are superseded. This is a geometry
+refinement only - no energy-based minimisation or binding-affinity validation
+has been performed.
 
 ![DAR 1 - one payload](examples/trop_adc/results_hinge/pymol_images/adc_DAR1.png)
 
