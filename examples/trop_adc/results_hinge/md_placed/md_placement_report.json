@@ -18,12 +18,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A232": 1.825
       },
@@ -51,12 +54,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A229": 1.78,
         "A232": 1.825
@@ -87,12 +93,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A223": 1.81,
         "A229": 1.84,
@@ -126,12 +135,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A223": 1.81,
         "A229": 1.84,
@@ -168,12 +180,17 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [
+        "A229"
+      ],
       "sg_c91_lengths_A": {
         "A223": 1.78,
         "A229": 1.825,
@@ -213,12 +230,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A223": 1.81,
         "A229": 1.81,
@@ -261,12 +281,15 @@
     },
     "final_refinement": {
       "pdb_state": "final: bond length and payload pose refined together on top of this placement optimum",
+      "script": "examples/trop_adc/runpod/final_refine.py",
+      "input_dir": "results_hinge/md_placed_raw/",
       "bond_range_A": [
         1.78,
         1.87
       ],
       "heavy_atom_cutoff_A": 2.0,
       "energy_minimisation": false,
+      "conformer_replaced": [],
       "sg_c91_lengths_A": {
         "A223": 1.81,
         "A229": 1.81,
